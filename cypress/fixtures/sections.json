@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "backgroundColor": "#5B8AAC"
+    },
+    {
+      "title": "Quisque vitae viverra mi",
+      "backgroundColor": "#759857"
+    },
+    {
+      "title": "Vestibulum ante ipsum primis",
+      "backgroundColor": "#7e5a98"
+    },
+    {
+      "title": "Ut a tempor felis, vel tincidunt lorem donec egestas",
+      "backgroundColor": "#D53E38"
+    }
+  ]
+}
