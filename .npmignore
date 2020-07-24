@@ -1,0 +1,19 @@
+# Configuration folders
+.storybook/
+cypress
+
+# Configuration files
+.prettierrc
+.gitignore
+.eslintrc
+.babelrc
+yarn.lock
+
+# Dependencies
+node_modules/
+
+# Source code
+src/
+
+# Test results
+coverage/
