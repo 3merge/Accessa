@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "lodash.get": "^4.4.2",
+    "lodash.pick": "^4.4.0",
     "node-vibrant": "^3.1.5",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.1",

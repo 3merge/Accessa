@@ -5,7 +5,13 @@ export default styled.div`
   margin: 1rem auto;
   max-width: 100%;
   padding: 1rem;
-  width: 1170px;
+
+  ${({ size }) => {
+    let width = 1170;
+    if (size === 'small') width = 768;
+    if (size === 'large') width = 1440;
+    return { width };
+  }}
 
   p,
   li,

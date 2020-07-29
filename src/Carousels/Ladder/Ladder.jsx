@@ -33,8 +33,11 @@ const Button = css`
 `;
 
 const Container = styled.div`
-  box-sizing: content-box;
-  padding: 5rem 2rem;
+  align-self: center;
+  box-sizing: border-box;
+  height: auto;
+  margin: 0 2rem;
+  padding: 5rem 0;
   position: relative;
   width: 145px;
 
