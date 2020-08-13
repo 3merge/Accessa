@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   CarouselProvider,
   Slider,
@@ -71,7 +72,7 @@ const Next = styled(ButtonNext)`
   `}
 `;
 
-const Ladder = ({ data, ...rest }) => {
+const Ladder = ({ data, visibleSlides, ...rest }) => {
   const responsive = useWindowResize('lessThan', 'large');
   const mobile = useWindowResize(
     'between',
@@ -80,7 +81,10 @@ const Ladder = ({ data, ...rest }) => {
   );
 
   const len = data.length;
-  const numOfSlides = Math.min(mobile ? 2 : 3, len);
+  const numOfSlides = Math.min(
+    mobile ? visibleSlides.mobile : visibleSlides.desktop,
+    len,
+  );
 
   return (
     <Container>
@@ -96,6 +100,7 @@ const Ladder = ({ data, ...rest }) => {
         <Slider>
           {data.map((item, index) => (
             <LadderSlide
+              key={index}
               currentSlide={index}
               {...item}
               {...rest}
@@ -106,6 +111,20 @@ const Ladder = ({ data, ...rest }) => {
       </CarouselProvider>
     </Container>
   );
+};
+
+Ladder.defaultProps = {
+  visibleSlides: {
+    mobile: 2,
+    desktop: 3,
+  },
+};
+
+Ladder.propTypes = {
+  visibleSlides: PropTypes.shape({
+    mobile: PropTypes.number,
+    desktop: PropTypes.number,
+  }),
 };
 
 export default Ladder;
