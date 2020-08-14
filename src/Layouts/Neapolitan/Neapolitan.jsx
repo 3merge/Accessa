@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import Ladder from '../../Carousels/Ladder';
@@ -27,10 +28,10 @@ const Focal = styled.div`
   overflow: hidden;
   min-height: 100%;
   width: 37.5%;
-
+  order: ${({ switchEl }) => (switchEl ? 1 : 0)};
   ${media.lessThan('large')`
     width: 100%;
-  `}
+  `};
 `;
 
 const ContentWrapper = styled.section`
@@ -48,9 +49,10 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
+  switchEl = false,
 }) => (
   <Main reverseOnMobile={reverseOnMobile}>
-    <Focal>{focalComponent}</Focal>
+    <Focal switchEl={switchEl}>{focalComponent}</Focal>
     <ContentWrapper>
       {children}
       <Ladder data={carousel} />
@@ -60,6 +62,11 @@ const Neapolitan = ({
 
 Neapolitan.defaultProps = {
   carousel: [],
+  switchEl: false,
+};
+
+Neapolitan.propTypes = {
+  switchEl: PropTypes.bool,
 };
 
 export default Neapolitan;

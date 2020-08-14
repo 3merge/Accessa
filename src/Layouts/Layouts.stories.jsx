@@ -55,6 +55,7 @@ export const NeapolitanLayout = () => (
       </div>
     }
     carousel={carousels}
+    // switchEl
   >
     <Viewport responsive="medium">
       <p style={{ padding: '2rem' }}>What ever we want!</p>

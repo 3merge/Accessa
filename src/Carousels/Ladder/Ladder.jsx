@@ -100,7 +100,7 @@ const Ladder = ({ data, visibleSlides, ...rest }) => {
         dragEnabled={len > numOfSlides}
       >
         <Back aria-label="Show previous slides">‹</Back>
-        <Slider>
+        <Slider aria-label="Slider container">
           {data.map((item, index) => (
             <LadderSlide
               key={index}
