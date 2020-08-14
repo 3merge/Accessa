@@ -30,7 +30,7 @@ const checkCarouselProviderOrientation = (
   const {
     orientation,
   } = renderCarouselProviderInResponsiveEnv(isMobile, {
-    data: [],
+    data: generateSlideData(),
   });
 
   expect(orientation).toBe(expectedOrientationValue);
@@ -81,9 +81,8 @@ describe('Ladder', () => {
     expect(dragEnabled).toBe(false);
   });
 
-  it.todo('should render the component with bad data');
-
-  it.todo(
-    'should not this slider component without slides',
-  );
+  it('should not render the component with bad data', () => {
+    const result = Ladder({ data: 'Not valid data' });
+    expect(result).toBeNull();
+  });
 });

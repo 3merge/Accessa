@@ -73,6 +73,9 @@ const Next = styled(ButtonNext)`
 `;
 
 const Ladder = ({ data, visibleSlides, ...rest }) => {
+  const isDataValid = Array.isArray(data) && data.length;
+  if (!isDataValid) return null;
+
   const responsive = useWindowResize('lessThan', 'large');
   const mobile = useWindowResize(
     'between',
