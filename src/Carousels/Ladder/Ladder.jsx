@@ -78,9 +78,9 @@ const Ladder = ({ data, visibleSlides, ...rest }) => {
 
   const responsive = useWindowResize('lessThan', 'large');
   const mobile = useWindowResize(
-    'between',
-    'large',
+    'lessThan',
     'medium',
+    'small',
   );
 
   const len = data.length;

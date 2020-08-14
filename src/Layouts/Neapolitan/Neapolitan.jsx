@@ -66,6 +66,7 @@ Neapolitan.defaultProps = {
 };
 
 Neapolitan.propTypes = {
+  carousel: PropTypes.arrayOf(PropTypes.object),
   switchEl: PropTypes.bool,
 };
 
