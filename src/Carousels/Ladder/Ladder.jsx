@@ -73,6 +73,9 @@ const Next = styled(ButtonNext)`
 `;
 
 const Ladder = ({ data, visibleSlides, ...rest }) => {
+  const isDataValid = Array.isArray(data) && data.length;
+  if (!isDataValid) return null;
+
   const responsive = useWindowResize('lessThan', 'large');
   const mobile = useWindowResize(
     'between',
@@ -114,6 +117,7 @@ const Ladder = ({ data, visibleSlides, ...rest }) => {
 };
 
 Ladder.defaultProps = {
+  data: [],
   visibleSlides: {
     mobile: 2,
     desktop: 3,
@@ -121,6 +125,7 @@ Ladder.defaultProps = {
 };
 
 Ladder.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
   visibleSlides: PropTypes.shape({
     mobile: PropTypes.number,
     desktop: PropTypes.number,
