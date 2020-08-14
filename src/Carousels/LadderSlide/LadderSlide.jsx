@@ -116,6 +116,7 @@ LadderSlide.propTypes = {
   title: PropTypes.string.isRequired,
   href: PropTypes.string,
   redirect: PropTypes.func,
+  alt: PropTypes.string.isRequired,
 };
 
 LadderSlide.defaultProps = {

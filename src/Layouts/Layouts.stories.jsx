@@ -43,7 +43,10 @@ export const NeapolitanLayout = () => (
           Title of this component
         </h2>
         <p
-          style={{ lineHeight: 1.73, fontSize: '0.877rem' }}
+          style={{
+            lineHeight: 1.73,
+            fontSize: '0.877rem',
+          }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Etiam convallis bibendum mi. Etiam quis
