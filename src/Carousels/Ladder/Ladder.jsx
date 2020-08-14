@@ -114,6 +114,7 @@ const Ladder = ({ data, visibleSlides, ...rest }) => {
 };
 
 Ladder.defaultProps = {
+  data: [],
   visibleSlides: {
     mobile: 2,
     desktop: 3,
@@ -121,6 +122,7 @@ Ladder.defaultProps = {
 };
 
 Ladder.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
   visibleSlides: PropTypes.shape({
     mobile: PropTypes.number,
     desktop: PropTypes.number,

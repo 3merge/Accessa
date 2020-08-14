@@ -6,6 +6,13 @@ import useWindowResize from '../../Utils/useWindowResize';
 
 jest.mock('../../Utils/useWindowResize', () => jest.fn());
 
+const generateSlideData = (num = 10) => {
+  return new Array(num).fill({
+    title: 'title',
+    img: 'https://google.ca',
+  });
+};
+
 const renderCarouselProviderInResponsiveEnv = (
   isMobile,
   providerProps,
@@ -33,13 +40,7 @@ const checkCarouselProviderMinSlides = (
   isMobile,
   expectedNum,
 ) => {
-  const data = [];
-  for (let i = 0; i < 10; i += 1)
-    data.push({
-      title: String(i),
-      img: 'https://google.ca',
-    });
-
+  const data = generateSlideData();
   const {
     visibleSlides,
   } = renderCarouselProviderInResponsiveEnv(isMobile, {
@@ -62,13 +63,27 @@ describe('Ladder', () => {
   it('should render 3 slides in desktop environments', () =>
     checkCarouselProviderMinSlides(false, 3));
 
+  it('should enable drag if the number of slides exceeds the number of visible', () => {
+    const {
+      dragEnabled,
+    } = renderCarouselProviderInResponsiveEnv(true, {
+      data: generateSlideData(),
+    });
+    expect(dragEnabled).toBe(true);
+  });
+
+  it('should not enable drag if the number of slides does not exceed the number of visible', () => {
+    const {
+      dragEnabled,
+    } = renderCarouselProviderInResponsiveEnv(true, {
+      data: generateSlideData(2),
+    });
+    expect(dragEnabled).toBe(false);
+  });
+
   it.todo('should render the component with bad data');
 
   it.todo(
     'should not this slider component without slides',
-  );
-
-  it.todo(
-    'should enable drag if the number of slides exceeds the number of visible',
   );
 });
