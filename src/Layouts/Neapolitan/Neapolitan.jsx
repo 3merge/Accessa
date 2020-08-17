@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import Ladder from '../../Carousels/Ladder';
+import Focal from '../Focal';
 
 const Main = styled.main`
   display: flex;
@@ -19,20 +20,6 @@ const Main = styled.main`
       : css``}
 `;
 
-const Focal = styled.div`
-  align-items: center;
-  background: whitesmoke;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  min-height: 100%;
-  width: 37.5%;
-
-  ${media.lessThan('large')`
-    width: 100%;
-  `}
-`;
-
 const ContentWrapper = styled.section`
   display: flex;
   justify-content: space-between;
@@ -48,9 +35,12 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
+  focalBackground,
 }) => (
   <Main reverseOnMobile={reverseOnMobile}>
-    <Focal>{focalComponent}</Focal>
+    <Focal focalBackground={focalBackground}>
+      {focalComponent}
+    </Focal>
     <ContentWrapper>
       {children}
       <Ladder data={carousel} />
