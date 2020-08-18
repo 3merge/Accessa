@@ -1,6 +1,7 @@
 {
   "name": "accessa",
   "version": "1.0.2",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
     "e2e:develop": "set NODE_ENV=development&& start-storybook -p 8001",
