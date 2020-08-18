@@ -69,12 +69,26 @@ Neapolitan.defaultProps = {
   carousel: [],
   switchEl: false,
   fullHeight: false,
+  focalComponent: null,
+  reverseOnMobile: false,
 };
 
 Neapolitan.propTypes = {
   carousel: PropTypes.arrayOf(PropTypes.object),
   switchEl: PropTypes.bool,
   fullHeight: PropTypes.bool,
+
+  focalComponent: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.array,
+  ]).isRequired,
+  reverseOnMobile: PropTypes.bool,
 };
 
 export default Neapolitan;

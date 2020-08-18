@@ -61,7 +61,7 @@ const Title = styled.h3`
 
 const Bubbles = ({ images, title }) => (
   <Container>
-    <Title>{title}</Title>
+    {title && <Title>{title}</Title>}
     <List>
       {images.map((img) => (
         <ListItem>
@@ -94,9 +94,11 @@ Bubbles.propTypes = {
       src: PropTypes.string,
     }),
   ),
+  title: PropTypes.string,
 };
 
 Bubbles.defaultProps = {
+  title: '',
   images: [],
 };
 
