@@ -12,6 +12,10 @@ const Main = styled.main`
   height: ${({ fullHeight }) =>
     fullHeight ? '100vh' : 'auto'};
 
+  ${media.lessThan('large')`
+    height: auto;
+  `}
+
   ${({ reverseOnMobile }) =>
     reverseOnMobile
       ? css`
@@ -19,15 +23,23 @@ const Main = styled.main`
           flex-direction: column-reverse;
         `}
         `
-      : css``}
+      : undefined}
+`;
+
+const Box = styled.div`
+  ${media.lessThan('large')`
+    min-width: 100%;
+    width: 100%;
+  `}
 `;
 
 const ContentWrapper = styled.section`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   flex: 1;
 
-  ${media.lessThan('large')`
+  ${media.lessThan('medium')`
     flex-direction: column;
   `}
 `;
@@ -37,16 +49,15 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
-  switchEl,
   fullHeight,
 }) => (
   <Main
     reverseOnMobile={reverseOnMobile}
     fullHeight={fullHeight}
   >
-    <Focal switchEl={switchEl}>{focalComponent}</Focal>
+    <Focal>{focalComponent}</Focal>
     <ContentWrapper>
-      {children}
+      <Box>{children}</Box>
       <Ladder data={carousel} />
     </ContentWrapper>
   </Main>
@@ -54,7 +65,6 @@ const Neapolitan = ({
 
 Neapolitan.defaultProps = {
   carousel: [],
-  switchEl: false,
   fullHeight: false,
   focalComponent: null,
   reverseOnMobile: false,
@@ -62,7 +72,6 @@ Neapolitan.defaultProps = {
 
 Neapolitan.propTypes = {
   carousel: PropTypes.arrayOf(PropTypes.object),
-  switchEl: PropTypes.bool,
   fullHeight: PropTypes.bool,
 
   focalComponent: PropTypes.oneOfType([

@@ -29,13 +29,17 @@ Focal.propTypes = {
 const S = {
   Focal: styled.div`
     align-items: center;
+    background-color: #fafbfc;
     display: flex;
     justify-content: center;
     overflow: hidden;
     min-height: 100%;
+    min-width: 514px;
     width: 37.5%;
 
     ${media.lessThan('large')`
+      min-height: auto;
+       min-width: auto;
       width: 100%;
     `}
   `,

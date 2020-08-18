@@ -40,6 +40,8 @@ const ImageText = styled.span`
 `;
 
 const SlideWrapper = styled(Slide)`
+  height: 12rem;
+
   ${({ role }) =>
     role === LINK
       ? css`
@@ -52,17 +54,11 @@ const SlideWrapper = styled(Slide)`
 `;
 
 const SlideContent = styled.article`
-  height: 10rem;
   overflow: hidden;
   padding: 0 0 1rem;
   margin: 0;
 
   ${media.lessThan('large')`
-    padding-bottom: 0;
-  `}
-
-  ${media.lessThan('medium')`
-    height: auto;
     padding-bottom: 0;
   `}
 `;

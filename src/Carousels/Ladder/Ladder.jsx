@@ -43,9 +43,13 @@ const Container = styled.div`
   width: 145px;
 
   ${media.lessThan('large')`
-    height: 10rem;
     padding: 2rem 3rem;
+    min-width: calc(100%  - 6rem);
     width: 100%;
+  `}
+
+  ${media.lessThan('medium')`
+    margin: 1rem 0;
   `}
 `;
 
@@ -77,11 +81,7 @@ const Ladder = ({ data, visibleSlides, ...rest }) => {
   if (!isDataValid) return null;
 
   const responsive = useWindowResize('lessThan', 'large');
-  const mobile = useWindowResize(
-    'lessThan',
-    'medium',
-    'small',
-  );
+  const mobile = useWindowResize('lessThan', 'small');
 
   const len = data.length;
   const numOfSlides = Math.min(
