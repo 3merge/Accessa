@@ -10,6 +10,7 @@ const generateSlideData = (num = 10) => {
   return new Array(num).fill({
     title: 'title',
     img: 'https://google.ca',
+    alt: 'alt text',
   });
 };
 

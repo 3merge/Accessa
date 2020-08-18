@@ -1,6 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import media from 'styled-media-query';
+import styled from 'styled-components';
 import Container from '../../Utils/Container';
 
 const Section = styled.section`

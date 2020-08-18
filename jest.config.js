@@ -5,7 +5,10 @@ module.exports = {
     '.stories.',
     '.json',
   ],
-  modulePathIgnorePatterns: ['<rootDir>/cypress/'],
+  modulePathIgnorePatterns: [
+    '<rootDir>/cypress/',
+    '<rootDir>/lib/',
+  ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',

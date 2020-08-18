@@ -63,7 +63,7 @@ const Title = styled.h3`
 
 const Field = ({ data, title }) => (
   <Container size="large">
-    <Title>{title}</Title>
+    {title && <Title>{title}</Title>}
     <List>
       {data.map((img) => (
         <ListItem
@@ -99,10 +99,12 @@ Field.propTypes = {
       onClick: PropTypes.func,
     }),
   ),
+  title: '',
 };
 
 Field.defaultProps = {
   data: [],
+  title: PropTypes.string,
 };
 
 export default Field;

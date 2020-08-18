@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     max-height: ${mh}px;
 
     ${responsive
-      ? media.lessThan(responsive)`
+      ? media.lessThan('medium')`
       height: auto;
       max-height: none;
     `

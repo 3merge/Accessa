@@ -4,7 +4,9 @@
   "scripts": {
     "build": "babel src -d lib",
     "e2e:develop": "set NODE_ENV=development&& start-storybook -p 8001",
-    "e2e:watch": "yarn run cypress open"
+    "e2e:watch": "yarn run cypress open",
+    "lint": "eslint --ext .js,.jsx src/",
+    "test": "jest --collectCoverage --silent --runInBand"
   },
   "dependencies": {
     "lodash.get": "^4.4.2",

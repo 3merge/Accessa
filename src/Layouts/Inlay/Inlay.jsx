@@ -11,6 +11,7 @@ const Offset = styled.div`
   width: 1170px;
 `;
 
+// eslint-disable-next-line
 const Inlay = ({ HeaderProps }) => (
   <>
     <Mast {...HeaderProps} offset={15} />

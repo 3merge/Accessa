@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import Ladder from '../../Carousels/Ladder';
@@ -7,7 +8,8 @@ const Main = styled.main`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 100%;
+  height: ${({ fullHeight }) =>
+    fullHeight ? '100vh' : 'auto'};
 
   ${({ reverseOnMobile }) =>
     reverseOnMobile
@@ -27,10 +29,10 @@ const Focal = styled.div`
   overflow: hidden;
   min-height: 100%;
   width: 37.5%;
-
+  order: ${({ switchEl }) => (switchEl ? 1 : 0)};
   ${media.lessThan('large')`
     width: 100%;
-  `}
+  `};
 `;
 
 const ContentWrapper = styled.section`
@@ -48,9 +50,14 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
+  switchEl,
+  fullHeight,
 }) => (
-  <Main reverseOnMobile={reverseOnMobile}>
-    <Focal>{focalComponent}</Focal>
+  <Main
+    reverseOnMobile={reverseOnMobile}
+    fullHeight={fullHeight}
+  >
+    <Focal switchEl={switchEl}>{focalComponent}</Focal>
     <ContentWrapper>
       {children}
       <Ladder data={carousel} />
@@ -60,6 +67,28 @@ const Neapolitan = ({
 
 Neapolitan.defaultProps = {
   carousel: [],
+  switchEl: false,
+  fullHeight: false,
+  focalComponent: null,
+  reverseOnMobile: false,
+};
+
+Neapolitan.propTypes = {
+  carousel: PropTypes.arrayOf(PropTypes.object),
+  switchEl: PropTypes.bool,
+  fullHeight: PropTypes.bool,
+
+  focalComponent: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.array,
+  ]).isRequired,
+  reverseOnMobile: PropTypes.bool,
 };
 
 export default Neapolitan;
