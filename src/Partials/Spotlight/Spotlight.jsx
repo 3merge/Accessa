@@ -104,10 +104,15 @@ const Spotlight = ({
 
 Spotlight.defaultProps = {
   backgroundColor: '#fafbfc',
+  color: undefined,
 };
 
 Spotlight.propTypes = {
+  // eslint-disable-next-line
+  animationData: PropTypes.object.isRequired,
   backgroundColor: PropTypes.string,
+  color: PropTypes.string,
+  logo: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
