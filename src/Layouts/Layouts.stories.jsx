@@ -10,7 +10,7 @@ import * as Features from '../Features';
 import * as Galleries from '../Galleries';
 import * as Header from '../Headers';
 import * as Sections from '../Sections';
-import { Viewport } from '../Utils';
+// import { Viewport } from '../Utils';
 
 export default {
   title: 'Layouts',
@@ -26,6 +26,7 @@ export const NeapolitanLayout = () => (
           padding: '3rem',
           margin: '0 auto',
           maxWidth: 550,
+          height: '80vh',
         }}
       >
         <Lottie
@@ -43,7 +44,10 @@ export const NeapolitanLayout = () => (
           Title of this component
         </h2>
         <p
-          style={{ lineHeight: 1.73, fontSize: '0.877rem' }}
+          style={{
+            lineHeight: 1.73,
+            fontSize: '0.877rem',
+          }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Etiam convallis bibendum mi. Etiam quis
@@ -54,11 +58,10 @@ export const NeapolitanLayout = () => (
         </p>
       </div>
     }
+    fullHeight
     carousel={carousels}
   >
-    <Viewport responsive="medium">
-      <p style={{ padding: '2rem' }}>What ever we want!</p>
-    </Viewport>
+    <p style={{ padding: '2rem' }}>What ever we want!</p>
   </Neapolitan>
 );
 

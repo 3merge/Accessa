@@ -76,7 +76,7 @@ const Vitos = () => (
         </p>
       </Section>
       <Aside>
-        <h3>This goes after as it's less important</h3>
+        <h3>This goes after </h3>
         <ul>
           <li>Option one</li>
           <li>Option two</li>

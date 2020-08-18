@@ -70,6 +70,7 @@ const SlideContent = styled.article`
 const LadderSlide = ({
   currentSlide,
   img,
+  alt,
   title,
   href,
   redirect,
@@ -90,18 +91,18 @@ const LadderSlide = ({
       index={currentSlide}
       {...(isLink
         ? {
+            'role': undefined,
             'aria-labelledby': label,
             'data-href': href,
             onClick: navigate,
             onKeyPress: navigate,
-
-            role,
+            'aria-selected': undefined,
           }
         : {})}
     >
       <SlideContent>
         <ImageContainer>
-          <Image srcList={img} />
+          <Image srcList={img} alt={alt} />
         </ImageContainer>
         <ImageText id={label}>{title}</ImageText>
       </SlideContent>
@@ -115,6 +116,7 @@ LadderSlide.propTypes = {
   title: PropTypes.string.isRequired,
   href: PropTypes.string,
   redirect: PropTypes.func,
+  alt: PropTypes.string.isRequired,
 };
 
 LadderSlide.defaultProps = {
