@@ -36,7 +36,6 @@ const S = {
     min-height: 100%;
     min-width: 514px;
     width: 37.5%;
-    height: 100%;
 
     ${media.lessThan('large')`
       min-height: auto;

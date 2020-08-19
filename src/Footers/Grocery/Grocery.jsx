@@ -11,6 +11,11 @@ const ColHeader = styled.div`
   ${media.lessThan('medium')`
     text-align: center;
     width: 100%;
+
+    img { 
+      display: block;
+      margin: 0 auto;
+    }
   `}
 `;
 
@@ -57,7 +62,7 @@ const Grid = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
 
-  ${media.lessThan('medium')`
+  ${media.lessThan('small')`
     justify-content: flex-start;
   `}
 `;
@@ -76,7 +81,10 @@ const Grocery = ({ children, columns, social }) => {
           <ColHeader>
             {children}
             <br />
-            <small>©. {new Date().getFullYear()}</small>
+            <small>
+              © {new Date().getFullYear()}. All rights
+              reserved
+            </small>
           </ColHeader>
           {columns.map((co) => (
             <Col>

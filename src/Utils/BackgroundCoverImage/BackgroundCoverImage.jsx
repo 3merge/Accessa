@@ -42,12 +42,14 @@ const BackgroundCoverImage = (props) => {
     setBackgroundColor,
   ] = React.useState('#222');
 
-  Vibrant.from(get(props, 'fluid.src')).getPalette(
-    (err, palette) => {
-      const bg = get(palette, 'DarkVibrant.hex');
-      if (!err && bg) setBackgroundColor(bg);
-    },
-  );
+  Vibrant.from(
+    // contentful does blocks the network attempt
+    // so base64 allows this component to do it in browser instead
+    get(props, 'fluid.base64', get(props, 'fluid.src')),
+  ).getPalette((err, palette) => {
+    const bg = get(palette, 'DarkVibrant.hex');
+    if (!err && bg) setBackgroundColor(bg);
+  });
 
   return (
     <Container>

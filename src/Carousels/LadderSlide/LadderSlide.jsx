@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Slide } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
-import Image from '../../Utils/Image';
+import Image from 'gatsby-image';
 
 const LINK = 'link';
 
@@ -12,12 +12,6 @@ const ImageContainer = styled.div`
   height: 8rem;
   position: relative;
   width: 100%;
-
-  img {
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-  }
 `;
 
 const ImageText = styled.span`
@@ -65,11 +59,10 @@ const SlideContent = styled.article`
 
 const LadderSlide = ({
   currentSlide,
-  img,
-  alt,
   title,
   href,
   redirect,
+  ...rest
 }) => {
   const role = href ? LINK : undefined;
   const label = title.toLowerCase().replace(/\s/gi, '-');
@@ -98,7 +91,7 @@ const LadderSlide = ({
     >
       <SlideContent>
         <ImageContainer>
-          <Image srcList={img} alt={alt} />
+          <Image {...rest} />
         </ImageContainer>
         <ImageText id={label}>{title}</ImageText>
       </SlideContent>
