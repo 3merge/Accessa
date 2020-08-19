@@ -80,7 +80,7 @@ const Grocery = ({ children, columns, social }) => {
           </ColHeader>
           {columns.map((co) => (
             <Col>
-              <ColListTitle>{co.name}</ColListTitle>
+              <ColListTitle>{co.label}</ColListTitle>
               <ColList>
                 {co.items.map((li) => (
                   <ColListItem>

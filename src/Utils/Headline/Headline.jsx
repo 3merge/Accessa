@@ -9,6 +9,7 @@ const Typography = styled.h1`
       ((100vw - 300px) / (1600 - 300))
   );
   line-height: 0.9;
+  margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;

@@ -1,7 +1,7 @@
 {
   "columns": [
     {
-      "name": "Company",
+      "label": "Company",
       "items": [
         {
           "label": "About us",
@@ -22,11 +22,26 @@
       ]
     },
     {
-      "name": "Products and services",
+      "label": "Products and services",
+      "href": "/products",
       "items": [
         {
           "label": "Computers",
-          "href": "/products/computers"
+          "href": "/products/computers",
+          "items": [
+            {
+              "label": "Tablets",
+              "href": "/products/computers/tablets"
+            },
+            {
+              "label": "Desktops",
+              "href": "/products/computers/desktops"
+            },
+            {
+              "label": "Laptops",
+              "href": "/products/computers/laptops"
+            }
+          ]
         },
         {
           "label": "Software",
