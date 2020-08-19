@@ -1,0 +1,38 @@
+{
+  "columns": [
+    {
+      "name": "Company",
+      "items": [
+        {
+          "label": "About us",
+          "href": "/about"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        },
+        {
+          "label": "Careers",
+          "href": "https://google.ca"
+        },
+        {
+          "label": "Investors",
+          "href": "//google.ca"
+        }
+      ]
+    },
+    {
+      "name": "Products and services",
+      "items": [
+        {
+          "label": "Computers",
+          "href": "/products/computers"
+        },
+        {
+          "label": "Software",
+          "href": "services/software"
+        }
+      ]
+    }
+  ]
+}
