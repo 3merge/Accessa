@@ -9,7 +9,7 @@ export default {
   decorators: [withA11y],
 };
 
-export const CarouselLadder = () => (
+export const WithColumns = () => (
   <Grocery
     social={social}
     columns={[...columns, ...columns]}

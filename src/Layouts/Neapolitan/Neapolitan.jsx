@@ -27,6 +27,9 @@ const Main = styled.main`
 `;
 
 const Box = styled.div`
+  padding: 1rem;
+  flex: 1;
+
   ${media.lessThan('large')`
     min-width: 100%;
     width: 100%;
@@ -34,10 +37,12 @@ const Box = styled.div`
 `;
 
 const ContentWrapper = styled.section`
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   flex: 1;
+  padding: 2rem 1rem;
 
   ${media.lessThan('medium')`
     flex-direction: column;

@@ -82,13 +82,13 @@ const Grocery = ({ children, columns, social }) => {
             <Col>
               <ColListTitle>{co.label}</ColListTitle>
               <ColList>
-                {co.items.map((li) => (
-                  <ColListItem>
+                {co.items.map(({ label, href = '/' }) => (
+                  <ColListItem key={label}>
                     <ColListItemLink
-                      to="li"
+                      to={href}
                       getProps={getLinkProps}
                     >
-                      HI
+                      {label}
                     </ColListItemLink>
                   </ColListItem>
                 ))}
