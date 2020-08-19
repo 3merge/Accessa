@@ -12,12 +12,10 @@ const Offset = styled.div`
 `;
 
 // eslint-disable-next-line
-const Inlay = ({ HeaderProps }) => (
+const Inlay = ({ HeaderProps, children }) => (
   <>
     <Mast {...HeaderProps} offset={15} />
-    <Offset>
-      <p>HEY</p>
-    </Offset>
+    <Offset>{children}</Offset>
   </>
 );
 

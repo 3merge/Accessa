@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash.get';
 import Vibrant from 'node-vibrant';
-import { useImage } from 'react-image';
 import styled, { css } from 'styled-components';
+import Image from 'gatsby-image';
 
 const Container = styled.div`
   bottom: 0;
@@ -36,44 +36,48 @@ const Dimmer = styled.div`
     `}
 `;
 
-const Img = ({ alt, srcList, ...rest }) => {
-  const { src } = useImage({
-    ...rest,
-    srcList,
-  });
-
+const BackgroundCoverImage = (props) => {
   const [
     backgroundColor,
     setBackgroundColor,
   ] = React.useState('#222');
 
-  Vibrant.from(src).getPalette((err, palette) => {
-    const bg = get(palette, 'DarkVibrant.hex');
-    if (!err && bg) setBackgroundColor(bg);
-  });
+  Vibrant.from(get(props, 'fluid.src')).getPalette(
+    (err, palette) => {
+      const bg = get(palette, 'DarkVibrant.hex');
+      if (!err && bg) setBackgroundColor(bg);
+    },
+  );
 
   return (
     <Container>
-      {src && <img src={src} alt={alt} />}
+      <Image
+        {...props}
+        style={{
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          right: 0,
+          top: 0,
+        }}
+      />
       <Dimmer backgroundColor={backgroundColor} />
     </Container>
   );
 };
 
-const BackgroundCoverImage = (props) => (
-  <Suspense fallback={<span />}>
-    <Img {...props} />
-  </Suspense>
-);
-
-Img.propTypes = {
-  srcList: PropTypes.string,
+BackgroundCoverImage.propTypes = {
+  fluid: PropTypes.shape({
+    src: PropTypes.string,
+  }),
   alt: PropTypes.string,
 };
 
-Img.defaultProps = {
-  srcList:
-    'https://source.unsplash.com/collection/388793/1600x900',
+BackgroundCoverImage.defaultProps = {
+  fluid: {
+    src:
+      'https://source.unsplash.com/collection/388793/1600x900',
+  },
   alt: 'Random photo selected from unsplash API',
 };
 

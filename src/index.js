@@ -1,3 +1,4 @@
+export * as CallToActions from './CallToActions';
 export * as Features from './Features';
 export * as Galleries from './Galleries';
 export * as Headers from './Headers';

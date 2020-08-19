@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Container from '../../Utils/Container';
 
 const Section = styled.section`
@@ -12,35 +13,18 @@ const Section = styled.section`
   }
 `;
 
-const News = () => (
+const News = ({ children }) => (
   <Container size="small">
-    <Section>
-      <p>
-        All aspects of our operations conform to the ISO
-        9001:2015 standard. We supply automotive rubber
-        products which meet ASTM D2000 line call-outs, as
-        well as the material specifications of major OEM’s,
-        including General Motors, Ford, Chrysler, Nissan,
-        Mazda, BMW, Honda, Toyota, Volvo and more. In those
-        cases where a new specification is required, we work
-        with our partners to develop an appropriate
-        solution. All aspects of our operations conform to
-      </p>
-      <p>
-        the ISO 9001:2015 standard. We supply automotive
-        rubber products which meet ASTM D2000 line
-        call-outs, as All aspects of our operations conform
-        to the ISO 9001:2015 standard. We supply automotive
-        rubber products which meet ASTM D2000 line
-        call-outs, as well as the material specifications of
-        major OEM’s, including General Motors, Ford,
-        Chrysler, Nissan, Mazda, BMW, Honda, Toyota, Volvo
-        and more. In those cases where a new specification
-        is required, we work with our partners to develop an
-        appropriate solution.
-      </p>
-    </Section>
+    <Section>{children}</Section>
   </Container>
 );
+
+News.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.node,
+    PropTypes.object,
+  ]).isRequired,
+};
 
 export default News;
