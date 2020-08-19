@@ -5,7 +5,7 @@ import media from 'styled-media-query';
 
 const Typography = styled.h1`
   font-size: calc(
-    46.184px + (46.184 - 25.629) *
+    42.535px + (42.535 - 25.629) *
       ((100vw - 300px) / (1600 - 300))
   );
   line-height: 0.9;

@@ -60,14 +60,18 @@ const Mast = ({
   title,
   subtitle,
   offset,
+  renderBottom,
+  renderTop,
   size,
   ...rest
 }) => (
   <Wrapper>
     <BackgroundCoverImage {...rest} />
     <Container size={size} offset={offset}>
+      {renderTop}
       <Headline>{title}</Headline>
       {subtitle && <Tagline>{subtitle}</Tagline>}
+      {renderBottom}
     </Container>
   </Wrapper>
 );
@@ -76,6 +80,8 @@ Mast.defaultProps = {
   offset: 0,
   size: 'medium',
   subtitle: '',
+  renderBottom: null,
+  renderTop: null,
 };
 
 Mast.propTypes = {
@@ -83,6 +89,8 @@ Mast.propTypes = {
   subtitle: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   offset: PropTypes.number,
+  renderBottom: PropTypes.node,
+  renderTop: PropTypes.node,
 };
 
 export default Mast;
