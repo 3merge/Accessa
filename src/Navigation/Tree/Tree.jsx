@@ -1,10 +1,25 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import { useToggle } from 'useful-state';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { InlineIcon } from '@iconify/react';
 import outlineKeyboardArrowDown from '@iconify/icons-ic/outline-keyboard-arrow-down';
 import outlineKeyboardArrowUp from '@iconify/icons-ic/outline-keyboard-arrow-up';
+
+const sharedButtonStyles = css`
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  transition: background-color 250ms ease-in;
+  width: 100%;
+
+  &:hover,
+  &:focus,
+  &[aria-expanded='true'] {
+    background-color: whitesmoke;
+  }
+`;
 
 const Button = styled.button`
   align-items: center;
@@ -13,8 +28,7 @@ const Button = styled.button`
   display: flex;
   font-size: 1rem;
   justify-content: space-between;
-  padding: 0.25rem;
-  width: 100%;
+  ${sharedButtonStyles};
 `;
 
 const Count = styled.span`
@@ -29,19 +43,9 @@ const Count = styled.span`
   width: 1rem;
 `;
 
-const Divider = styled.span`
-  background-color: whitesmoke;
-  display: block;
-  height: 1px;
-  margin: 0.25rem 0;
-  width: 100%;
-`;
-
 const TreeListItemLink = styled(Link)`
   display: block;
-  font-size: 1rem;
-  padding: 0.25rem;
-  text-decoration: none;
+  ${sharedButtonStyles};
 `;
 
 const TreeList = styled.ul`
@@ -51,11 +55,14 @@ const TreeList = styled.ul`
 
   ul {
     margin-bottom: 1rem;
-    padding-left: 1.25rem;
+    li:last-of-type {
+      border-bottom: 0;
+    }
   }
 `;
 
 const TreeListItem = styled.li`
+  border-bottom: 1px solid whitesmoke;
   display: block;
   width: 100%;
 `;
@@ -72,7 +79,11 @@ const ParentLink = ({
   return (
     <>
       {hasItems ? (
-        <Button type="button" onClick={toggle}>
+        <Button
+          type="button"
+          onClick={toggle}
+          aria-expanded={state}
+        >
           <span>
             {icon}
             {label}
@@ -106,12 +117,7 @@ ParentLink.defaultProps = {
 };
 
 const generateChildLinks = (item) => {
-  if (!item)
-    return (
-      <TreeListItem>
-        <Divider />
-      </TreeListItem>
-    );
+  if (!item) return null;
 
   const hasItems = Array.isArray(item.items)
     ? item.items.length

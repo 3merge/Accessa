@@ -19,6 +19,7 @@ const ListItem = styled.li`
   flex: 25%;
   margin: 1rem 0;
   max-width: 25%;
+  min-width: 325px;
 
   img {
     transition: filter 500ms ease-in;
