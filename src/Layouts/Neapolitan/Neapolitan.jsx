@@ -9,8 +9,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: ${({ fullHeight }) =>
-    fullHeight ? '100vh' : 'auto'};
+  height: ${({ height }) => height};
 
   ${media.lessThan('large')`
     height: auto;
@@ -54,12 +53,9 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
-  fullHeight,
+  height,
 }) => (
-  <Main
-    reverseOnMobile={reverseOnMobile}
-    fullHeight={fullHeight}
-  >
+  <Main reverseOnMobile={reverseOnMobile} height={height}>
     <Focal>{focalComponent}</Focal>
     <ContentWrapper>
       <Box>{children}</Box>
@@ -70,14 +66,14 @@ const Neapolitan = ({
 
 Neapolitan.defaultProps = {
   carousel: [],
-  fullHeight: false,
+  height: 'auto',
   focalComponent: null,
   reverseOnMobile: false,
 };
 
 Neapolitan.propTypes = {
   carousel: PropTypes.arrayOf(PropTypes.object),
-  fullHeight: PropTypes.bool,
+  height: PropTypes.string,
 
   focalComponent: PropTypes.oneOfType([
     PropTypes.node,
