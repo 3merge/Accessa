@@ -101,16 +101,32 @@ const LadderSlide = ({
 
 LadderSlide.propTypes = {
   currentSlide: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  fluid: PropTypes.shape({
+    src: PropTypes.string,
+  }).isRequired,
   title: PropTypes.string.isRequired,
   href: PropTypes.string,
   redirect: PropTypes.func,
   alt: PropTypes.string.isRequired,
+  style: PropTypes.shape({
+    height: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+    width: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+  }),
 };
 
 LadderSlide.defaultProps = {
   href: '',
   redirect: undefined,
+  style: {
+    height: '100%',
+    width: '100%',
+  },
 };
 
 export default LadderSlide;

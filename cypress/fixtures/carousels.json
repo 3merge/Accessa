@@ -2,28 +2,38 @@
   {
     "title": "Packaged Foods",
     "alt": "Foods",
-    "img": "https://images.unsplash.com/photo-1546864974-efd4e100ecc3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    "href": "https://google.ca"
+    "href": "https://google.ca",
+    "fluid": {
+      "src": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    }
   },
   {
     "title": "Business Services",
     "alt": "Business",
-    "img": "https://images.unsplash.com/photo-1562051725-9f20596fc3e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    "fluid": {
+      "src": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    }
   },
   {
     "title": "Real Estate Investment Trusts",
     "alt": "Real Estate",
-    "img": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    "href": "https://google.ca"
+    "href": "https://google.ca",
+    "fluid": {
+      "src": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    }
   },
   {
     "title": "Semiconductors",
     "alt": "semiconductor",
-    "img": "https://images.unsplash.com/photo-1584347959218-f8868a287e82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+    "fluid": {
+      "src": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    }
   },
   {
     "title": "Specialty Insurers",
     "alt": "Specialty",
-    "img": "https://images.unsplash.com/photo-1513273505211-6d540a571549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    "fluid": {
+      "src": "https://images.unsplash.com/photo-1541491263892-731bc0c6a2ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+    }
   }
 ]
