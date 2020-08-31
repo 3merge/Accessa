@@ -1,0 +1,53 @@
+{
+  "columns": [
+    {
+      "label": "Company",
+      "items": [
+        {
+          "label": "About us",
+          "href": "/about"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        },
+        {
+          "label": "Careers",
+          "href": "https://google.ca"
+        },
+        {
+          "label": "Investors",
+          "href": "//google.ca"
+        }
+      ]
+    },
+    {
+      "label": "Products and services",
+      "href": "/products",
+      "items": [
+        {
+          "label": "Computers",
+          "href": "/products/computers",
+          "items": [
+            {
+              "label": "Tablets",
+              "href": "/products/computers/tablets"
+            },
+            {
+              "label": "Desktops",
+              "href": "/products/computers/desktops"
+            },
+            {
+              "label": "Laptops",
+              "href": "/products/computers/laptops"
+            }
+          ]
+        },
+        {
+          "label": "Software",
+          "href": "services/software"
+        }
+      ]
+    }
+  ]
+}

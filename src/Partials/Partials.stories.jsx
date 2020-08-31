@@ -32,13 +32,20 @@ export const Blanket = () => (
 );
 
 export const Spotlight = () => (
-  <Partials.Spotlight
-    animationData={animationData}
-    backgroundColor="rgb(255 234 235)"
-    logo="https://logoipsum.com/logo/logo-16.svg"
-    color="#865c6c"
-    {...fixture}
-  />
+  <div
+    style={{
+      backgroundColor: 'rgb(255 234 235)',
+      height: '100%',
+      width: '100%',
+    }}
+  >
+    <Partials.Spotlight
+      animationData={animationData}
+      logo="https://logoipsum.com/logo/logo-16.svg"
+      color="#865c6c"
+      {...fixture}
+    />
+  </div>
 );
 
 export const Compass = () => (

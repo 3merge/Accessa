@@ -7,19 +7,14 @@ import Focal from '../Focal';
 
 const Main = styled.main`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
-  height: ${({ fullHeight }) =>
-    fullHeight ? '100vh' : 'auto'};
-
-  ${media.lessThan('large')`
-    height: auto;
-  `}
+  height: 100%;
 
   ${({ reverseOnMobile }) =>
-    reverseOnMobile
+    !reverseOnMobile
       ? css`
-          ${media.lessThan('medium')`
+          ${media.lessThan('large')`
           flex-direction: column-reverse;
         `}
         `
@@ -27,6 +22,9 @@ const Main = styled.main`
 `;
 
 const Box = styled.div`
+  padding: 1rem;
+  flex: 1;
+
   ${media.lessThan('large')`
     min-width: 100%;
     width: 100%;
@@ -34,13 +32,15 @@ const Box = styled.div`
 `;
 
 const ContentWrapper = styled.section`
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   flex: 1;
+  padding: 2rem 1rem;
 
   ${media.lessThan('medium')`
-    flex-direction: column;
+    flex-direction: row;
   `}
 `;
 
@@ -49,30 +49,24 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
-  fullHeight,
 }) => (
-  <Main
-    reverseOnMobile={reverseOnMobile}
-    fullHeight={fullHeight}
-  >
-    <Focal>{focalComponent}</Focal>
+  <Main reverseOnMobile={reverseOnMobile}>
     <ContentWrapper>
       <Box>{children}</Box>
       <Ladder data={carousel} />
     </ContentWrapper>
+    <Focal>{focalComponent}</Focal>
   </Main>
 );
 
 Neapolitan.defaultProps = {
   carousel: [],
-  fullHeight: false,
   focalComponent: null,
   reverseOnMobile: false,
 };
 
 Neapolitan.propTypes = {
   carousel: PropTypes.arrayOf(PropTypes.object),
-  fullHeight: PropTypes.bool,
 
   focalComponent: PropTypes.oneOfType([
     PropTypes.node,

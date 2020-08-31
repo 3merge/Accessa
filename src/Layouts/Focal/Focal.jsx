@@ -39,7 +39,7 @@ const S = {
 
     ${media.lessThan('large')`
       min-height: auto;
-       min-width: auto;
+      min-width: auto;
       width: 100%;
     `}
   `,

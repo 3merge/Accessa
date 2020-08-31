@@ -1,8 +1,8 @@
 import React from 'react';
-import Lottie from 'react-lottie';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import Image from 'gatsby-image';
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  max-width: 45vw;
+  max-width: 33vw;
   padding: 3rem;
   width: 100%;
 
@@ -25,35 +25,28 @@ const Wrapper = styled.div`
   `}
 `;
 
-const Logo = styled.img`
-  max-width: 180px;
+const LogoContainer = styled(Image)`
+  height: 85px;
+  width: 180px;
 
   ${media.lessThan('large')`
-    max-width: 140px;
+    width: 140px;
   `}
 
   ${media.lessThan('medium')`
-    max-width: 90px;
-  `}
-`;
-
-const LottieContainer = styled.div`
-  max-width: 514px;
-
-  ${media.lessThan('medium')`
-    max-width: 325px;
+    width: 90px;
   `}
 `;
 
 const Headline = styled.h2`
-  font-size: 1.842rem;
+  font-size: 2.083rem;
+  line-height: 1.2;
   width: 87.5%;
 `;
 
 const Text = styled.p`
   font-size: 0.885rem;
   line-height: 1.7;
-  padding-bottom: 8vh;
 
   ${media.lessThan('large')`
     display: none;
@@ -69,48 +62,43 @@ const TextMobile = styled.p`
 `;
 
 const Spotlight = ({
-  animationData,
-  backgroundColor,
+  children,
   color,
   title,
   description,
   logo,
 }) => (
-  <Wrapper style={{ backgroundColor }}>
+  <Wrapper>
     <div>
-      <Logo src={logo} alt="Logo" />
+      <LogoContainer
+        fluid={{ src: logo }}
+        alt="Logo"
+        imgStyle={{
+          objectPosition: 'left',
+          objectFit: 'contain',
+        }}
+      />
       <Headline style={{ color }}>{title}</Headline>
       <TextMobile style={{ color }}>
         {description}
       </TextMobile>
     </div>
     <div>
-      <LottieContainer>
-        <Lottie
-          height="auto"
-          width="100%"
-          options={{
-            animationData,
-            rendererSettings: {
-              preserveAspectRatio: 'xMidYMid slice',
-            },
-          }}
-        />
-      </LottieContainer>
+      {children}
       <Text style={{ color }}>{description}</Text>
     </div>
   </Wrapper>
 );
 
 Spotlight.defaultProps = {
-  backgroundColor: '#fafbfc',
   color: undefined,
 };
 
 Spotlight.propTypes = {
-  // eslint-disable-next-line
-  animationData: PropTypes.object.isRequired,
-  backgroundColor: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+  ]).isRequired,
   color: PropTypes.string,
   logo: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

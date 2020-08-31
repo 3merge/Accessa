@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Image from 'gatsby-image';
 import Container from '../../Utils/Container';
-import Image from '../../Utils/Image';
-import ImageWrapper from '../../Utils/ImageWrapper';
 
 const List = styled.ul`
   display: flex;
@@ -20,6 +19,7 @@ const ListItem = styled.li`
   flex: 25%;
   margin: 1rem 0;
   max-width: 25%;
+  min-width: 325px;
 
   img {
     transition: filter 500ms ease-in;
@@ -73,13 +73,7 @@ const Field = ({ data, title }) => (
           onKeyPress={img.onClick}
           aria-labelledby={img.title}
         >
-          <ImageWrapper
-            height="15rem"
-            width="100%"
-            fit="cover"
-          >
-            <Image alt={img.title} srcList={img.src} />
-          </ImageWrapper>
+          <Image {...img} />
           <ListItemText id={img.title}>
             <h4>{img.title}</h4>
             <p>{img.description}</p>
