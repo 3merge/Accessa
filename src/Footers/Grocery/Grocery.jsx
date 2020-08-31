@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import { SocialIcon } from 'react-social-icons';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import PropTypes from 'prop-types';
 import * as Utils from '../../Utils';
 
 const ColHeader = styled.div`
@@ -104,10 +105,10 @@ const Grocery = ({ children, columns, social }) => {
             </Col>
           ))}
           <ColHeader>
-            {social.map((media) => (
+            {social.map((sm) => (
               <SocialIcon
-                url={media}
-                key={media}
+                url={sm}
+                key={sm}
                 rel="noreferrer noopener"
                 target="_blank"
                 style={{
@@ -120,6 +121,27 @@ const Grocery = ({ children, columns, social }) => {
       </Utils.Container>
     </Footer>
   );
+};
+
+Grocery.propTypes = {
+  social: PropTypes.arrayOf(PropTypes.string),
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      href: PropTypes.string,
+    }),
+  ),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+};
+
+Grocery.defaultProps = {
+  social: [],
+  columns: [],
+  children: null,
 };
 
 export default Grocery;

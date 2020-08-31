@@ -18,7 +18,7 @@ export const Ladder = () => (
 export const Slideshow = () => (
   <Carousels.Slideshow
     data={carousels}
-    component={(props) => {
+    component={() => {
       return (
         <div
           style={{
