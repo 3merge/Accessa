@@ -15,7 +15,6 @@ export default {
 
 export const WithBlanketFocalComponent = () => (
   <Neapolitan
-    height="100vh"
     carousel={carousels}
     focalComponent={<Blanket />}
   >
@@ -24,13 +23,14 @@ export const WithBlanketFocalComponent = () => (
 );
 
 export const WithSpotlightFocalComponent = () => (
-  <Neapolitan
-    height="100vh"
-    carousel={carousels}
-    focalComponent={<Spotlight />}
-  >
-    <p>Using Spotlight partial</p>
-  </Neapolitan>
+  <div style={{ height: '100vh' }}>
+    <Neapolitan
+      carousel={carousels}
+      focalComponent={<Spotlight />}
+    >
+      <p>Using Spotlight partial</p>
+    </Neapolitan>
+  </div>
 );
 
 export const WithCompassFocalComponent = () => (

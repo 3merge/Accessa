@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   CarouselProvider,
   Slider,
@@ -8,8 +7,9 @@ import {
 } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import LadderSlide from '../LadderSlide';
-import useWindowResize from '../../Utils/useWindowResize';
+import withSlideCount from '../withSlideCount';
 
 const Button = css`
   background-color: transparent;
@@ -76,60 +76,35 @@ const Next = styled(ButtonNext)`
   `}
 `;
 
-const Ladder = ({ data, visibleSlides, ...rest }) => {
-  const isDataValid = Array.isArray(data) && data.length;
-  if (!isDataValid) return null;
+export default withSlideCount(
+  ({ data, visibleSlides, ...rest }) => {
+    const isBreakpoint = useMediaQuery('(max-width:600px)');
 
-  const responsive = useWindowResize('lessThan', 'large');
-  const mobile = useWindowResize('lessThan', 'small');
-
-  const len = data.length;
-  const numOfSlides = Math.min(
-    mobile ? visibleSlides.mobile : visibleSlides.desktop,
-    len,
-  );
-
-  return (
-    <Container>
-      <CarouselProvider
-        visibleSlides={numOfSlides}
-        orientation={responsive ? 'horizontal' : 'vertical'}
-        naturalSlideWidth={145}
-        naturalSlideHeight={16 * 11.5}
-        totalSlides={len}
-        dragEnabled={len > numOfSlides}
-      >
-        <Back aria-label="Show previous slides">‹</Back>
-        <Slider aria-label="Slider container">
-          {data.map((item, index) => (
-            <LadderSlide
-              key={index}
-              currentSlide={index}
-              {...item}
-              {...rest}
-            />
-          ))}
-        </Slider>
-        <Next aria-label="Show next slides">›</Next>
-      </CarouselProvider>
-    </Container>
-  );
-};
-
-Ladder.defaultProps = {
-  data: [],
-  visibleSlides: {
-    mobile: 2,
-    desktop: 3,
+    return (
+      <Container>
+        <CarouselProvider
+          visibleSlides={visibleSlides}
+          orientation={
+            isBreakpoint ? 'horizontal' : 'vertical'
+          }
+          naturalSlideWidth={145}
+          naturalSlideHeight={16 * 11.5}
+          {...rest}
+        >
+          <Back aria-label="Show previous slides">‹</Back>
+          <Slider aria-label="Slider container">
+            {data.map((item, index) => (
+              <LadderSlide
+                key={index}
+                currentSlide={index}
+                {...item}
+                {...rest}
+              />
+            ))}
+          </Slider>
+          <Next aria-label="Show next slides">›</Next>
+        </CarouselProvider>
+      </Container>
+    );
   },
-};
-
-Ladder.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
-  visibleSlides: PropTypes.shape({
-    mobile: PropTypes.number,
-    desktop: PropTypes.number,
-  }),
-};
-
-export default Ladder;
+);

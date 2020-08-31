@@ -15,11 +15,11 @@ const context = {
   },
 };
 
-describe('SlideshowStepper', () => {
-  const carouselContext = jest
-    .spyOn(React, 'useContext')
-    .mockReturnValue(context);
+beforeAll(() =>
+  jest.spyOn(React, 'useContext').mockReturnValue(context),
+);
 
+describe('SlideshowStepper', () => {
   it('should subtract number of visible slides by total slides for paginating slideshows with multiple slides per view', () => {
     const wrapper = shallow(<SlideshowStepper />);
     const steps = wrapper.find(MobileStepper).prop('steps');

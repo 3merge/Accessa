@@ -7,18 +7,14 @@ import Focal from '../Focal';
 
 const Main = styled.main`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
-  height: ${({ height }) => height};
-
-  ${media.lessThan('large')`
-    height: auto;
-  `}
+  height: 100%;
 
   ${({ reverseOnMobile }) =>
-    reverseOnMobile
+    !reverseOnMobile
       ? css`
-          ${media.lessThan('medium')`
+          ${media.lessThan('large')`
           flex-direction: column-reverse;
         `}
         `
@@ -44,7 +40,7 @@ const ContentWrapper = styled.section`
   padding: 2rem 1rem;
 
   ${media.lessThan('medium')`
-    flex-direction: column;
+    flex-direction: row;
   `}
 `;
 
@@ -53,27 +49,24 @@ const Neapolitan = ({
   focalComponent,
   children,
   reverseOnMobile,
-  height,
 }) => (
-  <Main reverseOnMobile={reverseOnMobile} height={height}>
-    <Focal>{focalComponent}</Focal>
+  <Main reverseOnMobile={reverseOnMobile}>
     <ContentWrapper>
       <Box>{children}</Box>
       <Ladder data={carousel} />
     </ContentWrapper>
+    <Focal>{focalComponent}</Focal>
   </Main>
 );
 
 Neapolitan.defaultProps = {
   carousel: [],
-  height: 'auto',
   focalComponent: null,
   reverseOnMobile: false,
 };
 
 Neapolitan.propTypes = {
   carousel: PropTypes.arrayOf(PropTypes.object),
-  height: PropTypes.string,
 
   focalComponent: PropTypes.oneOfType([
     PropTypes.node,
