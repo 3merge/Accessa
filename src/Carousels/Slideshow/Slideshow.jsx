@@ -5,7 +5,6 @@ import {
   Slider,
   ButtonBack,
   ButtonNext,
-  CarouselContext,
 } from 'pure-react-carousel';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
@@ -13,66 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import get from 'lodash.get';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyle = makeStyles(() => ({
-  root: {
-    '& ul': {
-      display: 'flex !important',
-    },
-  },
-}));
-
-const SlideshowStepper = () => {
-  const carouselContext = React.useContext(CarouselContext);
-  const { subscribe, unsubscribe } = carouselContext;
-
-  const getActiveStep = () =>
-    get(carouselContext, 'state.currentSlide', 0);
-
-  const getSteps = () =>
-    get(carouselContext, 'state.totalSlides', 0) -
-    get(carouselContext, 'state.visibleSlides', 0) +
-    1;
-
-  const [
-    { activeStep, steps },
-    setCurrent,
-  ] = React.useState({
-    activeStep: getActiveStep(),
-    steps: getSteps(),
-  });
-
-  React.useEffect(() => {
-    function onChange() {
-      setCurrent({
-        activeStep: getActiveStep(),
-        steps: getSteps(),
-      });
-    }
-
-    subscribe(onChange);
-    return () => unsubscribe(onChange);
-  }, [carouselContext]);
-
-  return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      textAlign="center"
-    >
-      <MobileStepper
-        activeStep={activeStep}
-        steps={steps}
-        position="static"
-        variant="dots"
-      />
-    </Box>
-  );
-};
+import SlideshowStepper from '../SlideshowStepper';
+import useStyle from './useStyle';
 
 const Slideshow = ({
   data,
@@ -89,6 +31,10 @@ const Slideshow = ({
   const cls = useStyle();
 
   const len = data.length;
+
+  // this also exists and is tested in Ladder
+  // maybe we can abstract out to reduce redundancy?
+  // might also give us a set of tests already written to work with
   const numOfSlides = Math.min(
     mobile ? visibleSlides.mobile : visibleSlides.desktop,
     len,
