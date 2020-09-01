@@ -12,10 +12,15 @@ const useStyle = makeStyles((theme) => ({
     overflow: 'hidden',
     minHeight: '100%',
     minWidth: 514,
-    width: '37.5%',
+    width: 514,
     position: 'relative',
 
     [theme.breakpoints.down('md')]: {
+      minWidth: 435,
+      width: 435,
+    },
+
+    [theme.breakpoints.down('sm')]: {
       minHeight: 'auto',
       minWidth: 'auto',
       width: '100%',

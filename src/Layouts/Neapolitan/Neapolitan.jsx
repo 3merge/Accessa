@@ -12,7 +12,7 @@ const useStyle = makeStyles((theme) => ({
     flexDirection: 'row-reverse',
     flexWrap: 'nowrap',
     height: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       height: 'auto',
       flexDirection: reverseOnMobile
         ? 'column'
@@ -27,6 +27,7 @@ const useStyle = makeStyles((theme) => ({
 const Neapolitan = ({
   carousel,
   focalComponent,
+  navComponent,
   children,
   reverseOnMobile,
   ...rest
@@ -44,6 +45,7 @@ const Neapolitan = ({
     >
       <Grid className={cls.root} container {...rest}>
         <Grid item xs>
+          {navComponent}
           <Grid container>
             <Grid item lg xs={12}>
               <Box p={1}>{children}</Box>

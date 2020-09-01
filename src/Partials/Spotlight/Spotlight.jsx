@@ -3,26 +3,46 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import Image from 'gatsby-image';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
-const Wrapper = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-  padding: 3rem;
-  width: 100%;
+const useStyle = makeStyles((theme) => ({
+  root: {
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
 
-  ${media.lessThan('large')`
-    flex-direction: row;
-    height: auto !Important;
-    max-width: 100%;
-  `}
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'row',
 
-  ${media.lessThan('medium')`
-    flex-wrap: wrap;
-  `}
-`;
+      '& > div': {
+        minWidth: '50%',
+        width: '50%',
+      },
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      '&  > div': {
+        minWidth: '100%',
+        width: '100%',
+      },
+    },
+  },
+  headline: {
+    fontSize: '2.083rem',
+    lineHeight: '1.2',
+    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(4),
+    width: '87.5%',
+  },
+  text: {
+    fontSize: '0.885rem',
+    lineHeight: '1.7',
+    marginTop: theme.spacing(4),
+  },
+}));
 
 const LogoContainer = styled(Image)`
   height: 85px;
@@ -37,57 +57,55 @@ const LogoContainer = styled(Image)`
   `}
 `;
 
-const Headline = styled.h2`
-  font-size: 2.083rem;
-  line-height: 1.2;
-  width: 87.5%;
-`;
-
-const Text = styled.p`
-  font-size: 0.885rem;
-  line-height: 1.7;
-
-  ${media.lessThan('large')`
-    display: none;
-  `}
-`;
-
-const TextMobile = styled.p`
-  display: none;
-
-  ${media.lessThan('large')`
-    display: block;
-  `}
-`;
-
 const Spotlight = ({
   children,
   color,
   title,
   description,
   logo,
-}) => (
-  <Wrapper>
-    <div>
-      <LogoContainer
-        fluid={{ src: logo }}
-        alt="Logo"
-        imgStyle={{
-          objectPosition: 'left',
-          objectFit: 'contain',
-        }}
-      />
-      <Headline style={{ color }}>{title}</Headline>
-      <TextMobile style={{ color }}>
-        {description}
-      </TextMobile>
-    </div>
-    <div>
-      {children}
-      <Text style={{ color }}>{description}</Text>
-    </div>
-  </Wrapper>
-);
+}) => {
+  const cls = useStyle();
+
+  return (
+    <Box p={3} height="100%">
+      <Grid spacing={3} className={cls.root} container>
+        <Grid item>
+          <LogoContainer
+            fluid={{ src: logo }}
+            alt="Logo"
+            imgStyle={{
+              objectPosition: 'left',
+              objectFit: 'contain',
+            }}
+          />
+          <Typography
+            className={cls.headline}
+            variant="h2"
+            style={{ color }}
+          >
+            {title}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Box
+            m="0 auto"
+            maxWidth={300}
+            textAlign="center"
+            p={2}
+          >
+            {children}
+            <Typography
+              className={cls.text}
+              style={{ color }}
+            >
+              {description}
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
 
 Spotlight.defaultProps = {
   color: undefined,

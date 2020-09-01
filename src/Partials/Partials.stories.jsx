@@ -44,7 +44,13 @@ export const Spotlight = () => (
       logo="https://logoipsum.com/logo/logo-16.svg"
       color="#865c6c"
       {...fixture}
-    />
+    >
+      <img
+        src="https://ouch-cdn.icons8.com/preview/53/63d9fe99-46b3-4fb8-938a-a4f5ebe95146.png"
+        width="250px"
+        alt="Example"
+      />
+    </Partials.Spotlight>
   </div>
 );
 
