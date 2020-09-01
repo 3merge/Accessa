@@ -6,5 +6,8 @@ module.exports = {
     '@storybook/addon-a11y/register',
     '@storybook/addon-knobs/register',
   ],
-  stories: ['../src/**/*.stories.jsx'],
+  stories: [
+    '../examples/*.stories.jsx',
+    '../src/**/*.stories.jsx',
+  ],
 };
