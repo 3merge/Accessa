@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { withLocation } from 'with-location';
 import AccessibleOffCanvas from 'react-aria-offcanvas';
 import { useToggle } from 'useful-state';
+import { IconButton } from '@material-ui/core';
 import styled from 'styled-components';
-import { Icon } from '@iconify/react';
-import twotoneClose from '@iconify/icons-ic/twotone-close';
-import twotoneMenuOpen from '@iconify/icons-ic/twotone-menu-open';
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 import * as Utils from '../../Utils';
 
 const Align = styled.div`
@@ -15,80 +16,72 @@ const Align = styled.div`
   padding: 0.5rem;
 `;
 
-const Button = styled.div`
-  border-radius: 50%;
-  cursor: pointer;
-  display: inline-block;
-  flex: 0 0 auto;
-  padding: 6px;
-  text-align: center;
-  transition: background-color 500ms;
-  width: 1.232rem;
-  height: 1.232rem;
-  font-size: 1.232rem;
-
-  &:hover {
-    background-color: whitesmoke;
-  }
-`;
-
 const Content = styled.div`
   padding: 0.75rem;
 `;
 
-const Offcanvas = ({ logo, children, menuRenderer }) => {
-  const { state, toggle, close } = useToggle();
+const Offcanvas = withLocation(
+  ({ logo, children, menuRenderer, location }) => {
+    const { state, toggle, close } = useToggle();
+    const ref = useRef(false);
 
-  return (
-    <>
-      {menuRenderer ? (
-        menuRenderer(toggle, state)
-      ) : (
-        <Button
-          type="button"
-          aria-label="Open menu"
-          id="menu-button"
-          aria-controls="menu"
-          aria-expanded={state}
-          onClick={toggle}
-        >
-          <Icon icon={twotoneMenuOpen} />
-        </Button>
-      )}
-      <AccessibleOffCanvas
-        isOpen={state}
-        onClose={close}
-        labelledby="menu-button"
-        position="right"
-        height="auto"
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0,0,0,.2)',
-          },
-        }}
-      >
-        <Utils.Viewport
+    useEffect(() => {
+      if (!ref.current) {
+        ref.current = true;
+      } else {
+        close();
+      }
+    }, [location.pathname]);
+
+    return (
+      <>
+        {menuRenderer ? (
+          menuRenderer(toggle, state)
+        ) : (
+          <IconButton
+            aria-label="Open menu"
+            id="menu-button"
+            aria-controls="menu"
+            aria-expanded={state}
+            onClick={toggle}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+        <AccessibleOffCanvas
+          isOpen={state}
+          onClose={close}
+          labelledby="menu-button"
+          position="right"
+          height="auto"
           style={{
-            backgroundColor: '#FFF',
-            overflow: 'auto',
+            overlay: {
+              backgroundColor: 'rgba(0,0,0,.2)',
+            },
           }}
         >
-          <Align>
-            {logo}
-            <Button
-              type="button"
-              aria-label="Close menu"
-              onClick={close}
-            >
-              <Icon icon={twotoneClose} />
-            </Button>
-          </Align>
-          <Content>{children}</Content>
-        </Utils.Viewport>
-      </AccessibleOffCanvas>
-    </>
-  );
-};
+          <Utils.Viewport
+            style={{
+              backgroundColor: '#FFF',
+              overflow: 'auto',
+            }}
+          >
+            <Align>
+              {logo}
+              <IconButton
+                aria-label="Close menu"
+                onClick={close}
+              >
+                <CloseIcon />
+              </IconButton>
+            </Align>
+            <Content>{children}</Content>
+          </Utils.Viewport>
+        </AccessibleOffCanvas>
+      </>
+    );
+  },
+);
 
 Offcanvas.defaultProps = {
   logo: null,
