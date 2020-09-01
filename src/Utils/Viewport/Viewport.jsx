@@ -25,6 +25,7 @@ const AppViewport = ({ children, ...rest }) => {
 
   const isReady = typeof window !== 'undefined';
 
+  // eslint-disable-next-line consistent-return
   const setViewportUnit = React.useCallback(() => {
     if (!isReady) return undefined;
     const vh = window.innerHeight;
