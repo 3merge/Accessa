@@ -27,6 +27,7 @@ export const WithSpotlightFocalComponent = () => (
     <Neapolitan
       carousel={carousels}
       focalComponent={<Spotlight />}
+      reverseOnMobile
     >
       <p>Using Spotlight partial</p>
     </Neapolitan>

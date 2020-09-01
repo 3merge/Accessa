@@ -6,7 +6,7 @@ export default (Component) => ({
   visibleSlides = {},
   ...rest
 }) => {
-  if (!Array.isArray(data) && data.length) return null;
+  if (!Array.isArray(data) || !data.length) return null;
 
   const { mobile = 2, desktop = 3 } = visibleSlides;
   const isBreakpoint = useMediaQuery('(max-width:600px)');

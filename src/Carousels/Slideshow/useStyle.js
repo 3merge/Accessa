@@ -4,6 +4,13 @@ export default makeStyles(() => ({
   root: {
     '& ul': {
       display: 'flex !important',
+      padding: 0,
+      margin: 0,
+    },
+
+    '& [role="listbox"]': {
+      overflow: 'hidden',
+      width: '100%',
     },
   },
 }));

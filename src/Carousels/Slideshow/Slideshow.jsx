@@ -2,18 +2,15 @@ import React from 'react';
 import {
   CarouselProvider,
   Slider,
-  ButtonBack,
-  ButtonNext,
 } from 'pure-react-carousel';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import SlideshowStepper from '../SlideshowStepper';
 import useStyle from './useStyle';
 import withSlideCount from '../withSlideCount';
+import SlideshowNext from '../SlideshowNext';
+import SlideshowBack from '../SlideshowBack';
 
 export const getListContainerWidth = (
   innerRef,
@@ -57,14 +54,7 @@ export default withSlideCount(
           {...rest}
         >
           <Grid alignItems="center" container>
-            <Grid item>
-              <IconButton
-                size="small"
-                component={ButtonBack}
-              >
-                <NavigateBeforeIcon />
-              </IconButton>
-            </Grid>
+            <SlideshowBack />
             <Grid
               className={cls.root}
               ref={ref}
@@ -89,14 +79,7 @@ export default withSlideCount(
                 ))}
               </Slider>
             </Grid>
-            <Grid item>
-              <IconButton
-                size="small"
-                component={ButtonNext}
-              >
-                <NavigateNextIcon />
-              </IconButton>
-            </Grid>
+            <SlideshowNext />
           </Grid>
           <Grid xs={12}>
             <SlideshowStepper />
