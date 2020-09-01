@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { withLocation } from 'with-location';
-import AccessibleOffCanvas from 'react-aria-offcanvas';
+import Drawer from '@material-ui/core/Drawer';
 import { useToggle } from 'useful-state';
 import { IconButton } from '@material-ui/core';
 import styled from 'styled-components';
@@ -16,13 +16,9 @@ const Align = styled.div`
   padding: 0.5rem;
 `;
 
-const Content = styled.div`
-  padding: 0.75rem;
-`;
-
 const Offcanvas = withLocation(
   ({ logo, children, menuRenderer, location }) => {
-    const { state, toggle, close } = useToggle();
+    const { state, toggle, close, open } = useToggle();
     const ref = useRef(false);
 
     useEffect(() => {
@@ -43,22 +39,15 @@ const Offcanvas = withLocation(
             id="menu-button"
             aria-controls="menu"
             aria-expanded={state}
-            onClick={toggle}
+            onClick={open}
           >
             <MenuIcon />
           </IconButton>
         )}
-        <AccessibleOffCanvas
-          isOpen={state}
-          onClose={close}
-          labelledby="menu-button"
-          position="right"
-          height="auto"
-          style={{
-            overlay: {
-              backgroundColor: 'rgba(0,0,0,.2)',
-            },
-          }}
+        <Drawer
+          variant="temporary"
+          anchor="right"
+          open={state}
         >
           <Utils.Viewport
             style={{
@@ -75,9 +64,9 @@ const Offcanvas = withLocation(
                 <CloseIcon />
               </IconButton>
             </Align>
-            <Content>{children}</Content>
+            {children}
           </Utils.Viewport>
-        </AccessibleOffCanvas>
+        </Drawer>
       </>
     );
   },
