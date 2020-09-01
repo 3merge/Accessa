@@ -67,6 +67,7 @@ Neapolitan.defaultProps = {
   carousel: [],
   focalComponent: null,
   reverseOnMobile: false,
+  navComponent: null,
 };
 
 Neapolitan.propTypes = {
@@ -81,6 +82,11 @@ Neapolitan.propTypes = {
     PropTypes.object,
     PropTypes.array,
   ]).isRequired,
+  navComponent: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.array,
+  ]),
   reverseOnMobile: PropTypes.bool,
 };
 
