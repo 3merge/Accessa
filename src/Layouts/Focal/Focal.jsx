@@ -1,48 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import media from 'styled-media-query';
+import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 
-const Focal = ({
-  children,
-  className,
-  focalBackground,
-}) => {
+const useStyle = makeStyles((theme) => ({
+  root: {
+    alignItems: 'center',
+    backgroundColor: '#fafbfc',
+    display: 'flex',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    minHeight: '100%',
+    minWidth: 514,
+    width: '37.5%',
+    position: 'relative',
+
+    [theme.breakpoints.down('md')]: {
+      minHeight: 'auto',
+      minWidth: 'auto',
+      width: '100%',
+    },
+  },
+}));
+
+const Focal = ({ children, focalBackground }) => {
+  const cls = useStyle();
   return (
-    <S.Focal className={className} style={focalBackground}>
+    <Box
+      component="aside"
+      className={cls.root}
+      style={focalBackground}
+    >
       {children}
-    </S.Focal>
+    </Box>
   );
 };
 
 Focal.defaultProps = {
-  className: '',
   focalBackground: {},
 };
 
 Focal.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string,
   focalBackground: PropTypes.objectOf(PropTypes.string),
-};
-
-const S = {
-  Focal: styled.div`
-    align-items: center;
-    background-color: #fafbfc;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    min-height: 100%;
-    min-width: 514px;
-    width: 37.5%;
-
-    ${media.lessThan('large')`
-      min-height: auto;
-      min-width: auto;
-      width: 100%;
-    `}
-  `,
 };
 
 export default Focal;

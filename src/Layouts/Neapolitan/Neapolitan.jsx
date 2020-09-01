@@ -10,9 +10,10 @@ import Focal from '../Focal';
 const useStyle = makeStyles((theme) => ({
   root: ({ reverseOnMobile }) => ({
     flexDirection: 'row-reverse',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     height: '100%',
     [theme.breakpoints.down('md')]: {
+      height: 'auto',
       flexDirection: reverseOnMobile
         ? 'column'
         : 'column-reverse',

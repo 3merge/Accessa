@@ -32,13 +32,13 @@ const AppViewport = ({ children, ...rest }) => {
       .querySelector(':root')
       .style.setProperty('--vh', `${vh / 100}px`);
 
-    return vh;
+    setMaxHeight(vh);
   }, [isReady]);
 
   React.useLayoutEffect(() => {
     if (!isReady) return undefined;
     window.addEventListener('resize', setViewportUnit);
-    setMaxHeight(setViewportUnit());
+    setViewportUnit();
 
     return () => {
       window.removeEventListener('resize', setViewportUnit);

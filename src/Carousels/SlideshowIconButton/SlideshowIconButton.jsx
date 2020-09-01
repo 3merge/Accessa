@@ -8,6 +8,7 @@ const useStyle = makeStyles(() => ({
   root: {
     textAlign: 'center',
     '& button': {
+      backgroundColor: 'transparent',
       border: 0,
 
       '&[disabled]': {
