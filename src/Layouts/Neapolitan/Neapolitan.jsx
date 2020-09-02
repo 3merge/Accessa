@@ -51,7 +51,7 @@ const Neapolitan = ({
               <Box p={1}>{children}</Box>
             </Grid>
             <Grid item lg="auto" sm={12}>
-              <Box p={2}>
+              <Box p={{ xs: 0, lg: 3 }}>
                 <Ladder data={carousel} />
               </Box>
             </Grid>

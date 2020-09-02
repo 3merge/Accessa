@@ -4,7 +4,6 @@ export default makeStyles((theme) => ({
   root: {
     boxSizing: 'border-box',
     height: 'auto',
-    padding: theme.spacing(2),
     position: 'relative',
     width: 245,
 
@@ -30,6 +29,7 @@ export default makeStyles((theme) => ({
         listStyle: 'none',
         margin: 0,
         padding: 0,
+        transition: 'transform 500ms ease-in',
       },
     },
 
