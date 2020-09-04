@@ -40,7 +40,7 @@ const Offcanvas = withLocation(
           </IconButton>
         )}
         <Drawer
-          onClick={close}
+          onClose={close}
           variant="temporary"
           anchor="right"
           open={state}
