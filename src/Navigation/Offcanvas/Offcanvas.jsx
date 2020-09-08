@@ -4,17 +4,11 @@ import { withLocation } from 'with-location';
 import Drawer from '@material-ui/core/Drawer';
 import { useToggle } from 'useful-state';
 import { IconButton } from '@material-ui/core';
-import styled from 'styled-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import Box from '@material-ui/core/Box';
+import Toolbar from '@material-ui/core/Toolbar';
 import * as Utils from '../../Utils';
-
-const Align = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-`;
 
 const Offcanvas = withLocation(
   ({ logo, children, menuRenderer, location }) => {
@@ -35,6 +29,7 @@ const Offcanvas = withLocation(
           menuRenderer(toggle, state)
         ) : (
           <IconButton
+            size="small"
             aria-label="Open menu"
             id="menu-button"
             aria-controls="menu"
@@ -45,9 +40,15 @@ const Offcanvas = withLocation(
           </IconButton>
         )}
         <Drawer
+          onClose={close}
           variant="temporary"
           anchor="right"
           open={state}
+          PaperProps={{
+            style: {
+              width: 320,
+            },
+          }}
         >
           <Utils.Viewport
             style={{
@@ -55,16 +56,21 @@ const Offcanvas = withLocation(
               overflow: 'auto',
             }}
           >
-            <Align>
-              {logo}
-              <IconButton
-                aria-label="Close menu"
-                onClick={close}
+            <Box p={1}>
+              <Toolbar
+                disableGutters
+                style={{ justifyContent: 'space-between' }}
               >
-                <CloseIcon />
-              </IconButton>
-            </Align>
-            {children}
+                {logo}
+                <IconButton
+                  aria-label="Close menu"
+                  onClick={close}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Toolbar>
+              {children}
+            </Box>
           </Utils.Viewport>
         </Drawer>
       </>

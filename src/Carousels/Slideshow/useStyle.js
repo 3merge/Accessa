@@ -6,6 +6,7 @@ export default makeStyles(() => ({
       display: 'flex !important',
       padding: 0,
       margin: 0,
+      transition: 'transform 500ms ease-in',
     },
 
     '& [role="listbox"]': {
