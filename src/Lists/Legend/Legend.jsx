@@ -18,9 +18,11 @@ const Legend = ({ items }) => {
   return Array.isArray(items) ? (
     <List className={cls.root}>
       {items.map((text, i) => (
-        <ListItem className={cls.item}>
-          <ListItemAvatar>
-            <Avatar>{addLeadingZero(i + 1)}</Avatar>
+        <ListItem dense className={cls.item}>
+          <ListItemAvatar className={cls.avatarContainer}>
+            <Avatar className={cls.avatar}>
+              {addLeadingZero(i + 1)}
+            </Avatar>
           </ListItemAvatar>
           <ListItemText primary={text} />
         </ListItem>
