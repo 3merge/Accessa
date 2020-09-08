@@ -65,13 +65,12 @@ const Field = ({ data, title }) => (
   <Container size="large">
     {title && <Title>{title}</Title>}
     <List>
-      {data.map((img) => (
+      {data.map((img, i) => (
         <ListItem
-          role="button"
           tabIndex="0"
           onClick={img.onClick}
           onKeyPress={img.onClick}
-          aria-labelledby={img.title}
+          key={i}
         >
           <Image {...img} />
           <ListItemText id={img.title}>

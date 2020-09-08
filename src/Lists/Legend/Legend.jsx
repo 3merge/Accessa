@@ -18,7 +18,7 @@ const Legend = ({ items }) => {
   return Array.isArray(items) ? (
     <List className={cls.root}>
       {items.map((text, i) => (
-        <ListItem dense className={cls.item}>
+        <ListItem key={i} className={cls.item}>
           <ListItemAvatar className={cls.avatarContainer}>
             <Avatar className={cls.avatar}>
               {addLeadingZero(i + 1)}

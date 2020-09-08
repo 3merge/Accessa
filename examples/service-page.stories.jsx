@@ -16,22 +16,21 @@ export default {
 };
 
 export const ExampleOne = () => (
-  <Container maxWidth="xl" disableGutters>
+  <Container maxWidth="xl" disableGutters component="main">
     <Accessa.Headers.Billboard
       {...omit(header, ['subtitle'])}
     />
     <Accessa.Sections.Block>
       <Content />
-      <Grid container>
-        <Grid item sm={6} xs={12}>
-          <LegendDefault />
-        </Grid>
-      </Grid>
+      <LegendDefault />
     </Accessa.Sections.Block>
     <Accessa.Features.Field
       title={header.subtitle}
       data={galleries.map((item) => ({
         onClick: () => alert('Click'),
+        fluid: {
+          src: item.src,
+        },
         ...item,
       }))}
     />

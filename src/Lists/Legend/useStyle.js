@@ -15,9 +15,12 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    maxWidth: 475,
+    maxWidth: '100%',
+    width: 575,
   },
   item: {
+    paddingLeft: 0,
+    paddingRight: 0,
     width: '50%',
   },
 }));
