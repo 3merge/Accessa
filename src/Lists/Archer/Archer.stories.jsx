@@ -7,6 +7,6 @@ export default {
   decorators: [withA11y],
 };
 
-export const List () => {
-  return <Archer />
-}
+export const List = () => {
+  return <Archer />;
+};
