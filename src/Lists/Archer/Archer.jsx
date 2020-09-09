@@ -1,61 +1,37 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Collapse from '@material-ui/core/Collapse';
-import ListItemText from '@material-ui/core/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { makeStyles } from '@material-ui/core/styles';
+import ToggleNestedLists from '../ToggleNestedLists';
+import ListItemWithNests from '../ListItemWithNests';
 
-const ToggleCollapse = ({ children }) => {
-  const [toggle, setToggle] = useState(false);
-  return children({ toggle, setToggle });
-};
+const nestedItems = [
+  {
+    listItemText: 'Nested',
+    onClick: () => console.log('Nested'),
+  },
+  {
+    listItemText: 'Wow',
+    onClick: () => console.log('Wow'),
+  },
+];
 
-const ListItemWithCollapse = ({
-  toggle,
-  setToggle,
-  underline,
-  darkMode,
-}) => {
-  const useStyles = makeStyles(() => ({
-    root: ({ root }) => ({
-      // eslint-disable-next-line no-nested-ternary
-      borderBottom: root.underline
-        ? darkMode
-          ? '1px solid #fff'
-          : '1px solid #000'
-        : '1px solid transparent',
-    }),
-  }));
-
-  const classes = useStyles({
-    root: { underline, darkMode },
-  });
-
-  return (
-    <div className={classes.root}>
-      <ListItem button onClick={() => setToggle(!toggle)}>
-        <ListItemText primary="Here" />
-        {toggle ? <ExpandMore /> : <ExpandLess />}
-      </ListItem>
-      <Collapse in={toggle} unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem>
-            <ListItemText secondary="Nested item" />
-          </ListItem>
-        </List>
-      </Collapse>
-    </div>
-  );
-};
+const lists = [
+  {
+    listItemText: 'Hello',
+    nestedItems,
+  },
+  {
+    listItemText: 'World',
+    nestedItems,
+  },
+];
 
 const Archer = ({ darkMode, underline }) => {
   const useStyles = makeStyles(() => ({
     root: ({ root }) => ({
-      backgroundColor: root.darkMode ? 'grey' : '#fff',
+      backgroundColor: root.darkMode ? '#000' : '#fff',
     }),
   }));
 
@@ -69,26 +45,20 @@ const Archer = ({ darkMode, underline }) => {
         <ListSubheader component="div">List</ListSubheader>
       }
     >
-      <ToggleCollapse>
-        {({ toggle, setToggle }) => (
-          <ListItemWithCollapse
-            toggle={toggle}
-            setToggle={setToggle}
-            underline={underline}
-            darkMode={darkMode}
-          />
-        )}
-      </ToggleCollapse>
-      <ToggleCollapse>
-        {({ toggle, setToggle }) => (
-          <ListItemWithCollapse
-            toggle={toggle}
-            setToggle={setToggle}
-            underline={underline}
-            darkMode={darkMode}
-          />
-        )}
-      </ToggleCollapse>
+      {lists.map((item) => (
+        <ToggleNestedLists>
+          {({ isOpen, setIsOpen }) => (
+            <ListItemWithNests
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              underline={underline}
+              darkMode={darkMode}
+              listItemText={item.listItemText}
+              nestedItems={item.nestedItems}
+            />
+          )}
+        </ToggleNestedLists>
+      ))}
     </List>
   );
 };

@@ -8,5 +8,5 @@ export default {
 };
 
 export const List = () => {
-  return <Archer />;
+  return <Archer underline darkMode />;
 };
