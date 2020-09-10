@@ -16,7 +16,7 @@ const nestedItems = [
 const lists = [
   {
     listItemText: 'Hello',
-    nestedItems,
+    onClick: () => console.log('No nested items!'),
   },
   {
     listItemText: 'World',

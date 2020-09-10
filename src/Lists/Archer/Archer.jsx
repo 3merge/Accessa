@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import ListItemWithNests from '../ListItemWithNests';
+import ListWithNestedLists from '../ListWithNestedLists';
+import ListItem from '../ListItem';
 import useStyles from '../useStyles';
 
 const Archer = ({
@@ -30,15 +31,23 @@ const Archer = ({
         </ListSubheader>
       }
     >
-      {lists.map((item) => (
-        <ListItemWithNests
-          key={item.listItemText}
-          underline={underline}
-          darkMode={darkMode}
-          listItemText={item.listItemText}
-          nestedItems={item.nestedItems}
-        />
-      ))}
+      {lists.map((item) =>
+        item.nestedItems ? (
+          <ListWithNestedLists
+            key={item.listItemText}
+            {...item}
+            darkMode={darkMode}
+            underline={underline}
+          />
+        ) : (
+          <ListItem
+            key={item.listItemText}
+            {...item}
+            darkMode={darkMode}
+            underline={underline}
+          />
+        ),
+      )}
     </List>
   );
 };
