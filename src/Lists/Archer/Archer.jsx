@@ -1,66 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import { makeStyles } from '@material-ui/core/styles';
-import ToggleNestedLists from '../ToggleNestedLists';
 import ListItemWithNests from '../ListItemWithNests';
+import useStyles from '../useStyles';
 
-const nestedItems = [
-  {
-    listItemText: 'Nested',
-    onClick: () => console.log('Nested'),
-  },
-  {
-    listItemText: 'Wow',
-    onClick: () => console.log('Wow'),
-  },
-];
-
-const lists = [
-  {
-    listItemText: 'Hello',
-    nestedItems,
-  },
-  {
-    listItemText: 'World',
-    nestedItems,
-  },
-];
-
-const Archer = ({ darkMode, underline }) => {
-  const useStyles = makeStyles(() => ({
-    root: ({ root }) => ({
-      backgroundColor: root.darkMode ? '#000' : '#fff',
-    }),
-  }));
-
-  const classes = useStyles({ root: { darkMode } });
+const Archer = ({
+  subheader,
+  darkMode,
+  underline,
+  lists,
+}) => {
+  const classes = useStyles({ darkMode, underline });
 
   return (
     <List
       className={classes.root}
       aria-labelledby="nested-list-subheader"
       subheader={
-        <ListSubheader component="div">List</ListSubheader>
+        <ListSubheader
+          color="inherit"
+          classNames={classes.root}
+          component="div"
+        >
+          {subheader}
+        </ListSubheader>
       }
     >
       {lists.map((item) => (
-        <ToggleNestedLists>
-          {({ isOpen, setIsOpen }) => (
-            <ListItemWithNests
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              underline={underline}
-              darkMode={darkMode}
-              listItemText={item.listItemText}
-              nestedItems={item.nestedItems}
-            />
-          )}
-        </ToggleNestedLists>
+        <ListItemWithNests
+          key={item.listItemText}
+          underline={underline}
+          darkMode={darkMode}
+          listItemText={item.listItemText}
+          nestedItems={item.nestedItems}
+        />
       ))}
     </List>
   );
+};
+
+Archer.defaultProps = {
+  underline: false,
+  darkMode: false,
+  subheader: '',
+};
+
+Archer.propTypes = {
+  darkMode: PropTypes.bool,
+  underline: PropTypes.bool,
+  subheader: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  lists: PropTypes.array.isRequired,
 };
 
 export default Archer;
