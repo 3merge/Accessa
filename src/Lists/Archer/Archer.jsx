@@ -13,6 +13,9 @@ const Archer = ({
 }) => {
   const classes = useStyles({ darkMode, underline });
 
+  if (!Array.isArray(lists) || lists.length === 0)
+    return null;
+
   return (
     <List
       className={classes.root}
@@ -44,6 +47,7 @@ Archer.defaultProps = {
   underline: false,
   darkMode: false,
   subheader: '',
+  lists: [],
 };
 
 Archer.propTypes = {
@@ -51,7 +55,7 @@ Archer.propTypes = {
   underline: PropTypes.bool,
   subheader: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
-  lists: PropTypes.array.isRequired,
+  lists: PropTypes.array,
 };
 
 export default Archer;
