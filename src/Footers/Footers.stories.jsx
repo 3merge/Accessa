@@ -2,12 +2,24 @@ import React from 'react';
 import { withA11y } from '@storybook/addon-a11y';
 import Grocery from './Grocery';
 import social from '../../cypress/fixtures/social';
+import physicalProperties from '../../cypress/fixtures/physicalProperties.json';
 import { columns } from '../../cypress/fixtures/footer';
 import Estate from './Estate';
 
 export default {
   title: 'Footers',
   decorators: [withA11y],
+};
+
+const logo = {
+  fluid: {
+    src: 'https://source.unsplash.com/random',
+  },
+  alt: 'placeholder',
+  style: {
+    width: '200px',
+    height: '100px',
+  },
 };
 
 export const WithColumns = () => (
@@ -24,5 +36,12 @@ export const WithColumns = () => (
 );
 
 export const EstateFooter = () => {
-  return <Estate />;
+  return (
+    <Estate
+      socials={social}
+      logo={logo}
+      properties={physicalProperties}
+      company="© ABC Inc."
+    />
+  );
 };
