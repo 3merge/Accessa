@@ -2,17 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import ListItem from '@material-ui/core/ListItem';
 import ListWithNestedLists from './ListWithNestedLists';
-
-const nestedItems = [
-  {
-    listItemText: 'Nested',
-    onClick: () => console.log('Nested'),
-  },
-  {
-    listItemText: 'Wow',
-    onClick: () => console.log('Wow'),
-  },
-];
+import { nestedItems } from '../../../cypress/fixtures/lists.js';
 
 const list = {
   listItemText: 'World',

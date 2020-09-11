@@ -1,18 +1,18 @@
 export const nestedItems = [
   {
     listItemText: 'Nested 1',
-    onClick: () => console.log('Nested'),
+    onClick: () => {},
   },
   {
     listItemText: 'Nested 2',
-    onClick: () => console.log('Wow'),
+    onClick: () => {},
   },
 ];
 
 export const lists = [
   {
     listItemText: 'Hello',
-    onClick: () => console.log('No nested items!'),
+    onClick: () => {},
   },
   {
     listItemText: 'Item with nested items',
