@@ -46,6 +46,7 @@
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-docs": "^6.0.21",
     "@storybook/addon-knobs": "^6.0.21",
+    "@storybook/cli": "^6.0.21",
     "@storybook/react": "^6.0.21",
     "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
