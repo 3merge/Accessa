@@ -12,7 +12,11 @@ import { useTheme } from '@material-ui/core/styles';
 const DigitalProperties = ({ company, socials }) => {
   const { breakpoints } = useTheme();
 
-  const useStyles = makeStyles(() => ({
+  const useStyles = makeStyles((theme) => ({
+    wrapper: {
+      backgroundColor: theme.palette.grey.A400,
+      color: theme.palette.primary.contrastText,
+    },
     iconWrapper: {
       marginTop: '15px',
       [breakpoints.up('md')]: {
@@ -24,7 +28,7 @@ const DigitalProperties = ({ company, socials }) => {
   const classes = useStyles();
 
   return (
-    <Box mt={5}>
+    <Box mt={5} className={classes.wrapper}>
       <Grid
         container
         justify="space-between"
@@ -32,12 +36,12 @@ const DigitalProperties = ({ company, socials }) => {
       >
         <Grid container item sm={12} md={8} spacing={4}>
           <Grid item>
-            <Typography variant="body1">
+            <Typography variant="body1" color="inherit">
               {company}
             </Typography>
           </Grid>
           <Grid item>
-            <Typography variant="body1">
+            <Typography variant="body1" color="inherit">
               Privacy Policy
             </Typography>
           </Grid>
