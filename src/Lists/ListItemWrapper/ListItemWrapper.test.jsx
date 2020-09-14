@@ -9,7 +9,7 @@ const wrapper = shallow(<ListItemWrapper lists={lists} />);
 
 describe('ListItemWrapper', () => {
   test('should render ListItem', () => {
-    expect(wrapper.find(ListItem)).toHaveLength(1);
+    expect(wrapper.find(ListItem)).toHaveLength(2);
   });
 
   test('should render ListItemWithNestedLists', () => {
