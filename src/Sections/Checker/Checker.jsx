@@ -2,26 +2,37 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette }) => ({
   root: ({ backgroundColor }) => ({
     backgroundColor,
   }),
-  title: {
+  title: ({ titleColor }) => ({
     fontWeight: 'bold',
-  },
+    color: titleColor || palette.text.primary,
+  }),
   main: {
     fontWeight: 'bold',
   },
 }));
 
-const Checker = ({ title, main, backgroundColor }) => {
-  const classes = useStyles({ backgroundColor });
+const Checker = ({
+  title,
+  titleColor,
+  main,
+  backgroundColor,
+}) => {
+  const classes = useStyles({
+    backgroundColor,
+    titleColor,
+  });
   return (
     <Box
       className={classes.root}
       display="flex"
       flexDirection="column"
       alignItems="center"
+      alignContent="center"
+      p={3}
     >
       <Typography
         className={classes.title}

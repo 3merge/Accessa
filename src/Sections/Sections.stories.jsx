@@ -18,9 +18,10 @@ export const Vitos = () => <VitosSection />;
 
 export const content = {
   title: 'TRAVEL MUCH?',
+  titleColor: 'blue',
   main:
     'We have traveled to an average of 5 countries each',
-  backgroundColor: 'yellow',
+  backgroundColor: 'lightgreen',
 };
 
 export const CheckersSample = () => (
