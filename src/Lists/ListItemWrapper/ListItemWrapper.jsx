@@ -7,12 +7,14 @@ const ListWrapper = ({ lists, underline, darkMode }) => {
   return lists.map((list) =>
     list.nestedItems ? (
       <ListWithNestedLists
+        key={list.listItemText}
         {...list}
         underline={underline}
         darkMode={darkMode}
       />
     ) : (
       <ListItem
+        key={list.listItemText}
         {...list}
         underline={underline}
         darkMode={darkMode}

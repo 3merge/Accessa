@@ -19,12 +19,11 @@ const Archer = ({
   return (
     <List
       className={classes.root}
-      aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader
           color="inherit"
-          classNames={classes.root}
-          component="div"
+          className={classes.root}
+          component="li"
         >
           {subheader}
         </ListSubheader>

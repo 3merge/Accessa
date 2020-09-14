@@ -17,19 +17,19 @@ const List = ({
   });
 
   return onClick ? (
-    <div className={classes.list}>
-      <ListItem button onClick={onClick}>
-        <ChevronRight />
-        <ListItemText primary={listItemText} />
-      </ListItem>
-    </div>
+    <ListItem
+      onClick={onClick}
+      component="li"
+      className={[classes.list, classes.listButton]}
+    >
+      <ChevronRight />
+      <ListItemText primary={listItemText} />
+    </ListItem>
   ) : (
-    <div className={classes.list}>
-      <ListItem component="li">
-        <ChevronRight />
-        <ListItemText primary={listItemText} />
-      </ListItem>
-    </div>
+    <ListItem component="li" className={classes.list}>
+      <ChevronRight />
+      <ListItemText primary={listItemText} />
+    </ListItem>
   );
 };
 

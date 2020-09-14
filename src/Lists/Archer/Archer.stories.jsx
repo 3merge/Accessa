@@ -12,7 +12,7 @@ export const List = () => {
   return (
     <Archer
       underline
-      darkMode
+      // darkMode
       lists={lists}
       subheader="List Items"
     />

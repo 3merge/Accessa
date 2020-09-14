@@ -6,6 +6,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import { Box } from '@material-ui/core';
 import useStyles from '../useStyles';
 
 const Arrows = ({ isOpen }) =>
@@ -28,16 +29,20 @@ const ListWithNestedLists = ({
   });
 
   return (
-    <div className={classes.list}>
+    <Box component="li" className={classes.list}>
       <ListItem button onClick={() => setIsOpen(!isOpen)}>
         <Arrows isOpen={isOpen} />
         <ListItemText primary={listItemText} />
       </ListItem>
-      <Collapse in={isOpen} unmountOnExit>
-        <List component="div" disablePadding>
+      <Collapse in={isOpen} timeout="auto" unmountOnExit>
+        <List disablePadding>
           {nestedItems.map(
             ({ listItemText: text, onClick }) => (
-              <ListItem key={text} onClick={onClick}>
+              <ListItem
+                key={text}
+                onClick={onClick}
+                tabIndex={0}
+              >
                 <ListItemText
                   primary={text}
                   className={classes.nestedItems}
@@ -47,7 +52,7 @@ const ListWithNestedLists = ({
           )}
         </List>
       </Collapse>
-    </div>
+    </Box>
   );
 };
 

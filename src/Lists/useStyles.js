@@ -22,6 +22,9 @@ const useStyles = makeStyles(({ palette }) => ({
         : palette.common.black,
     };
   },
+  listButton: {
+    cursor: 'pointer',
+  },
   nestedItems: {
     paddingLeft: '.5rem',
     cursor: 'pointer',
