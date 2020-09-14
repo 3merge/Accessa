@@ -4,7 +4,7 @@ import Archer from './Archer';
 import { lists } from '../../../cypress/fixtures/lists';
 
 export default {
-  title: 'Lists|Archer',
+  title: 'Lists/Archer',
   decorators: [withA11y],
 };
 

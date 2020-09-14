@@ -9,7 +9,7 @@ import {
 } from '../../Partials/Partials.stories.jsx';
 
 export default {
-  title: 'Layouts|Neapolitan',
+  title: 'Layouts/Neapolitan',
   decorators: [withA11y],
 };
 

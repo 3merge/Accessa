@@ -4,7 +4,7 @@ import Leader from '.';
 import partial from '../../../cypress/fixtures/partial';
 
 export default {
-  title: 'Call to Actions|Leader',
+  title: 'Call to Actions/Leader',
   decorators: [withA11y],
 };
 

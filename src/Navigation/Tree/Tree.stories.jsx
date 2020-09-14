@@ -4,7 +4,7 @@ import Tree from '.';
 import { columns } from '../../../cypress/fixtures/footer';
 
 export default {
-  title: 'Navigation|Tree',
+  title: 'Navigation/Tree',
   decorators: [withA11y],
 };
 
