@@ -12,26 +12,5 @@
     },
     "alt": "second",
     "to": "https://google.ca"
-  },
-  {
-    "fluid": {
-      "src": "https://source.unsplash.com/random"
-    },
-    "alt": "third",
-    "to": "https://google.ca"
-  },
-  {
-    "fluid": {
-      "src": "https://source.unsplash.com/random"
-    },
-    "alt": "fourth",
-    "to": "https://google.ca"
-  },
-  {
-    "fluid": {
-      "src": "https://source.unsplash.com/random"
-    },
-    "alt": "fifth",
-    "to": "https://google.ca"
   }
 ]

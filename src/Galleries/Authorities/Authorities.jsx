@@ -1,31 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Box, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Image from 'gatsby-image';
-
-const useStyles = makeStyles(() => ({
-  title: {
-    fontWeight: 'bold',
-  },
-  grayScaled: {
-    filter: 'grayscale(100%)',
-  },
-  logo: {
-    filter: 'grayscale(100%)',
-    height: '70px',
-    objectFit: 'cover',
-    width: 'auto',
-    minWidth: '100px',
-    cursor: 'pointer',
-    marginTop: '30px',
-    transition: 'filter .5s ease-out',
-
-    '&:hover': {
-      filter: 'grayscale(0%)',
-    },
-  },
-}));
+import useStyles from './useStyles';
 
 const Authorities = ({ title, logos }) => {
   const classes = useStyles();
