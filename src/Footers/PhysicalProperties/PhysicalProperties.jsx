@@ -2,22 +2,9 @@ import React from 'react';
 import Image from 'gatsby-image';
 import PropTypes from 'prop-types';
 import { Grid, Typography, Box } from '@material-ui/core';
-import {
-  makeStyles,
-  useTheme,
-} from '@material-ui/core/styles';
+import useStyles from './useStyles';
 
 const Property = ({ subtitle, body1, body2 }) => {
-  const { palette } = useTheme();
-
-  const useStyles = makeStyles({
-    subtitle1: {
-      fontWeight: 'bold',
-      marginBottom: '15px',
-      color: palette.text.secondary,
-    },
-  });
-
   const classes = useStyles();
 
   return (

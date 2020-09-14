@@ -1,30 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SocialIcon } from 'react-social-icons';
-import {
-  Box,
-  Grid,
-  Typography,
-  makeStyles,
-} from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Box, Grid, Typography } from '@material-ui/core';
+import useStyles from './useStyles';
 
 const DigitalProperties = ({ company, socials }) => {
-  const { breakpoints } = useTheme();
-
-  const useStyles = makeStyles((theme) => ({
-    wrapper: {
-      backgroundColor: theme.palette.grey.A400,
-      color: theme.palette.primary.contrastText,
-    },
-    iconWrapper: {
-      marginTop: '15px',
-      [breakpoints.up('md')]: {
-        marginTop: 0,
-      },
-    },
-  }));
-
   const classes = useStyles();
 
   return (
