@@ -4,12 +4,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Collapse from '@material-ui/core/Collapse';
 import ListItemText from '@material-ui/core/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
+import ChevronRight from '@material-ui/icons/ChevronRight';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import useStyles from '../useStyles';
 
 const Arrows = ({ isOpen }) =>
-  isOpen ? <ExpandLess /> : <ExpandMore />;
+  isOpen ? <ExpandMore /> : <ChevronRight />;
 
 Arrows.propTypes = {
   isOpen: PropTypes.bool.isRequired,
@@ -30,8 +30,8 @@ const ListWithNestedLists = ({
   return (
     <div className={classes.list}>
       <ListItem button onClick={() => setIsOpen(!isOpen)}>
-        <ListItemText primary={listItemText} />
         <Arrows isOpen={isOpen} />
+        <ListItemText primary={listItemText} />
       </ListItem>
       <Collapse in={isOpen} unmountOnExit>
         <List component="div" disablePadding>

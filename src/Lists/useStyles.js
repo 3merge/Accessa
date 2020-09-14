@@ -1,23 +1,27 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const getColors = ({ darkMode, underline }) => {
-  return {
-    // eslint-disable-next-line no-nested-ternary
-    borderBottom: underline
-      ? darkMode
-        ? '1px solid #fff'
-        : '1px solid #000'
-      : '1px solid transparent',
-    color: darkMode ? '#fff' : '#000',
-  };
-};
-
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette }) => ({
   root: ({ darkMode }) => ({
-    backgroundColor: darkMode ? '#000' : '#fff',
-    color: darkMode ? '#fff' : '#000',
+    backgroundColor: darkMode
+      ? palette.primary.dark
+      : palette.common.white,
+    color: darkMode
+      ? palette.primary.contrastText
+      : palette.text.primary,
   }),
-  list: getColors,
+  list: ({ darkMode, underline }) => {
+    return {
+      // eslint-disable-next-line no-nested-ternary
+      borderBottom: underline
+        ? darkMode
+          ? `1px solid ${palette.common.white}`
+          : `1px solid ${palette.common.black}`
+        : '1px solid transparent',
+      color: darkMode
+        ? palette.common.white
+        : palette.common.black,
+    };
+  },
   nestedItems: {
     paddingLeft: '.5rem',
     cursor: 'pointer',

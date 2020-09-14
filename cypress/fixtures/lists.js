@@ -11,6 +11,9 @@ export const nestedItems = [
 
 export const lists = [
   {
+    listItemText: 'Just Text',
+  },
+  {
     listItemText: 'Hello',
     onClick: () => {},
   },
