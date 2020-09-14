@@ -7,10 +7,14 @@ const useStyles = makeStyles(({ palette, breakpoints }) => {
       color: palette.primary.contrastText,
     },
     iconWrapper: {
-      marginTop: '15px',
+      marginTop: '20px',
       [breakpoints.up('md')]: {
         marginTop: 0,
       },
+    },
+    link: {
+      color: palette.primary.contrastText,
+      textDecoration: 'none',
     },
   };
 });

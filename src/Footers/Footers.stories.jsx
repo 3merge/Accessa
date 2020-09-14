@@ -42,6 +42,8 @@ export const EstateFooter = () => {
       logo={logo}
       properties={physicalProperties}
       company="© ABC Inc."
+      text="link to privacy policy"
+      path="/"
     />
   );
 };

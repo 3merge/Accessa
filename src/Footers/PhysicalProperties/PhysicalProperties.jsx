@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from 'gatsby-image';
 import PropTypes from 'prop-types';
-import { Grid, Typography, Box } from '@material-ui/core';
+import {
+  Grid,
+  Typography,
+  Box,
+  Container,
+} from '@material-ui/core';
 import useStyles from './useStyles';
 
 const Property = ({ subtitle, body1, body2 }) => {
@@ -36,7 +41,7 @@ Property.propTypes = {
 
 const PhysicalProperties = ({ logo, properties }) => {
   return (
-    <Box>
+    <Container>
       {logo && (
         <Box borderBottom={1} pb={5} mb={5}>
           <Image
@@ -53,7 +58,7 @@ const PhysicalProperties = ({ logo, properties }) => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Container>
   );
 };
 

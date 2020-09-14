@@ -4,7 +4,14 @@ import { Box } from '@material-ui/core';
 import PhysicalProperties from '../PhysicalProperties';
 import DigitalProperties from '../DigitalProperties';
 
-const Estate = ({ logo, properties, socials, company }) => {
+const Estate = ({
+  logo,
+  properties,
+  socials,
+  company,
+  text,
+  path,
+}) => {
   return (
     <Box component="footer">
       <PhysicalProperties
@@ -14,6 +21,8 @@ const Estate = ({ logo, properties, socials, company }) => {
       <DigitalProperties
         company={company}
         socials={socials}
+        text={text}
+        path={path}
       />
     </Box>
   );
@@ -22,6 +31,8 @@ const Estate = ({ logo, properties, socials, company }) => {
 Estate.defaultProps = {
   logo: {},
   socials: [],
+  text: '',
+  path: '',
 };
 
 Estate.propTypes = {
@@ -32,6 +43,8 @@ Estate.propTypes = {
   ).isRequired,
   socials: PropTypes.arrayOf(PropTypes.string),
   company: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  path: PropTypes.string,
 };
 
 export default Estate;
