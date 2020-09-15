@@ -11,15 +11,18 @@ const useStyles = makeStyles(({ palette }) => ({
   }),
   list: ({ darkMode, underline }) => {
     return {
-      // eslint-disable-next-line no-nested-ternary
-      borderBottom: underline
-        ? darkMode
-          ? `1px solid ${palette.common.white}`
-          : `1px solid ${palette.common.black}`
-        : '1px solid transparent',
       color: darkMode
         ? palette.common.white
         : palette.common.black,
+
+      '&:not(:last-of-type)': {
+        // eslint-disable-next-line no-nested-ternary
+        borderBottom: underline
+          ? darkMode
+            ? `1px solid ${palette.common.white}`
+            : `1px solid ${palette.common.black}`
+          : '1px solid transparent',
+      },
     };
   },
   listButton: {

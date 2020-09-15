@@ -8,13 +8,10 @@ export default {
   decorators: [withA11y],
 };
 
-export const List = () => {
-  return (
-    <Archer
-      underline
-      // darkMode
-      lists={lists}
-      subheader="List Items"
-    />
-  );
-};
+export const Underline = () => (
+  <Archer underline lists={lists} subheader="List Items" />
+);
+
+export const DarkMode = () => (
+  <Archer darkMode lists={lists} subheader="List Items" />
+);

@@ -11,7 +11,10 @@ const Archer = ({
   underline,
   lists,
 }) => {
-  const classes = useStyles({ darkMode, underline });
+  const classes = useStyles({
+    darkMode,
+    underline,
+  });
 
   if (!Array.isArray(lists) || lists.length === 0)
     return null;

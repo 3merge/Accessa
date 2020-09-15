@@ -21,6 +21,7 @@ const List = ({
       onClick={onClick}
       component="li"
       className={[classes.list, classes.listButton]}
+      button
     >
       <ChevronRight />
       <ListItemText primary={listItemText} />
