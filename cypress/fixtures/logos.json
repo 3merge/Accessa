@@ -1,0 +1,16 @@
+[
+  {
+    "fluid": {
+      "src": "https://source.unsplash.com/random"
+    },
+    "alt": "first",
+    "to": "https://google.ca"
+  },
+  {
+    "fluid": {
+      "src": "https://source.unsplash.com/random"
+    },
+    "alt": "second",
+    "to": "https://google.ca"
+  }
+]

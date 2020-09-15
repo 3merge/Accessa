@@ -4,7 +4,7 @@ import Offcanvas from '.';
 import { WithNesting } from '../Tree/Tree.stories.jsx';
 
 export default {
-  title: 'Navigation|Offcanvas',
+  title: 'Navigation/Offcanvas',
   decorators: [withA11y],
 };
 
