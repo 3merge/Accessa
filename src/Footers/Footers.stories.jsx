@@ -13,7 +13,7 @@ export default {
 
 const logo = {
   fluid: {
-    src: 'https://source.unsplash.com/random',
+    src: 'https://logoipsum.com/logo/logo-16.svg',
   },
   alt: 'placeholder',
   style: {
@@ -29,21 +29,19 @@ export const WithColumns = () => (
   >
     <img
       alt="Example logo"
-      src="https://logoipsum.com/logo/logo-16.svg"
+      src={logo.fluid.src}
       style={{ width: 115 }}
     />
   </Grocery>
 );
 
-export const EstateFooter = () => {
-  return (
-    <Estate
-      socials={social}
-      logo={logo}
-      properties={physicalProperties}
-      company="© ABC Inc."
-      text="link to privacy policy"
-      path="/"
-    />
-  );
-};
+export const EstateFooter = () => (
+  <Estate
+    socials={social}
+    logo={logo}
+    properties={physicalProperties}
+    company="© ABC Inc."
+    text="Privacy Policy"
+    path="/"
+  />
+);
