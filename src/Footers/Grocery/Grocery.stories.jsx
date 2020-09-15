@@ -5,7 +5,7 @@ import social from '../../../cypress/fixtures/social';
 import { columns } from '../../../cypress/fixtures/footer';
 
 export default {
-  title: 'Footers|Grocery',
+  title: 'Footers/Grocery',
   decorators: [withA11y],
 };
 
