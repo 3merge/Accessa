@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
-import { SocialIcon } from 'react-social-icons';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import PropTypes from 'prop-types';
 import * as Utils from '../../Utils';
+import SocialIcons from '../SocialIcons';
 
 const ColHeader = styled.div`
   padding: 1rem;
@@ -105,17 +105,7 @@ const Grocery = ({ children, columns, social }) => {
             </Col>
           ))}
           <ColHeader>
-            {social.map((sm) => (
-              <SocialIcon
-                url={sm}
-                key={sm}
-                rel="noreferrer noopener"
-                target="_blank"
-                style={{
-                  margin: '0.25rem',
-                }}
-              />
-            ))}
+            <SocialIcons socials={social} />
           </ColHeader>
         </Grid>
       </Utils.Container>
