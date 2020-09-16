@@ -23,8 +23,8 @@ const contents = [
   },
 ];
 
-export const PanelsExample = () => {
-  return <Panels {...contents[0]} />;
+export const PanelsWithSecondaryButton = () => {
+  return <Panels {...contents[0]} secondaryButton />;
 };
 
 export const PanelsSwap = () => {

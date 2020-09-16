@@ -16,6 +16,7 @@ const Panels = ({
   title,
   body,
   image,
+  secondaryButton,
 }) => {
   const classes = useStyles({ swap });
 
@@ -24,10 +25,17 @@ const Panels = ({
       <Grid item xs={12} sm={6}>
         <Image
           {...image}
+          fadeIn
+          objectFit="cover"
           className={classes.imageWrapper}
         />
       </Grid>
-      <Grid item xs={12} sm={6} className={classes.swap}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        className={[classes.textWrapper, classes.swap]}
+      >
         <Box p={5}>
           <Typography variant="h4">{title}</Typography>
           <Typography
@@ -38,7 +46,9 @@ const Panels = ({
           </Typography>
           {buttonText ? (
             <Button
-              color="primary"
+              color={
+                secondaryButton ? 'secondary' : 'primary'
+              }
               variant="contained"
               onClick={onClick}
             >
@@ -54,6 +64,7 @@ const Panels = ({
 Panels.defaultProps = {
   swap: false,
   buttonText: '',
+  secondaryButton: false,
   onClick: () => {},
 };
 
@@ -63,6 +74,7 @@ Panels.propTypes = {
   swap: PropTypes.bool,
   buttonText: PropTypes.string,
   onClick: PropTypes.func,
+  secondaryButton: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
   image: PropTypes.object.isRequired,
 };
