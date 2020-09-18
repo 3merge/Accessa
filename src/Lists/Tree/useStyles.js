@@ -5,8 +5,8 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     fontWeight: typography.fontWeightMedium,
     color: palette.text.primary,
     fontSize: '18px',
-    paddingTop: '5px',
-    paddingBottom: '5px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
   }),
   secondary: () => ({
     fontWeight: typography.fontWeightBold,

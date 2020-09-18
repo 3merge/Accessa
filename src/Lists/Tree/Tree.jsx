@@ -9,11 +9,9 @@ import {
 } from '@material-ui/core';
 import { ChevronRight } from '@material-ui/icons';
 import useStyles from './useStyles';
+import { renderListSafely } from '../../Hocs';
 
 const Tree = ({ lists }) => {
-  if (!Array.isArray(lists) || lists.length === 0)
-    return null;
-
   const { primary, secondary, wrapper } = useStyles();
   return (
     <List>
@@ -54,4 +52,4 @@ Tree.propTypes = {
   ).isRequired,
 };
 
-export default Tree;
+export default renderListSafely(Tree);

@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from '@material-ui/core';
-import { addLeadingZero } from '../helpers';
+import { generateLeading } from '../helpers';
 import Element from '../Element';
 import useStyles from './useStyles';
+import renderListSafely from '../../Hocs';
 
 const Elements = ({ lists }) => {
-  if (!Array.isArray(lists) || lists.length === 0)
-    return null;
-
   const classes = useStyles();
   return (
     <List className={classes.wrapper}>
@@ -16,7 +14,7 @@ const Elements = ({ lists }) => {
         <Element
           isFirst={i === 0}
           key={i}
-          subtitle1={addLeadingZero(i + 1)}
+          subtitle1={generateLeading(i)}
           {...list}
         />
       ))}
@@ -30,4 +28,4 @@ Elements.propTypes = {
   ).isRequired,
 };
 
-export default Elements;
+export default renderListSafely(Elements);

@@ -4,6 +4,7 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemWrapper from '../ListItemWrapper';
 import useStyles from '../useStyles';
+import { renderListSafely } from '../../Hocs';
 
 const Archer = ({
   subheader,
@@ -15,9 +16,6 @@ const Archer = ({
     darkMode,
     underline,
   });
-
-  if (!Array.isArray(lists) || lists.length === 0)
-    return null;
 
   return (
     <List
@@ -56,4 +54,4 @@ Archer.propTypes = {
   lists: PropTypes.array,
 };
 
-export default Archer;
+export default renderListSafely(Archer);

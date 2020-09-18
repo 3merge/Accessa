@@ -1,11 +1,11 @@
-import { addLeadingZero } from './helpers';
+import { generateLeading } from './helpers';
 
 describe('Legend', () => {
-  describe('"addLeadingZero"', () => {
+  describe('"generateLeading"', () => {
     it('should add leading zero', () =>
-      expect(addLeadingZero(1)).toMatch('01'));
+      expect(generateLeading(0)).toMatch('01'));
 
     it('should not add leading zero', () =>
-      expect(addLeadingZero(11)).toMatch('11'));
+      expect(generateLeading(10)).toMatch('11'));
   });
 });
