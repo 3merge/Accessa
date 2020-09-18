@@ -1,27 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-import {
-  Grid,
-  Box,
-  Typography,
-  Button,
-} from '@material-ui/core';
+import { Grid, Box, Typography } from '@material-ui/core';
 import useStyles from './useStyles';
 
-const Panels = ({
-  swap,
-  buttonText,
-  onClick,
-  title,
-  body,
-  image,
-  secondaryButton,
-}) => {
+const Panel = ({ swap, title, body, image, children }) => {
   const classes = useStyles({ swap });
 
   return (
-    <Grid container>
+    <Grid container alignItems="center">
       <Grid item xs={12} sm={6}>
         <Image
           {...image}
@@ -37,46 +24,38 @@ const Panels = ({
         className={[classes.textWrapper, classes.swap]}
       >
         <Box p={5}>
-          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h4" component="h3">
+            {title}
+          </Typography>
           <Typography
             variant="body1"
             className={classes.body}
           >
             {body}
           </Typography>
-          {buttonText ? (
-            <Button
-              color={
-                secondaryButton ? 'secondary' : 'primary'
-              }
-              variant="contained"
-              onClick={onClick}
-            >
-              {buttonText}
-            </Button>
-          ) : null}
+          {children}
         </Box>
       </Grid>
     </Grid>
   );
 };
 
-Panels.defaultProps = {
+Panel.defaultProps = {
   swap: false,
-  buttonText: '',
-  secondaryButton: false,
-  onClick: () => {},
+  children: null,
 };
 
-Panels.propTypes = {
+Panel.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   swap: PropTypes.bool,
-  buttonText: PropTypes.string,
-  onClick: PropTypes.func,
-  secondaryButton: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
   image: PropTypes.object.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.object,
+    PropTypes.func,
+  ]),
 };
 
-export default Panels;
+export default Panel;
