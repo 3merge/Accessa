@@ -1,4 +1,4 @@
-import { addLeadingZero } from './Legend';
+import { addLeadingZero } from './helpers';
 
 describe('Legend', () => {
   describe('"addLeadingZero"', () => {

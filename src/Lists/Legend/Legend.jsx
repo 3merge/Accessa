@@ -6,11 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import useStyle from './useStyle';
-
-export const addLeadingZero = (val) => {
-  const str = String(val);
-  return str.length === 1 ? `0${str}` : str;
-};
+import { addLeadingZero } from '../helpers';
 
 const Legend = ({ items }) => {
   const cls = useStyle();

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import Image from 'gatsby-image';
 import useStyles from './useStyles';
 
@@ -9,19 +9,15 @@ const Authorities = ({ title, logos }) => {
   return (
     <Box>
       <Typography variant="h5">{title}</Typography>
-      <Grid container spacing={3}>
-        {logos.map((logo) => (
-          <Grid item>
-            <a href={logo.to}>
-              <Image
-                className={classes.logo}
-                key={logo.alt}
-                {...logo}
-              />
-            </a>
-          </Grid>
-        ))}
-      </Grid>
+      {logos.map((logo) => (
+        <a href={logo.to} className={classes.logoWrapper}>
+          <Image
+            className={classes.logo}
+            key={logo.alt}
+            {...logo}
+          />
+        </a>
+      ))}
     </Box>
   );
 };
