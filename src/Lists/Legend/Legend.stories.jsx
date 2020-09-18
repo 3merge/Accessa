@@ -4,7 +4,7 @@ import Legend from './Legend';
 import galleries from '../../../cypress/fixtures/galleries.json';
 
 export default {
-  title: 'Lists|Legend',
+  title: 'Lists/Legend',
   decorators: [withA11y],
 };
 

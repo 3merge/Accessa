@@ -11,9 +11,9 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   avatarImg: {
     borderRadius: '0',
     marginTop: '.5rem',
-    width: '5rem',
-    height: '5rem',
-    marginRight: '1rem',
+    width: '6.25rem',
+    height: '6.25rem',
+    marginRight: '2rem',
   },
   content: {
     alignSelf: 'flex-start',
@@ -29,7 +29,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
   },
   body1: {
     fontSize: '1rem',
-    color: palette.grey[600],
   },
 }));
 

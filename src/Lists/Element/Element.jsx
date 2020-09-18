@@ -39,12 +39,14 @@ const Element = ({
         <Typography
           variant="subtitle1"
           className={classes.subtitle1}
+          component="span"
         >
           {subtitle1}
         </Typography>
         <Typography
           variant="subtitle2"
           className={classes.subtitle2}
+          component="h4"
         >
           {subtitle2}
         </Typography>
