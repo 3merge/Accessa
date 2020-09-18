@@ -14,7 +14,7 @@ import { DarkMode } from '../src/Lists/Archer/Archer.stories.jsx';
 import { EstateFooter } from '../src/Footers/Footers.stories.jsx';
 
 export default {
-  title: 'Accessa|Service pages',
+  title: 'Accessa/Service pages',
   decorators: [withA11y],
 };
 
