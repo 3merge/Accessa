@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import * as Utils from '../../Utils';
 
-const Aside = styled.aside`
+const Section = styled.section`
   padding: 1rem;
   text-align: center;
 `;
@@ -40,7 +40,7 @@ const Leader = ({
   title,
 }) => (
   <Utils.Container size="small">
-    <Aside>
+    <Section>
       {fluid && (
         <Image
           fluid={fluid}
@@ -58,7 +58,7 @@ const Leader = ({
       <Overline>{title}</Overline>
       <Body>{description}</Body>
       {children}
-    </Aside>
+    </Section>
   </Utils.Container>
 );
 
