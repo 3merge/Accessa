@@ -14,7 +14,7 @@ const Tree = ({ lists }) => {
   if (!Array.isArray(lists) || lists.length === 0)
     return null;
 
-  const { primary, secondary, wrapper } = useStyles();
+  const { primary, secondary, wrapper, btn } = useStyles();
   return (
     <List>
       {lists.map((list, i) => (
@@ -33,7 +33,7 @@ const Tree = ({ lists }) => {
           </div>
           <div>
             <ListItemSecondaryAction>
-              <IconButton aria-label="link">
+              <IconButton aria-label="link" className={btn}>
                 <ChevronRight onClick={list.onClick} />
               </IconButton>
             </ListItemSecondaryAction>
