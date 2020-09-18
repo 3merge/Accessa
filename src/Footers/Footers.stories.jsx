@@ -22,7 +22,7 @@ const logo = {
   },
 };
 
-export const WithColumns = () => (
+export const GroceryFooter = () => (
   <Grocery
     social={social}
     columns={[...columns, ...columns]}
