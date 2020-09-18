@@ -12,7 +12,7 @@ import useStyles from './useStyles';
 import { renderListSafely } from '../../Hocs';
 
 const Tree = ({ lists }) => {
-  const { primary, secondary, wrapper } = useStyles();
+  const { primary, secondary, wrapper, btn } = useStyles();
   return (
     <List>
       {lists.map((list, i) => (
@@ -31,7 +31,7 @@ const Tree = ({ lists }) => {
           </div>
           <div>
             <ListItemSecondaryAction>
-              <IconButton aria-label="link">
+              <IconButton aria-label="link" className={btn}>
                 <ChevronRight onClick={list.onClick} />
               </IconButton>
             </ListItemSecondaryAction>

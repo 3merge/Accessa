@@ -20,6 +20,16 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     gridTemplateColumns: '1fr 50px',
     borderBottom: `1px solid ${palette.grey['200']}`,
   },
+  btn: {
+    backgroundColor: palette.primary.main,
+    color: palette.primary.contrastText,
+    borderRadius: 0,
+
+    '&:hover': {
+      backgroundColor: palette.primary.light,
+      color: palette.primary.dark,
+    },
+  },
 }));
 
 export default useStyles;
