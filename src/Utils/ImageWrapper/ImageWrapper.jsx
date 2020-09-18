@@ -30,7 +30,9 @@ const Box = styled.div`
   })}
 
   ${getMobileAttributes('large')}
-  ${getMobileAttributes('medium')}
+  ${getMobileAttributes(
+    'medium',
+  )}
   ${getMobileAttributes('small')}
 
   img {
@@ -40,7 +42,7 @@ const Box = styled.div`
     left: 50%;
     top: 50%;
     height: 100%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 100%;
 
     ${({ fit }) => css`
