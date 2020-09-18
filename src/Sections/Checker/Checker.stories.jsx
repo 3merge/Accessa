@@ -9,11 +9,10 @@ export default {
 
 const content = {
   title: 'TRAVEL MUCH?',
-  titleColor: 'black',
   main:
     'We have traveled to an average of 5 countries each',
-  mainColor: 'black',
-  backgroundColor: 'lightblue',
+
+  color: 'darkblue',
 };
 
 export const CheckersSample = () => (

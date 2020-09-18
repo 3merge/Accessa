@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import * as Utils from '../../Utils';
+import Container from '@material-ui/core/Container';
 
 const Section = styled.section`
   padding: 1rem;
@@ -39,7 +39,7 @@ const Leader = ({
   fluid,
   title,
 }) => (
-  <Utils.Container size="small">
+  <Container maxWidth="md">
     <Section>
       {fluid && (
         <Image
@@ -59,7 +59,7 @@ const Leader = ({
       <Body>{description}</Body>
       {children}
     </Section>
-  </Utils.Container>
+  </Container>
 );
 
 Leader.propTypes = {

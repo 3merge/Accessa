@@ -7,6 +7,10 @@ const useStyles = makeStyles(() => ({
   grayScaled: {
     filter: 'grayscale(100%)',
   },
+  logoWrapper: {
+    display: 'inline-block',
+    padding: '.75rem',
+  },
   logo: {
     filter: 'grayscale(100%)',
     height: '70px',
@@ -16,6 +20,7 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     marginTop: '30px',
     transition: 'filter .5s ease-out',
+    display: 'inline-block',
 
     '&:hover': {
       filter: 'grayscale(0%)',
