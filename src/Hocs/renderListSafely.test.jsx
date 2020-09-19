@@ -7,19 +7,19 @@ import { treeList } from '../../cypress/fixtures/lists';
 const Component = renderListSafely(Tree);
 
 describe('"renderListSafely"', () => {
-  it('should return null when lists prop is not valid', () => {
-    const case1 = shallow(<Component lists={null} />);
-    const case2 = shallow(<Component lists={2} />);
-    const case3 = shallow(<Component />);
+  const table = [[null], [2], [undefined], [[]], [{}]];
 
-    expect(case1.getElement()).toBeNull();
-    expect(case2.getElement()).toBeNull();
-    expect(case3.getElement()).toBeNull();
-  });
+  it.each(table)(
+    'should return null when lists prop is not valid',
+    (x) => {
+      expect(
+        shallow(<Component lists={x} />).isEmptyRender(),
+      ).toBeTruthy();
+    },
+  );
 
   it('should render when it gets an array', () => {
-    const wrapper = shallow(<Component list={treeList} />);
-
-    expect(wrapper).toBeDefined();
+    const wrapper = shallow(<Component lists={treeList} />);
+    expect(wrapper.isEmptyRender()).toBeFalsy();
   });
 });

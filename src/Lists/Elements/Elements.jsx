@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from '@material-ui/core';
-import { generateLeading } from '../helpers';
+import { addLeadingZero } from '../helpers';
 import Element from '../Element';
 import useStyles from './useStyles';
 import renderListSafely from '../../Hocs';
@@ -14,7 +14,7 @@ const Elements = ({ lists }) => {
         <Element
           isFirst={i === 0}
           key={i}
-          subtitle1={generateLeading(i)}
+          subtitle1={addLeadingZero(i)}
           {...list}
         />
       ))}

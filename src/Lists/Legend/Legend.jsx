@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import useStyle from './useStyle';
-import { generateLeading } from '../helpers';
+import { addLeadingZero } from '../helpers';
 import { renderListSafely } from '../../Hocs';
 
 const Legend = ({ lists }) => {
@@ -18,7 +18,7 @@ const Legend = ({ lists }) => {
         <ListItem key={i} className={cls.item}>
           <ListItemAvatar className={cls.avatarContainer}>
             <Avatar className={cls.avatar}>
-              {generateLeading(i)}
+              {addLeadingZero(i)}
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={text} />
