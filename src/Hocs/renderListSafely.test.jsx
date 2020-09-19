@@ -7,9 +7,7 @@ import { treeList } from '../../cypress/fixtures/lists';
 const Component = renderListSafely(Tree);
 
 describe('"renderListSafely"', () => {
-  const table = [[null], [2], [undefined], [[]], [{}]];
-
-  it.each(table)(
+  it.each([[null], [2], [undefined], [[]], [{}]])(
     'should return null when lists prop is not valid',
     (x) => {
       expect(
