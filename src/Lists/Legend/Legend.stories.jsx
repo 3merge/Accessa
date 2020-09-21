@@ -9,5 +9,5 @@ export default {
 };
 
 export const Default = () => (
-  <Legend items={galleries.map((item) => item.title)} />
+  <Legend lists={galleries.map((item) => item.title)} />
 );
