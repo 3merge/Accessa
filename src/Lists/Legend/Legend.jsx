@@ -7,28 +7,29 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import useStyle from './useStyle';
 import { addLeadingZero } from '../helpers';
+import { renderListSafely } from '../../Hocs';
 
-const Legend = ({ items }) => {
+const Legend = ({ lists }) => {
   const cls = useStyle();
 
-  return Array.isArray(items) ? (
+  return (
     <List className={cls.root}>
-      {items.map((text, i) => (
+      {lists.map((text, i) => (
         <ListItem key={i} className={cls.item}>
           <ListItemAvatar className={cls.avatarContainer}>
             <Avatar className={cls.avatar}>
-              {addLeadingZero(i + 1)}
+              {addLeadingZero(i)}
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={text} />
         </ListItem>
       ))}
     </List>
-  ) : null;
+  );
 };
 
 Legend.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  lists: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default Legend;
+export default renderListSafely(Legend);
