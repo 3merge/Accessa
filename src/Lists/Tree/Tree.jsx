@@ -11,7 +11,7 @@ import { ChevronRight } from '@material-ui/icons';
 import useStyles from './useStyles';
 import { renderListSafely } from '../../Hocs';
 
-const Tree = ({ lists }) => {
+export const Tree = ({ lists }) => {
   const { primary, secondary, wrapper, btn } = useStyles();
   return (
     <List>
