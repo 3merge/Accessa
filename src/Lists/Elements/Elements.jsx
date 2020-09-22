@@ -4,7 +4,7 @@ import { List } from '@material-ui/core';
 import { addLeadingZero } from '../helpers';
 import Element from '../Element';
 import useStyles from './useStyles';
-import renderListSafely from '../../Hocs';
+import { renderListSafely } from '../../Hocs';
 
 const Elements = ({ lists }) => {
   const classes = useStyles();
