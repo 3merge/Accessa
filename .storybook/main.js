@@ -19,5 +19,6 @@ module.exports = {
     '../examples/*.stories.jsx',
     '../src/**/*.stories.jsx',
     '../src/**/*stories.mdx',
+    '../examples/*.stories.mdx',
   ],
 };
