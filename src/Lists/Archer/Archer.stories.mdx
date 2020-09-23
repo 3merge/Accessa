@@ -1,0 +1,41 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { Archer } from './Archer';
+import { lists } from '../../../cypress/fixtures/lists';
+
+# Archer
+
+**Renders lists of texts, clicable texts or list item with
+nested lists**
+
+If lists have `onClick` property then renders clicable
+lists.&nbsp;
+
+if lists have `nestedItems` property then renders lists with
+nested items
+
+<Meta title="Lists/Archer" component={Archer} />
+
+<Preview>
+  <Story name="Underline">
+    <Archer
+      lists={lists}
+      underline
+      subheader="List Items"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="DarkMode">
+    <Archer lists={lists} darkMode />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Archer} />

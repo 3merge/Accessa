@@ -1,6 +1,13 @@
 import React from 'react';
-import { addDecorator } from '@storybook/react';
+import {
+  addDecorator,
+  addParameters,
+} from '@storybook/react';
 import { GlobalStyles } from './globalStyle';
+import {
+  DocsPage,
+  DocsContainer,
+} from '@storybook/addon-docs/blocks';
 
 addDecorator((story) => (
   <>
@@ -8,3 +15,15 @@ addDecorator((story) => (
     {story()}
   </>
 ));
+
+addParameters({
+  options: {
+    selectedPanel: 'docs',
+    // showPanel: false,
+    panelPosition: 'right',
+  },
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
+  },
+});

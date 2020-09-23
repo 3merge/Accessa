@@ -1,0 +1,25 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { Tree } from './Tree';
+import { treeList } from '../../../cypress/fixtures/lists.js';
+
+<Meta title="Lists/Tree" component={Tree} />
+
+# Tree
+
+**Renders list of title, body and action button. Returns
+null When lists prop is not an array or has no length**
+
+<Preview>
+  <Story name="Tree">
+    <Tree lists={treeList} />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Tree} />
