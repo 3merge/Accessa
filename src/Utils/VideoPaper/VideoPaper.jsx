@@ -13,11 +13,6 @@ const VideoPaper = ({ setOpen, target }) => {
     figure,
   } = useStyles();
 
-  // const test = {
-  //   id: 'GfiPOuU_gAM',
-  //   title: 'Marcangelo vs Michelangelo',
-  // };
-
   return (
     <Box className={grid}>
       <IconButton
