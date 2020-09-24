@@ -13,11 +13,17 @@ const VideoPaper = ({ setOpen, target }) => {
     figure,
   } = useStyles();
 
+  // const test = {
+  //   id: 'GfiPOuU_gAM',
+  //   title: 'Marcangelo vs Michelangelo',
+  // };
+
   return (
     <Box className={grid}>
       <IconButton
         className={closeBtn}
         onClick={() => setOpen((cur) => !cur)}
+        aria-label="close"
       >
         <Close />
       </IconButton>

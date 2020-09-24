@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dialog } from '@material-ui/core';
+import { Dialog as MaterialDialog } from '@material-ui/core';
 
-const _Dialog = ({
+const Dialog = ({
   PaperComponent,
   initialTarget,
   children,
@@ -18,7 +18,7 @@ const _Dialog = ({
   return (
     <>
       {children(props)}
-      <Dialog
+      <MaterialDialog
         open={open}
         onClose={() => setOpen(false)}
         PaperComponent={() => <PaperComponent {...props} />}
@@ -28,15 +28,15 @@ const _Dialog = ({
   );
 };
 
-_Dialog.defaultProps = {
+Dialog.defaultProps = {
   initialTarget: null,
 };
 
-_Dialog.propTypes = {
+Dialog.propTypes = {
   PaperComponent: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   initialTarget: PropTypes.any,
 };
 
-export default _Dialog;
+export default Dialog;

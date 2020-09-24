@@ -16,7 +16,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   iframe: {
     height: '250px',
-    maxWidth: '500px',
+    width: '300px',
   },
   figcaption: {
     // textAlign: 'center',

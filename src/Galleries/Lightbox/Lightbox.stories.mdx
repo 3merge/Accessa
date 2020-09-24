@@ -4,8 +4,20 @@ import {
   Preview,
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
+import { Button } from '@material-ui/core';
 import Lightbox from '.';
 import videos from '../../../cypress/fixtures/videos';
+
+export const PlayBtn = (props) => (
+  <Button
+    {...props}
+    variant="contained"
+    color="primary"
+    style={{ marginRight: '2rem', marginBottom: '2rem' }}
+  >
+    {props.title}
+  </Button>
+);
 
 <Meta title="Galleries/Lightbox" component={Lightbox} />
 
@@ -15,7 +27,7 @@ import videos from '../../../cypress/fixtures/videos';
 
 <Preview>
   <Story name="Lightbox">
-    <Lightbox lists={videos} />
+    <Lightbox lists={videos} Button={PlayBtn} />
   </Story>
 </Preview>
 

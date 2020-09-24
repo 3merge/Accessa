@@ -11,6 +11,7 @@ module.exports = {
     'import/no-duplicates': 0,
     'import/extensions': 0,
     'import/no-named-as-default': 0,
+    'no-sequences': 0,
   },
   overrides: [
     {
