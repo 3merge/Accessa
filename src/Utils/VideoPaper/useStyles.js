@@ -1,10 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
-  modal: () => ({
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-  }),
   grid: {
     display: 'grid',
     justifyItems: 'flex-end',
@@ -16,12 +12,13 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   iframe: {
     height: '250px',
-    width: '300px',
+    maxWidth: '500px',
   },
   figcaption: {
     textAlign: 'center',
     color: palette.primary.contrastText,
     marginTop: '1rem',
+    fontSize: '1.5rem',
   },
 }));
 

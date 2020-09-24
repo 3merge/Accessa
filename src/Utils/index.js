@@ -6,4 +6,5 @@ export { default as Image } from './Image';
 export { default as ImageWrapper } from './ImageWrapper';
 export { default as Tagline } from './Tagline';
 export { default as VerticalLines } from './VerticalLines';
+export { default as VideoPaper } from './VideoPaper';
 export { default as Viewport } from './Viewport';
