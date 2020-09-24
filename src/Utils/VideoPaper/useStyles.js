@@ -10,12 +10,16 @@ const useStyles = makeStyles(({ palette }) => ({
     height: '2rem',
     color: palette.primary.contrastText,
   },
+  figure: {
+    display: 'grid',
+    justifyItems: 'center',
+  },
   iframe: {
     height: '250px',
     maxWidth: '500px',
   },
   figcaption: {
-    textAlign: 'center',
+    // textAlign: 'center',
     color: palette.primary.contrastText,
     marginTop: '1rem',
     fontSize: '1.5rem',

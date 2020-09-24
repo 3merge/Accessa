@@ -4,30 +4,34 @@ import { IconButton, Box } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import useStyles from './useStyles';
 
-const VideoPaper = ({ setOpen, target, setTarget }) => {
+const VideoPaper = ({ setOpen, target }) => {
   const {
     grid,
     closeBtn,
     iframe,
     figcaption,
+    figure,
   } = useStyles();
 
   return (
     <Box className={grid}>
-      <IconButton className={closeBtn}>
-        <Close onClick={() => setOpen((cur) => !cur)} />
+      <IconButton
+        className={closeBtn}
+        onClick={() => setOpen((cur) => !cur)}
+      >
+        <Close />
       </IconButton>
-      <figure>
+      <figure className={figure}>
         <iframe
           key="18a9368c-56f7-4e5d-8aca-d05b5a788bad"
           className={iframe}
           title="WorldX video"
-          src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1"
+          src={`//www.youtube.com/embed/${target.id}`}
           frameBorder="0"
-          allowFullscreen
+          allowFullScreen
         />
         <figcaption className={figcaption}>
-          this is caption
+          {target.title}
         </figcaption>
       </figure>
     </Box>
@@ -36,8 +40,10 @@ const VideoPaper = ({ setOpen, target, setTarget }) => {
 
 VideoPaper.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  target: PropTypes.bool.isRequired,
-  setTarget: PropTypes.func.isRequired,
+  target: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default VideoPaper;

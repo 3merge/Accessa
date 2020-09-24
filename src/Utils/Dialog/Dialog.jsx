@@ -33,8 +33,8 @@ _Dialog.defaultProps = {
 };
 
 _Dialog.propTypes = {
-  PaperComponent: PropTypes.node.isRequired,
-  children: PropTypes.node.isRequired,
+  PaperComponent: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   initialTarget: PropTypes.any,
 };
