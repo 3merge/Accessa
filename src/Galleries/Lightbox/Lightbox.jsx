@@ -5,7 +5,7 @@ import { Dialog, VideoPaper } from '../../Utils';
 const Lightbox = () => {
   return (
     <Dialog PaperComponent={VideoPaper} fullScreen>
-      {({ open, setOpen, target, setTarget }) => {
+      {({ setOpen, target, setTarget }) => {
         return (
           <button
             type="button"
