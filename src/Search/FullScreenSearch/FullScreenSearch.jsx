@@ -49,6 +49,12 @@ const FullScreenSearch = ({
       });
   };
 
+  // React.useEffect(() => {
+  //   if (value.trim().length > 0) {
+  //     handleSubmit();
+  //   }
+  // }, [value]);
+
   return (
     <Container className={container}>
       <AppBar position="fixed" color="primary">

@@ -11,7 +11,7 @@ const Overlay = ({ searchRequest, onSubmitCallback }) => {
       PaperComponent={FullScreenSearch}
       searchRequest={searchRequest}
       onSubmitCallback={onSubmitCallback}
-      disableOnClose
+      // disableOnClose
     >
       {({ setOpen }) => {
         return (

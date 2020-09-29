@@ -5,7 +5,9 @@ import { Dialog as MaterialDialog } from '@material-ui/core';
 const Dialog = ({
   PaperComponent,
   initialTarget,
-  disableOnClose,
+  // disableOnClose,
+  // searchRequest,
+  // onSubmitCallback,
   children,
   ...rest
 }) => {
@@ -27,9 +29,9 @@ const Dialog = ({
       {children(props)}
       <MaterialDialog
         open={open}
-        onClose={
-          disableOnClose ? null : () => setOpen(false)
-        }
+        // onClose={
+        //   disableOnClose ? null : () => setOpen(false)
+        // }
         PaperComponent={() => <PaperComponent {...props} />}
         {...rest}
       />
