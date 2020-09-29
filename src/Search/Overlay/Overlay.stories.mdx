@@ -9,7 +9,7 @@ import Overlay from './Overlay';
 export const searchRequest = (input) =>
   new Promise(
     (resolve, reject) =>
-      resolve({ category: [], type: [] }),
+      resolve({ category: [], docs: [], articles: [] }),
     // reject({ error: 'error' }),
   )
     .then((d) => d)

@@ -8,6 +8,7 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import useInput from './useInput';
 import useStyles from './useStyles';
 
 const FullScreenSearch = ({ setOpen, searchRequest }) => {
@@ -45,11 +46,9 @@ const FullScreenSearch = ({ setOpen, searchRequest }) => {
           d == null ||
           !Object.values(d).every(Array.isArray)
         )
-          throw new Error(
-            'Data expects an objects of arrays',
-          );
+          throw new Error('Expected an objects of arrays');
 
-        setData(d);
+        setData({ data: d, error: null });
       })
       .catch((error) => {
         setData({
