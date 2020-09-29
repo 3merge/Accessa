@@ -2,54 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog as MaterialDialog } from '@material-ui/core';
 
-const Dialog = ({
-  PaperComponent,
-  initialTarget,
-  // disableOnClose,
-  // searchRequest,
-  // onSubmitCallback,
-  children,
-  ...rest
-}) => {
-  const [open, setOpen] = React.useState(true);
-  const [target, setTarget] = React.useState(
-    () => initialTarget,
-  );
-
-  const props = {
-    open,
-    setOpen,
-    target,
-    setTarget,
-    ...rest,
-  };
+const Dialog = ({ ButtonComponent, children, ...rest }) => {
+  const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      {children(props)}
-      <MaterialDialog
-        open={open}
-        // onClose={
-        //   disableOnClose ? null : () => setOpen(false)
-        // }
-        PaperComponent={() => <PaperComponent {...props} />}
-        {...rest}
-      />
+      <ButtonComponent setOpen={setOpen} />
+      <MaterialDialog open={open} {...rest}>
+        {children({ open, setOpen })}
+      </MaterialDialog>
     </>
   );
 };
 
-Dialog.defaultProps = {
-  initialTarget: null,
-  disableOnClose: false,
-};
-
 Dialog.propTypes = {
-  PaperComponent: PropTypes.func.isRequired,
+  ButtonComponent: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
-  disableOnClose: PropTypes.bool,
   // eslint-disable-next-line react/forbid-prop-types
-  initialTarget: PropTypes.any,
 };
 
 export default Dialog;

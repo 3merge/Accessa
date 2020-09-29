@@ -4,7 +4,7 @@ import { IconButton, Box } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import useStyles from './useStyles';
 
-const VideoPaper = ({ setOpen, target }) => {
+const VideoPaper = ({ setOpen, video }) => {
   const {
     grid,
     closeBtn,
@@ -27,12 +27,12 @@ const VideoPaper = ({ setOpen, target }) => {
           key="18a9368c-56f7-4e5d-8aca-d05b5a788bad"
           className={iframe}
           title="WorldX video"
-          src={`//www.youtube.com/embed/${target.id}`}
+          src={`//www.youtube.com/embed/${video.id}`}
           frameBorder="0"
           allowFullScreen
         />
         <figcaption className={figcaption}>
-          {target.title}
+          {video.title}
         </figcaption>
       </figure>
     </Box>
@@ -41,7 +41,7 @@ const VideoPaper = ({ setOpen, target }) => {
 
 VideoPaper.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  target: PropTypes.shape({
+  video: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,

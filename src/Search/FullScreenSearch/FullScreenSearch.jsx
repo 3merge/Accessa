@@ -13,8 +13,8 @@ import useStyles from './useStyles';
 
 const FullScreenSearch = ({
   setOpen,
-  searchRequest,
-  onSubmitCallback,
+  // searchRequest,
+  // onSubmitCallback,
 }) => {
   const { btn, container } = useStyles();
   const [{ value, error }, { onChange }] = useInput();
@@ -25,35 +25,30 @@ const FullScreenSearch = ({
   });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (error != null) return;
+    // e.preventDefault();
+    // if (error != null) return;
 
-    searchRequest(value)
-      .then((d) => {
-        if (
-          d == null ||
-          !Object.values(d).every(Array.isArray)
-        )
-          throw new Error('Expected an objects of arrays');
+    // searchRequest(value)
+    //   .then((d) => {
+    //     if (
+    //       d == null ||
+    //       !Object.values(d).every(Array.isArray)
+    //     )
+    //       throw new Error('Expected an objects of arrays');
 
-        return typeof onSubmitCallback === 'function'
-          ? onSubmitCallback(d)
-          : setData({ data: d, error: null });
-      })
-      .catch((err) => {
-        setData({
-          ...data,
-          error: 'something went wrong...',
-        });
-        throw err;
-      });
+    //     return typeof onSubmitCallback === 'function'
+    //       ? onSubmitCallback(d)
+    //       : setData({ data: d, error: null });
+    //   })
+    //   .catch((err) => {
+    //     setData({
+    //       ...data,
+    //       error: 'something went wrong...',
+    //     });
+    //     throw err;
+    // });
+    console.log('on submit');
   };
-
-  // React.useEffect(() => {
-  //   if (value.trim().length > 0) {
-  //     handleSubmit();
-  //   }
-  // }, [value]);
 
   return (
     <Container className={container}>
@@ -87,15 +82,15 @@ const FullScreenSearch = ({
   );
 };
 
-FullScreenSearch.defaultProps = {
-  onSubmitCallback: null,
-};
+// FullScreenSearch.defaultProps = {
+//   onSubmitCallback: null,
+// };
 
 FullScreenSearch.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  searchRequest: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  onSubmitCallback: PropTypes.any,
+  // searchRequest: PropTypes.func.isRequired,
+  // // eslint-disable-next-line react/forbid-prop-types
+  // onSubmitCallback: PropTypes.any,
 };
 
 export default FullScreenSearch;

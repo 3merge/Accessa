@@ -5,22 +5,25 @@ import { Search } from '@material-ui/icons';
 import { Dialog } from '../../Utils';
 import FullScreenSearch from '../FullScreenSearch';
 
+const SearchIcon = ({ setOpen }) => (
+  <IconButton
+    onClick={() => setOpen(true)}
+    aria-label="open search dialog"
+  >
+    <Search />
+  </IconButton>
+);
+
 const Overlay = ({ searchRequest, onSubmitCallback }) => {
   return (
-    <Dialog
-      PaperComponent={FullScreenSearch}
-      searchRequest={searchRequest}
-      onSubmitCallback={onSubmitCallback}
-      // disableOnClose
-    >
+    <Dialog ButtonComponent={SearchIcon} fullScreen>
       {({ setOpen }) => {
         return (
-          <IconButton
-            onClick={() => setOpen(true)}
-            aria-label="open search dialog"
-          >
-            <Search />
-          </IconButton>
+          <FullScreenSearch
+            setOpen={setOpen}
+            searchRequest={searchRequest}
+            onSubmitCallback={onSubmitCallback}
+          />
         );
       }}
     </Dialog>
