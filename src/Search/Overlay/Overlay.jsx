@@ -5,11 +5,12 @@ import { Search } from '@material-ui/icons';
 import { Dialog } from '../../Utils';
 import FullScreenSearch from '../FullScreenSearch';
 
-const Overlay = ({ searchRequest }) => {
+const Overlay = ({ searchRequest, onSubmitCallback }) => {
   return (
     <Dialog
       PaperComponent={FullScreenSearch}
       searchRequest={searchRequest}
+      onSubmitCallback={onSubmitCallback}
       disableOnClose
     >
       {({ setOpen }) => {
@@ -26,8 +27,13 @@ const Overlay = ({ searchRequest }) => {
   );
 };
 
+Overlay.defaultProps = {
+  onSubmitCallback: null,
+};
+
 Overlay.propTypes = {
   searchRequest: PropTypes.func.isRequired,
+  onSubmitCallback: PropTypes.func,
 };
 
 export default Overlay;

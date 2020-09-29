@@ -18,13 +18,18 @@ export const searchRequest = (input) =>
       return null;
     });
 
+export const callback = (d) => console.log(d);
+
 <Meta title="Search/Overlay" component={Overlay} />
 
 # Overlay
 
 <Preview>
   <Story name="Overlay">
-    <Overlay searchRequest={searchRequest} />
+    <Overlay
+      searchRequest={searchRequest}
+      onSubmitCallback={callback}
+    />
   </Story>
 </Preview>
 

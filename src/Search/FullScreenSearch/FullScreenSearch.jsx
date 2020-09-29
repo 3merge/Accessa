@@ -11,36 +11,24 @@ import { Close } from '@material-ui/icons';
 import useInput from './useInput';
 import useStyles from './useStyles';
 
-const FullScreenSearch = ({ setOpen, searchRequest }) => {
+const FullScreenSearch = ({
+  setOpen,
+  searchRequest,
+  onSubmitCallback,
+}) => {
   const { btn, container } = useStyles();
-  const [input, setInput] = React.useState({
-    value: '',
-    error: '',
-  });
+  const [{ value, error }, { onChange }] = useInput();
+
   const [data, setData] = React.useState({
     data: {},
     error: null,
   });
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    const isValid = value.trim().length > 0;
-
-    if (!isValid) {
-      return setInput({
-        value: '',
-        error: 'Please enter a value',
-      });
-    }
-
-    return setInput({ value, error: '' });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.error.length) return;
+    if (error != null) return;
 
-    searchRequest(input.value)
+    searchRequest(value)
       .then((d) => {
         if (
           d == null ||
@@ -48,14 +36,16 @@ const FullScreenSearch = ({ setOpen, searchRequest }) => {
         )
           throw new Error('Expected an objects of arrays');
 
-        setData({ data: d, error: null });
+        return typeof onSubmitCallback === 'function'
+          ? onSubmitCallback(d)
+          : setData({ data: d, error: null });
       })
-      .catch((error) => {
+      .catch((err) => {
         setData({
           ...data,
           error: 'something went wrong...',
         });
-        throw error;
+        throw err;
       });
   };
 
@@ -65,6 +55,7 @@ const FullScreenSearch = ({ setOpen, searchRequest }) => {
         <IconButton
           className={btn}
           onClick={() => setOpen(false)}
+          aria-label="Close search dialog"
         >
           <Close />
         </IconButton>
@@ -72,13 +63,14 @@ const FullScreenSearch = ({ setOpen, searchRequest }) => {
       <Box pt={10}>
         <form onSubmit={handleSubmit}>
           <TextField
-            onChange={handleChange}
+            value={value}
+            onChange={onChange}
             id="search"
             label="search"
             variant="outlined"
             color="primary"
-            helperText={input.error}
-            error={!!input.error}
+            helperText={error || ''}
+            error={Boolean(error)}
             fullWidth
             required
           />
@@ -89,9 +81,15 @@ const FullScreenSearch = ({ setOpen, searchRequest }) => {
   );
 };
 
+FullScreenSearch.defaultProps = {
+  onSubmitCallback: null,
+};
+
 FullScreenSearch.propTypes = {
   setOpen: PropTypes.func.isRequired,
   searchRequest: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  onSubmitCallback: PropTypes.any,
 };
 
 export default FullScreenSearch;
