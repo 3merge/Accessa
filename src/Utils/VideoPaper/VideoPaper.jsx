@@ -15,13 +15,13 @@ const VideoPaper = ({ setOpen, video }) => {
 
   return (
     <Box className={grid}>
-      <IconButton
+      {/* <IconButton
         className={closeBtn}
         onClick={() => setOpen((cur) => !cur)}
         aria-label="close"
       >
         <Close />
-      </IconButton>
+      </IconButton> */}
       <figure className={figure}>
         <iframe
           key="18a9368c-56f7-4e5d-8aca-d05b5a788bad"

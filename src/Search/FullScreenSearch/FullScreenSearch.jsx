@@ -25,7 +25,7 @@ const FullScreenSearch = ({
   });
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     // if (error != null) return;
 
     // searchRequest(value)

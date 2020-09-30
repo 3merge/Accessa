@@ -2,14 +2,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
   grid: {
-    display: 'grid',
-    justifyItems: 'flex-end',
+    // display: 'grid',
+    // justifyItems: 'flex-end',
+    backgroundColor: 'transparent',
+    boxShadow: 'none',
   },
-  closeBtn: {
-    width: '2rem',
-    height: '2rem',
-    color: palette.primary.contrastText,
-  },
+  // closeBtn: {
+  //   width: '2rem',
+  //   height: '2rem',
+  //   color: palette.primary.contrastText,
+  // },
   figure: {
     display: 'grid',
     justifyItems: 'center',
@@ -19,7 +21,6 @@ const useStyles = makeStyles(({ palette }) => ({
     width: '300px',
   },
   figcaption: {
-    // textAlign: 'center',
     color: palette.primary.contrastText,
     marginTop: '1rem',
     fontSize: '1.5rem',

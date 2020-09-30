@@ -11,6 +11,12 @@ const Lightbox = ({ lists }) => {
 
   return (
     <Dialog
+      PaperProps={{
+        style: {
+          backgroundColor: 'transparent',
+          boxShadow: 'none',
+        },
+      }}
       ButtonComponent={({ setOpen }) => {
         return lists
           .map((x) => ({
@@ -29,10 +35,15 @@ const Lightbox = ({ lists }) => {
             </Button>
           ));
       }}
+      aria-labelledby="selectedVideo"
+      aria-describedby="selectedVideo"
     >
       {({ setOpen }) => {
         return (
-          <VideoPaper setOpen={setOpen} video={video} />
+          <>
+            <Dialog.CloseBtn setOpen={setOpen} />
+            <VideoPaper setOpen={setOpen} video={video} />
+          </>
         );
       }}
     </Dialog>
