@@ -51,6 +51,7 @@ const Lightbox = ({ lists }) => {
     </Dialog>
   );
 };
+
 Lightbox.propTypes = {
   lists: PropTypes.arrayOf(
     PropTypes.shape({

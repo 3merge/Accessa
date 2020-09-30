@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconButton } from '@material-ui/core';
+import { AppBar, IconButton } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import { Dialog } from '../../Utils';
 import FullScreenSearch from '../FullScreenSearch';
+import useStyles from './useStyles';
 
 const SearchIcon = ({ setOpen }) => (
   <IconButton
@@ -14,16 +15,29 @@ const SearchIcon = ({ setOpen }) => (
   </IconButton>
 );
 
+SearchIcon.propTypes = {
+  setOpen: PropTypes.func.isRequired,
+};
+
 const Overlay = ({ searchRequest, onSubmitCallback }) => {
+  const { btn } = useStyles();
   return (
     <Dialog ButtonComponent={SearchIcon} fullScreen>
       {({ setOpen }) => {
         return (
-          <FullScreenSearch
-            setOpen={setOpen}
-            searchRequest={searchRequest}
-            onSubmitCallback={onSubmitCallback}
-          />
+          <>
+            <AppBar position="fixed" color="primary">
+              <Dialog.CloseBtn
+                setOpen={setOpen}
+                className={btn}
+              />
+            </AppBar>
+            <FullScreenSearch
+              setOpen={setOpen}
+              searchRequest={searchRequest}
+              onSubmitCallback={onSubmitCallback}
+            />
+          </>
         );
       }}
     </Dialog>
