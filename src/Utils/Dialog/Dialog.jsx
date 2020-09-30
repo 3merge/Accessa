@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box,
   Dialog as MaterialDialog,
   IconButton,
 } from '@material-ui/core';
@@ -32,10 +31,16 @@ Dialog.CloseBtn = ({ setOpen }) => {
       // className={closeBtn}
       onClick={() => setOpen((cur) => !cur)}
       aria-label="close dialog"
+      aria-labelledby="closeDialog"
+      aria-describedby="closeDialog"
     >
       <Close />
     </IconButton>
   );
+};
+
+Dialog.CloseBtn.propTypes = {
+  setOpen: PropTypes.func.isRequired,
 };
 
 export default Dialog;
