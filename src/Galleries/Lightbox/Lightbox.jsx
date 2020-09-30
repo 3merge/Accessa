@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { renderListSafely } from '../../Hocs';
 import { Dialog, VideoPaper } from '../../Utils';
+import useStyles from './useStyles';
 
 export const getId = (x) => x.split('/').pop();
 
 const Lightbox = ({ lists }) => {
   const [video, setVideo] = React.useState(null);
+  const { btn, dialog, paper } = useStyles();
 
   return (
     <Dialog
       PaperProps={{
-        style: {
-          backgroundColor: 'transparent',
-          boxShadow: 'none',
-        },
+        className: paper,
       }}
       ButtonComponent={({ setOpen }) => {
         return lists
@@ -40,10 +39,13 @@ const Lightbox = ({ lists }) => {
     >
       {({ setOpen }) => {
         return (
-          <>
-            <Dialog.CloseBtn setOpen={setOpen} />
+          <div className={dialog}>
+            <Dialog.CloseBtn
+              setOpen={setOpen}
+              className={btn}
+            />
             <VideoPaper setOpen={setOpen} video={video} />
-          </>
+          </div>
         );
       }}
     </Dialog>

@@ -1,22 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
-  grid: {
+  paper: {
     backgroundColor: 'transparent',
     boxShadow: 'none',
   },
-  figure: {
+  dialog: {
     display: 'grid',
-    justifyItems: 'center',
+    justifyItems: 'flex-end',
   },
-  iframe: {
-    height: '250px',
-    width: '300px',
-  },
-  figcaption: {
+  btn: {
+    width: '2rem',
+    height: '2rem',
     color: palette.primary.contrastText,
-    marginTop: '1rem',
-    fontSize: '1.5rem',
   },
 }));
 

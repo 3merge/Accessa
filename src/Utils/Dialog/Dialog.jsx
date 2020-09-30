@@ -22,17 +22,16 @@ const Dialog = ({ ButtonComponent, children, ...rest }) => {
 Dialog.propTypes = {
   ButtonComponent: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
 };
 
-Dialog.CloseBtn = ({ setOpen }) => {
+Dialog.CloseBtn = ({ setOpen, ...rest }) => {
   return (
     <IconButton
-      // className={closeBtn}
       onClick={() => setOpen((cur) => !cur)}
       aria-label="close dialog"
       aria-labelledby="closeDialog"
       aria-describedby="closeDialog"
+      {...rest}
     >
       <Close />
     </IconButton>
