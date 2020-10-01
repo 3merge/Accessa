@@ -3,54 +3,38 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { renderListSafely } from '../../Hocs';
 import { Dialog, VideoPaper } from '../../Utils';
-import useStyles from './useStyles';
 
 export const getId = (x) => x.split('/').pop();
 
-const Lightbox = ({ lists }) => {
-  const [video, setVideo] = React.useState(null);
-  const { btn, dialog, paper } = useStyles();
-
-  return (
-    <Dialog
-      PaperProps={{
-        className: paper,
-      }}
-      ButtonComponent={({ setOpen }) => {
-        return lists
-          .map((x) => ({
-            title: x.title,
-            id: getId(x.video),
-          }))
-          .map((v) => (
-            <Button
-              key={v.title}
-              aria-label="Click to watch the video"
-              variant="contained"
-              color="primary"
-              onClick={() => (setVideo(v), setOpen(true))}
-            >
-              {v.title}
-            </Button>
-          ));
-      }}
-      aria-labelledby="selectedVideo"
-      aria-describedby="selectedVideo"
-    >
-      {({ setOpen }) => {
-        return (
-          <div className={dialog}>
-            <Dialog.CloseBtn
-              setOpen={setOpen}
-              className={btn}
-            />
-            <VideoPaper setOpen={setOpen} video={video} />
-          </div>
-        );
-      }}
-    </Dialog>
-  );
-};
+const Lightbox = ({ lists }) =>
+  lists
+    .map((x) => ({
+      ...x,
+      id: getId(x.video),
+    }))
+    .map((v) => (
+      <Dialog
+        key={v.id}
+        title={v.title}
+        description={v.description}
+        ButtonComponent={({ setOpen }) => (
+          <Button
+            aria-label="Click to watch the video"
+            variant="contained"
+            color="primary"
+            onClick={() => setOpen(true)}
+          >
+            {v.title}
+          </Button>
+        )}
+        maxWidth="sm"
+        fullWidth
+      >
+        {({ setOpen }) => (
+          <VideoPaper setOpen={setOpen} video={v} />
+        )}
+      </Dialog>
+    ));
 
 Lightbox.propTypes = {
   lists: PropTypes.arrayOf(

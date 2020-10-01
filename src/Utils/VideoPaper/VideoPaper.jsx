@@ -9,14 +9,16 @@ const VideoPaper = ({ video }) => {
       <iframe
         key="18a9368c-56f7-4e5d-8aca-d05b5a788bad"
         className={iframe}
-        title="WorldX video"
+        title={`${video.title} - YouTube`}
         src={`//www.youtube.com/embed/${video.id}`}
         frameBorder="0"
         allowFullScreen
       />
-      <figcaption className={figcaption}>
-        {video.title}
-      </figcaption>
+      {video.caption && (
+        <figcaption className={figcaption}>
+          {video.caption}
+        </figcaption>
+      )}
     </figure>
   );
 };
@@ -27,6 +29,7 @@ VideoPaper.defaultProps = {
 
 VideoPaper.propTypes = {
   video: PropTypes.shape({
+    caption: PropTypes.string,
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }),

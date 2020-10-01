@@ -50,24 +50,22 @@ const FullScreenSearch = ({
   }, [value]);
 
   return (
-    <Container className={container}>
-      <Box pt={10}>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            value={value}
-            onChange={onChange}
-            id="search"
-            label="search"
-            variant="outlined"
-            color="primary"
-            helperText={error || ''}
-            error={Boolean(error)}
-            fullWidth
-            required
-          />
-        </form>
-        {data.error && <p>{data.error}</p>}
-      </Box>
+    <Container>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          value={value}
+          onChange={onChange}
+          id="search"
+          label="search"
+          variant="outlined"
+          color="primary"
+          helperText={error || ''}
+          error={Boolean(error)}
+          fullWidth
+          required
+        />
+      </form>
+      {data.error && <p>{data.error}</p>}
     </Container>
   );
 };

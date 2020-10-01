@@ -27,7 +27,14 @@ export const PlayBtn = (props) => (
 
 <Preview>
   <Story name="Lightbox">
-    <Lightbox lists={videos} Button={PlayBtn} />
+    <Lightbox
+      lists={videos.map((item) => ({
+        ...item,
+        description: 'This is a description',
+        caption: 'And this is the video caption',
+      }))}
+      Button={PlayBtn}
+    />
   </Story>
 </Preview>
 
