@@ -1,42 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog as MaterialDialog } from '@material-ui/core';
+import DialogContent from '../DialogContent';
 
 const Dialog = ({
-  PaperComponent,
-  initialTarget,
+  ButtonComponent,
   children,
+  description,
+  id,
+  title,
   ...rest
 }) => {
   const [open, setOpen] = React.useState(false);
-  const [target, setTarget] = React.useState(
-    () => initialTarget,
-  );
+  const titleId = `${id}-title`;
 
-  const props = { open, setOpen, target, setTarget };
+  const descriptionId = description
+    ? `${id}-description`
+    : undefined;
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
-      {children(props)}
+      <ButtonComponent
+        setOpen={setOpen}
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+        open={open}
+      />
       <MaterialDialog
         open={open}
-        onClose={() => setOpen(false)}
-        PaperComponent={() => <PaperComponent {...props} />}
+        onClose={handleClose}
+        aria-labelledby={titleId}
+        aria-describedby={descriptionId}
         {...rest}
-      />
+      >
+        <DialogContent
+          titleId={titleId}
+          title={title}
+          describedby={descriptionId}
+          description={description}
+          onClose={handleClose}
+          {...rest}
+        >
+          {children({
+            open,
+            setOpen,
+            handleClose,
+            handleOpen,
+          })}
+        </DialogContent>
+      </MaterialDialog>
     </>
   );
 };
 
-Dialog.defaultProps = {
-  initialTarget: null,
+Dialog.propTypes = {
+  ButtonComponent: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  id: PropTypes.string,
 };
 
-Dialog.propTypes = {
-  PaperComponent: PropTypes.func.isRequired,
-  children: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  initialTarget: PropTypes.any,
+Dialog.defaultProps = {
+  description: '',
+  id: 'modal',
 };
 
 export default Dialog;

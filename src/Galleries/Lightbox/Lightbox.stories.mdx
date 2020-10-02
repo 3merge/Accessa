@@ -8,17 +8,6 @@ import { Button } from '@material-ui/core';
 import Lightbox from '.';
 import videos from '../../../cypress/fixtures/videos';
 
-export const PlayBtn = (props) => (
-  <Button
-    {...props}
-    variant="contained"
-    color="primary"
-    style={{ marginRight: '2rem', marginBottom: '2rem' }}
-  >
-    {props.title}
-  </Button>
-);
-
 <Meta title="Galleries/Lightbox" component={Lightbox} />
 
 # Lightbox
@@ -27,7 +16,13 @@ export const PlayBtn = (props) => (
 
 <Preview>
   <Story name="Lightbox">
-    <Lightbox lists={videos} Button={PlayBtn} />
+    <Lightbox
+      lists={videos.map((item) => ({
+        ...item,
+        description: 'This is a description',
+        caption: 'And this is the video caption',
+      }))}
+    />
   </Story>
 </Preview>
 

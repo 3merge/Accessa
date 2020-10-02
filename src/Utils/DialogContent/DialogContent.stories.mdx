@@ -1,0 +1,38 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { Button } from '@material-ui/core';
+import DialogContent from '.';
+
+<Meta
+  title="Utils/DialogContent"
+  component={DialogContent}
+/>
+
+# DialogContent
+
+A standard dialog body, complete with title and description
+for accessibility. Mostly, this component will only exist
+inside `<Dialog />`.
+
+<Preview>
+  <Story name="Default">
+    <DialogContent
+      title="Necessary title"
+      titleId="h1"
+      description="Optional description"
+      descriptionId="p"
+      handlClose={action('close')}
+    >
+      <div />
+    </DialogContent>
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={DialogContent} />

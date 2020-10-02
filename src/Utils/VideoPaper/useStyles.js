@@ -1,28 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles((theme) => ({
   grid: {
-    display: 'grid',
-    justifyItems: 'flex-end',
-  },
-  closeBtn: {
-    width: '2rem',
-    height: '2rem',
-    color: palette.primary.contrastText,
+    backgroundColor: 'transparent',
+    boxShadow: 'none',
   },
   figure: {
-    display: 'grid',
-    justifyItems: 'center',
+    margin: '0',
+    padding: 0,
+    display: 'block',
+    textAlign: 'center',
+    width: '100%',
   },
   iframe: {
-    height: '250px',
-    width: '300px',
+    height: '45vh',
+    width: '100%',
   },
   figcaption: {
-    // textAlign: 'center',
-    color: palette.primary.contrastText,
-    marginTop: '1rem',
-    fontSize: '1.5rem',
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(0.5),
+    fontSize: '0.733rem',
+    fontStyle: 'italic',
   },
 }));
 
