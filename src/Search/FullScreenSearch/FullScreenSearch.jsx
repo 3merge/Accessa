@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container,
-  Box,
-  TextField,
-} from '@material-ui/core';
+import { Container, TextField } from '@material-ui/core';
 import useInput from './useInput';
-import useStyles from './useStyles';
 
 const FullScreenSearch = ({
   searchRequest,
   onSubmitCallback,
 }) => {
-  const { container } = useStyles();
   const [{ value, error }, { onChange }] = useInput();
 
   const [data, setData] = React.useState({

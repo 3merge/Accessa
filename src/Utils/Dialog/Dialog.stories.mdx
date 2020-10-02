@@ -1,0 +1,33 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { Button } from '@material-ui/core';
+import Dialog from './Dialog';
+
+<Meta title="Utils/Dialog" component={Dialog} />
+
+# Dialog
+
+<Preview>
+  <Story name="Default">
+    <Dialog
+      title="Necessary title"
+      description="Optional description"
+      ButtonComponent={({ handleOpen }) => (
+        <button type="button" onClick={handleOpen}>
+          Open Dialog
+        </button>
+      )}
+    >
+      {() => <p>Dynamic children</p>}
+    </Dialog>
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Dialog} />

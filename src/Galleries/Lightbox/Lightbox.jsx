@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
+import Fab from '@material-ui/core/Fab';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { renderListSafely } from '../../Hocs';
 import { Dialog, VideoPaper } from '../../Utils';
 
 export const getId = (x) => x.split('/').pop();
 
-const Lightbox = ({ lists }) =>
+const Lightbox = ({ label, lists }) =>
   lists
     .map((x) => ({
       ...x,
@@ -17,17 +18,17 @@ const Lightbox = ({ lists }) =>
         key={v.id}
         title={v.title}
         description={v.description}
-        ButtonComponent={({ setOpen }) => (
-          <Button
-            aria-label="Click to watch the video"
-            variant="contained"
+        ButtonComponent={({ handleOpen, open }) => (
+          <Fab
             color="primary"
-            onClick={() => setOpen(true)}
+            onClick={handleOpen}
+            aria-label={label}
+            aria-pressed={open}
           >
-            {v.title}
-          </Button>
+            <PlayArrowIcon />
+          </Fab>
         )}
-        maxWidth="sm"
+        maxWidth="md"
         fullWidth
       >
         {({ setOpen }) => (
@@ -37,12 +38,17 @@ const Lightbox = ({ lists }) =>
     ));
 
 Lightbox.propTypes = {
+  label: PropTypes.string,
   lists: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       video: PropTypes.string.isRequired,
     }),
   ).isRequired,
+};
+
+Lightbox.defaultProps = {
+  label: 'Click to open video dialog',
 };
 
 export default renderListSafely(Lightbox);

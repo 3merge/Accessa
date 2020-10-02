@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box,
-  Dialog as MaterialDialog,
-  DialogTitle as MuiDialogTitle,
-  DialogContent as MuiDialogContent,
-  IconButton,
-  Typography,
-} from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { Dialog as MaterialDialog } from '@material-ui/core';
+import DialogContent from '../DialogContent';
 
 const Dialog = ({
   ButtonComponent,
@@ -25,11 +18,17 @@ const Dialog = ({
     ? `${id}-description`
     : undefined;
 
+  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <>
-      <ButtonComponent setOpen={setOpen} />
+      <ButtonComponent
+        setOpen={setOpen}
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+        open={open}
+      />
       <MaterialDialog
         open={open}
         onClose={handleClose}
@@ -37,37 +36,21 @@ const Dialog = ({
         aria-describedby={descriptionId}
         {...rest}
       >
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
+        <DialogContent
+          titleId={titleId}
+          title={title}
+          describedby={descriptionId}
+          description={description}
+          onClose={handleClose}
+          {...rest}
         >
-          <MuiDialogTitle
-            id={titleId}
-            style={{ maxWidth: '75%' }}
-          >
-            {title}
-          </MuiDialogTitle>
-          <Box px={2}>
-            <IconButton
-              size="small"
-              aria-label="Close dialog"
-              onClick={handleClose}
-            >
-              <Close />
-            </IconButton>
-          </Box>
-        </Box>
-        <MuiDialogContent dividers>
-          {description && (
-            <Box mb={2}>
-              <Typography id={descriptionId}>
-                {description}
-              </Typography>
-            </Box>
-          )}
-          {children({ open, setOpen })}
-        </MuiDialogContent>
+          {children({
+            open,
+            setOpen,
+            handleClose,
+            handleOpen,
+          })}
+        </DialogContent>
       </MaterialDialog>
     </>
   );
