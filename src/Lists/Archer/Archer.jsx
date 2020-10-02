@@ -6,7 +6,7 @@ import ListItemWrapper from '../ListItemWrapper';
 import useStyles from '../useStyles';
 import { renderListSafely } from '../../Hocs';
 
-const Archer = ({
+export const Archer = ({
   subheader,
   darkMode,
   underline,

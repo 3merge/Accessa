@@ -1,0 +1,38 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import Overlay from './Overlay';
+
+export const searchRequest = (input) =>
+  new Promise(
+    (resolve, reject) =>
+      resolve({ category: [], docs: [], articles: [] }),
+    // reject({ error: 'error' }),
+  )
+    .then((d) => d)
+    .catch((e) => {
+      console.log('me second', e);
+      return null;
+    });
+
+export const callback = (d) => console.log(d);
+
+<Meta title="Search/Overlay" component={Overlay} />
+
+# Overlay
+
+<Preview>
+  <Story name="Overlay">
+    <Overlay
+      searchRequest={searchRequest}
+      onSubmitCallback={callback}
+    />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Overlay} />

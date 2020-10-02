@@ -10,7 +10,8 @@ import partial from '../cypress/fixtures/partial';
 import * as Accessa from '../src';
 import Content from '../cypress/fixtures/content';
 import { Default as LegendDefault } from '../src/Lists/Legend/Legend.stories.jsx';
-import { DarkMode } from '../src/Lists/Archer/Archer.stories.jsx';
+import { Archer } from '../src/Lists/Archer/Archer';
+import { lists } from '../cypress/fixtures/lists';
 import { EstateFooter } from '../src/Footers/Footers.stories.jsx';
 
 export default {
@@ -32,12 +33,9 @@ export const ExampleOne = () => (
           <LegendDefault />
         </Grid>
         <Grid item md={4} sm={12}>
-          <DarkMode />
+          <Archer darkMode lists={lists} />
         </Grid>
       </Grid>
-    </Container>
-    <Container maxWidth="xl">
-      <DarkMode />
     </Container>
     <Container>
       <Accessa.Features.Field
