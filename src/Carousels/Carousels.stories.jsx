@@ -18,38 +18,19 @@ export const Ladder = () => (
 export const Slideshow = () => (
   <Carousels.Slideshow
     data={carousels}
-    component={() => {
-      return (
-        <div
-          style={{
-            border: '2px solid white',
-            display: 'block',
-            height: 200,
-            background: 'blue',
-            width: '100%',
-          }}
-        />
-      );
-    }}
-  />
-);
-
-export const SlideshowWithLinks = () => (
-  <Carousels.Slideshow
-    data={carousels}
     redirect={(path) => alert(path)}
-    component={() => {
+    component={({ elementId, title }) => {
       return (
         <div
           style={{
             border: '2px solid white',
             display: 'block',
             height: 200,
-            background: 'blue',
+            background: 'lightblue',
             width: '100%',
           }}
         >
-          Google
+          <span id={elementId}>{title}</span>
         </div>
       );
     }}

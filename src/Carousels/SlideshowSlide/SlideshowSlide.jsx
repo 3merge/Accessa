@@ -10,21 +10,27 @@ const SlideshowSlide = ({
   title,
   width,
   ...rest
-}) => (
-  <Box
-    index={index}
-    display="inline-block"
-    height="auto"
-    width={`${width}%`}
-    component={PureSlide}
-    {...useLinkAttributes({
-      title,
-      ...rest,
-    })}
-  >
-    {children}
-  </Box>
-);
+}) => {
+  const attrs = useLinkAttributes({
+    title,
+    ...rest,
+  });
+
+  return (
+    <Box
+      index={index}
+      display="inline-block"
+      height="auto"
+      width={`${width}%`}
+      component={PureSlide}
+      {...attrs}
+    >
+      {React.cloneElement(children, {
+        elementId: attrs['aria-labelledby'],
+      })}
+    </Box>
+  );
+};
 
 SlideshowSlide.propTypes = {
   children: PropTypes.node.isRequired,
