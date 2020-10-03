@@ -5,24 +5,53 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import { Button } from '@material-ui/core';
-import Lightbox from '.';
+import LightboxWrapper from '.';
+import Lightbox from './Lightbox';
 import videos from '../../../cypress/fixtures/videos';
 
 <Meta title="Galleries/Lightbox" component={Lightbox} />
 
 # Lightbox
 
-**Vedio player with caption**
+A YouTube video dialog with preset open button.
+
+## Single dialog
 
 <Preview>
-  <Story name="Lightbox">
-    <Lightbox
-      lists={videos.map((item) => ({
-        ...item,
-        description: 'This is a description',
-        caption: 'And this is the video caption',
-      }))}
-    />
+  <Story name="Single Video">
+    <LightboxWrapper lists={videos.splice(0, 1)} />
+  </Story>
+</Preview>
+
+## Custom open dialog
+
+When given a function, the developer can customize the open
+button. Since it's iterable, the first parameter will
+contain properties of the active video.
+
+<Preview>
+  <Story name="Custom renderer">
+    <LightboxWrapper lists={videos.splice(0, 1)}>
+      {(video, renderer) => (
+        <p style={{ position: 'relative', width: 330 }}>
+          <img
+            src={video.img}
+            alt="Preview of video thumbnail"
+            style={{ width: '100%' }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%,-50%)',
+            }}
+          >
+            {renderer}
+          </div>
+        </p>
+      )}
+    </LightboxWrapper>
   </Story>
 </Preview>
 
