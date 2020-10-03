@@ -33,3 +33,25 @@ export const Slideshow = () => (
     }}
   />
 );
+
+export const SlideshowWithLinks = () => (
+  <Carousels.Slideshow
+    data={carousels}
+    redirect={(path) => alert(path)}
+    component={() => {
+      return (
+        <div
+          style={{
+            border: '2px solid white',
+            display: 'block',
+            height: 200,
+            background: 'blue',
+            width: '100%',
+          }}
+        >
+          Google
+        </div>
+      );
+    }}
+  />
+);
