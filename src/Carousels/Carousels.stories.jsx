@@ -18,17 +18,20 @@ export const Ladder = () => (
 export const Slideshow = () => (
   <Carousels.Slideshow
     data={carousels}
-    component={() => {
+    redirect={(path) => alert(path)}
+    component={({ elementId, title }) => {
       return (
         <div
           style={{
             border: '2px solid white',
             display: 'block',
             height: 200,
-            background: 'blue',
+            background: 'lightblue',
             width: '100%',
           }}
-        />
+        >
+          <span id={elementId}>{title}</span>
+        </div>
       );
     }}
   />

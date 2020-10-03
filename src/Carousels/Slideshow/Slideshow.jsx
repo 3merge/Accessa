@@ -3,7 +3,6 @@ import {
   CarouselProvider,
   Slider,
 } from 'pure-react-carousel';
-import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import SlideshowStepper from '../SlideshowStepper';
@@ -11,6 +10,7 @@ import useStyle from './useStyle';
 import withSlideCount from '../withSlideCount';
 import SlideshowNext from '../SlideshowNext';
 import SlideshowBack from '../SlideshowBack';
+import SlideshowSlide from '../SlideshowSlide';
 
 export const getListContainerWidth = (
   innerRef,
@@ -64,18 +64,18 @@ export default withSlideCount(
             >
               <Slider aria-label="Slider container">
                 {data.map((item, index) => (
-                  <Box
-                    display="inline-block"
-                    height="auto"
-                    width={`${width}%`}
+                  <SlideshowSlide
+                    {...item}
+                    {...rest}
+                    index={index}
+                    width={width}
                   >
                     <Slide
-                      key={index}
                       currentSlide={index}
                       {...item}
                       {...rest}
                     />
-                  </Box>
+                  </SlideshowSlide>
                 ))}
               </Slider>
             </Grid>

@@ -60,7 +60,11 @@ DialogContent.propTypes = {
   /**
    * Renders directly inside the modal <section /> element
    */
-  children: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.node,
+    PropTypes.array,
+  ]).isRequired,
 
   /**
    * The title text

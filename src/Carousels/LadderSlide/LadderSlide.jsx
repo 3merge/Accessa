@@ -4,6 +4,7 @@ import { Slide } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import Image from 'gatsby-image';
+import useLinkAttributes from '../useLinkAttributes';
 
 const LINK = 'link';
 
@@ -57,43 +58,21 @@ const SlideContent = styled.article`
   `}
 `;
 
-const LadderSlide = ({
-  currentSlide,
-  title,
-  href,
-  redirect,
-  ...rest
-}) => {
-  const role = href ? LINK : undefined;
-  const label = title.toLowerCase().replace(/\s/gi, '-');
-  const isLink = role === LINK;
-
-  const navigate = React.useCallback(() => {
-    if (!isLink) return;
-    if (typeof redirect === 'function') {
-      redirect(href);
-    }
-  }, []);
+const LadderSlide = ({ currentSlide, title, ...rest }) => {
+  const attrs = useLinkAttributes({
+    title,
+    ...rest,
+  });
 
   return (
-    <SlideWrapper
-      index={currentSlide}
-      {...(isLink
-        ? {
-            'role': undefined,
-            'aria-labelledby': label,
-            'data-href': href,
-            onClick: navigate,
-            onKeyPress: navigate,
-            'aria-selected': undefined,
-          }
-        : {})}
-    >
+    <SlideWrapper index={currentSlide} {...attrs}>
       <SlideContent>
         <ImageContainer>
           <Image {...rest} />
         </ImageContainer>
-        <ImageText id={label}>{title}</ImageText>
+        <ImageText id={attrs['aria-labelledby']}>
+          {title}
+        </ImageText>
       </SlideContent>
     </SlideWrapper>
   );
