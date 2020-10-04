@@ -7,14 +7,18 @@ export default ({ title, href, redirect }) => {
       redirect(href);
   }, [href, redirect]);
 
+  const common = {
+    role: 'option',
+  };
+
   return href
     ? {
-        'role': undefined,
         'aria-labelledby': label,
         'data-href': href,
         onClick: navigate,
         onKeyPress: navigate,
         'aria-selected': undefined,
+        ...common,
       }
-    : {};
+    : common;
 };

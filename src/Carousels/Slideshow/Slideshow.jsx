@@ -62,7 +62,17 @@ export default withSlideCount(
               xs
               zeroMinWidth
             >
-              <Slider aria-label="Slider container">
+              <Slider
+                role={undefined}
+                trayProps={{
+                  role: 'listbox',
+                  'aria-label':
+                    'Carousel listbox container',
+                }}
+                style={{
+                  overflow: 'hidden',
+                }}
+              >
                 {data.map((item, index) => (
                   <SlideshowSlide
                     {...item}
