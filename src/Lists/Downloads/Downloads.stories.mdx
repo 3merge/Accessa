@@ -1,0 +1,21 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import Downloads from './Downloads';
+
+<Meta title="Lists/Tree" component={Downloads} />
+
+# Downloads
+
+<Preview>
+  <Story name="Downloads">
+    <Downloads lists={downloadList} />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Downloads} />
