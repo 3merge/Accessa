@@ -5,41 +5,18 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import Field from './_Field';
+import blogList from '../../../cypress/fixtures/blogList';
 
 <Meta title="Features/Field" component={Field} />
 
 # Field
 
-**Renders list of title, body and action button. Returns
-null When lists prop is not an array or has no length**
-
-export const data = [
-  {
-    title:
-      'Rubber Deflector Strips and Cutting Edges for Snow Plows',
-    subtitle: 'Abrasion And High Wear Applications',
-    onClick: () => {},
-    description:
-      'Since our inception, municipalities and contractors alike have relied on CRG for rubber deflector strips and cutting edges for their snow plow fleets...',
-    fluid: {
-      src: 'https://source.unsplash.com/random',
-    },
-  },
-  {
-    title:
-      'Rubber Deflector Strips and Cutting Edges for Snow Plows',
-    onClick: () => {},
-    description:
-      'Since our inception, municipalities and contractors alike have relied on CRG for rubber deflector strips and cutting edges for their snow plow fleets...',
-    fluid: {
-      src: 'https://source.unsplash.com/random',
-    },
-  },
-];
+**Renders list of blog cards. Returns null When lists prop
+is not an array or has no length**
 
 <Preview>
   <Story name="Field">
-    <Field title="Related articles" data={data} />
+    <Field title="Related articles" lists={blogList} />
   </Story>
 </Preview>
 

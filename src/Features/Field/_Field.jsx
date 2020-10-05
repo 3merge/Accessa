@@ -8,9 +8,10 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
+import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({ data, title }) => {
+const Field = ({ lists, title }) => {
   const {
     cardTitle,
     subtitle,
@@ -32,7 +33,7 @@ const Field = ({ data, title }) => {
         component="ul"
         className={ul}
       >
-        {data.map((img, i) => (
+        {lists.map((img, i) => (
           <Grid
             item
             component="li"
@@ -79,20 +80,19 @@ const Field = ({ data, title }) => {
 };
 
 Field.propTypes = {
-  data: PropTypes.arrayOf(
+  lists: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
       src: PropTypes.string,
       onClick: PropTypes.func,
     }),
-  ),
+  ).isRequired,
   title: '',
 };
 
 Field.defaultProps = {
-  data: [],
   title: PropTypes.string,
 };
 
-export default Field;
+export default renderListSafely(Field);
