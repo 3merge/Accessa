@@ -37,8 +37,6 @@ const Field = ({ lists, title }) => {
           <Grid
             item
             component="li"
-            onClick={img.onClick}
-            onKeyPress={img.onClick}
             key={i}
             xs={12}
             sm={6}
@@ -46,7 +44,11 @@ const Field = ({ lists, title }) => {
             lg={3}
           >
             <Card style={{ height: '100%' }}>
-              <CardActionArea>
+              <CardActionArea
+                onClick={img.onClick}
+                onKeyPress={img.onClick}
+                style={{ height: '100%' }}
+              >
                 <Image
                   fluid={img.fluid}
                   style={{ width: '100%', height: '200px' }}
