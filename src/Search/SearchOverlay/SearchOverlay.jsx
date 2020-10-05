@@ -6,32 +6,11 @@ import {
   Container,
   IconButton,
   TextField,
-  List,
-  ListItemText,
 } from '@material-ui/core';
-import { Link } from '@reach/router';
 import { Search } from '@material-ui/icons';
 import { Dialog } from '../../Utils';
+import { Archer } from '../../Lists';
 import useInput from './useInput';
-
-const LinkLists = ({ subheader, lists }) => (
-  <List
-    subheader={
-      <p style={{ fontWeight: 'bold' }}>{subheader}</p>
-    }
-  >
-    {lists.map((x) => (
-      <ListItemText key={x.name}>
-        <Link
-          to={x.path}
-          style={{ textDecoration: 'none' }}
-        >
-          {x.name}
-        </Link>
-      </ListItemText>
-    ))}
-  </List>
-);
 
 const renderSearchResult = (obj) => {
   if (Object.keys(obj).length === 0) return null;
@@ -55,7 +34,7 @@ const renderSearchResult = (obj) => {
             lg={3}
             key={x[0]}
           >
-            <LinkLists subheader={x[0]} lists={x[1]} />
+            <Archer subheader={x[0]} lists={x[1]} />
           </Grid>
         ))}
       </Grid>
