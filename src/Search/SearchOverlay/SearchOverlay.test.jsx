@@ -24,7 +24,7 @@ describe('SearchOverlay', () => {
       new Promise((resolve) => resolve(d)).then((x) => x);
 
     it('should throw an error for unexpected data shape', () => {
-      const wrapper = mount(
+      const wrapper = shallow(
         <SearchOverlay
           searchRequest={searchRequest({ docs: [] })}
         />,
@@ -35,7 +35,9 @@ describe('SearchOverlay', () => {
         .props()
         .children().props.children[0].props;
 
-      expect(onSubmit()).toBeNull();
+      expect(() => {
+        onSubmit();
+      }).toThrow('Expected an objects of arrays');
     });
 
     it.todo('should call onSubmitCallback when provided');
