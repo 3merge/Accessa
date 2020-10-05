@@ -12,7 +12,7 @@ import { Dialog } from '../../Utils';
 import { Archer } from '../../Lists';
 import useInput from './useInput';
 
-const renderSearchResult = (obj) => {
+export const renderSearchResult = (obj) => {
   if (Object.keys(obj).length === 0) return null;
 
   const filtered = Object.entries(obj).filter(
@@ -90,6 +90,12 @@ const SearchOverlay = ({
         throw err;
       });
   };
+
+  React.useEffect(() => {
+    if (value) {
+      handleSubmit();
+    }
+  }, [value]);
 
   return (
     <Dialog
