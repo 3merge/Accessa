@@ -5,6 +5,10 @@ const useStyles = makeStyles(({ palette }) => ({
     alignSelf: 'flex-end',
     color: palette.primary.contrastText,
   }),
+  container: () => ({
+    backgroundColor: palette.background.default,
+    height: '100vh',
+  }),
 }));
 
 export default useStyles;

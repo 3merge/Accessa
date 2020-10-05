@@ -1,0 +1,44 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import SearchOverlay from './SearchOverlay';
+
+export const searchRequest = (input) =>
+  new Promise(
+    (resolve, reject) =>
+      resolve({
+        people: [
+          { name: 'Jon Doe', path: '/peope/jondoe' },
+        ],
+        docs: [
+          { name: 'apply', path: '/docs/apply' },
+          { name: 'map', path: '/docs/map' },
+        ],
+        articles: [{ name: 'OOP', path: '/articles/oop' }],
+      }),
+    // reject({ error: 'error' }),
+  )
+    .then((d) => d)
+    .catch((e) => {
+      return null;
+    });
+
+<Meta
+  title="Search/SearchOverlay"
+  component={SearchOverlay}
+/>
+
+# SearchOverlay
+
+<Preview>
+  <Story name="SearchOverlay">
+    <SearchOverlay searchRequest={searchRequest} />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={SearchOverlay} />
