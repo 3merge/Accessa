@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import {
   Card,
-  CardActionArea,
   CardContent,
   Typography,
   Grid,
