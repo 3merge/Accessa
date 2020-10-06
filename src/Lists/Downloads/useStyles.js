@@ -1,8 +1,23 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({ palette }) => ({
+  wrapper: {
+    background: palette.background.paper,
+    width: '100%',
+    padding: '1rem',
+  },
   title: {
     fontWeight: 'bold',
+    display: 'block',
+    marginBottom: '.3rem',
+    color: palette.text.primary,
+  },
+  size: {
+    color: palette.text.secondary,
+    fontSize: '.8rem',
+  },
+  icon: {
+    color: palette.text.secondary,
   },
 }));
 

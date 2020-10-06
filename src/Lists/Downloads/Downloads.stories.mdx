@@ -5,21 +5,17 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import Downloads from './Downloads';
+import {
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
+import downloadList from '../../../cypress/fixtures/fileDownloads.json';
 
-export const downloadList = [
-  {
-    title: 'My file',
-    size: 'PDF 1,333KB',
-    path: './../../../cypress/fixtures/videos.json',
-    file: 'NewFile.json',
+export const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
   },
-  // {
-  //   title: 'Secret file',
-  //   size: 'PDF 2KB',
-  //   path: './../../../cypress/fixtures/videos.json',
-  //   file: 'secret.json',
-  // },
-];
+});
 
 <Meta title="Lists/Downloads" component={Downloads} />
 
@@ -27,7 +23,27 @@ export const downloadList = [
 
 <Preview>
   <Story name="Downloads">
+    <Downloads
+      lists={downloadList}
+      gridItem={{ xs: 12, sm: 6 }}
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="OneColumnDownloads">
     <Downloads lists={downloadList} />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="DarkDownloads">
+    <ThemeProvider theme={darkTheme}>
+      <Downloads
+        lists={downloadList}
+        gridItem={{ xs: 12, sm: 6 }}
+      />
+    </ThemeProvider>
   </Story>
 </Preview>
 
