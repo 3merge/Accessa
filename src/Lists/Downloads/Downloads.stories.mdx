@@ -6,7 +6,22 @@ import {
 } from '@storybook/addon-docs/blocks';
 import Downloads from './Downloads';
 
-<Meta title="Lists/Tree" component={Downloads} />
+export const downloadList = [
+  {
+    title: 'My file',
+    size: 'PDF 1,333KB',
+    path: './../../../cypress/fixtures/videos.json',
+    file: 'NewFile.json',
+  },
+  // {
+  //   title: 'Secret file',
+  //   size: 'PDF 2KB',
+  //   path: './../../../cypress/fixtures/videos.json',
+  //   file: 'secret.json',
+  // },
+];
+
+<Meta title="Lists/Downloads" component={Downloads} />
 
 # Downloads
 
