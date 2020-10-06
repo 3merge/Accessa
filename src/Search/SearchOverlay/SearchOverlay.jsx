@@ -8,6 +8,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Dialog } from '../../Utils';
 import { Archer } from '../../Lists';
 import useInput from './useInput';
@@ -23,7 +24,12 @@ export const renderSearchResult = (obj) => {
     return <Box mt={5}>No match</Box>;
 
   return (
-    <Box mt={5}>
+    <Box
+      mt={5}
+      role="region"
+      id="search-results"
+      aria-live="polite"
+    >
       <Grid container>
         {filtered.map((x) => (
           <Grid
@@ -59,12 +65,21 @@ const SearchOverlay = ({
   searchRequest,
   onSubmitCallback,
 }) => {
-  const [{ value, error }, { onChange }] = useInput();
-
-  const [data, setData] = React.useState({
+  const initialState = {
     data: {},
     error: null,
-  });
+  };
+
+  const [
+    { value, error },
+    { onChange, reset },
+  ] = useInput();
+  const [data, setData] = React.useState(initialState);
+
+  const handleReset = () => {
+    setData(initialState);
+    reset();
+  };
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
@@ -101,6 +116,7 @@ const SearchOverlay = ({
   return (
     <Dialog
       ButtonComponent={SearchIcon}
+      onExit={handleReset}
       fullScreen
       id="search"
       title="Search"
@@ -113,13 +129,25 @@ const SearchOverlay = ({
                 value={value}
                 onChange={onChange}
                 id="search"
-                label="search"
+                aria-controls="search-results"
+                aria-label="Enter a search term"
                 variant="outlined"
                 color="primary"
                 helperText={error || ''}
                 error={Boolean(error)}
                 fullWidth
                 required
+                inputProps={{
+                  autocomplete: 'off',
+                }}
+                // eslint-disable-next-line
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Search />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </form>
             {data.error && <p>{data.error}</p>}
