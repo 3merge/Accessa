@@ -27,7 +27,7 @@ const getCount = () => {
   return 5;
 };
 
-const Header = ({ title, subtitle, ...rest }) => {
+const Header = ({ children, title, subtitle, ...rest }) => {
   const [count, setCount] = React.useState(0);
 
   React.useEffect(() => {
@@ -43,10 +43,19 @@ const Header = ({ title, subtitle, ...rest }) => {
     <HeaderBase>
       <BackgroundCoverImage {...rest} />
       <VerticalLines backgroundColor="#FFF" count={count} />
-      <Container maxWidth="md">
+      <Container
+        maxWidth="md"
+        style={{
+          height: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          display: 'flex',
+        }}
+      >
         <Box position="relative" textAlign="center">
           <Headline>{title}</Headline>
           <Tagline>{subtitle}</Tagline>
+          {children}
         </Box>
       </Container>
     </HeaderBase>
@@ -56,10 +65,12 @@ const Header = ({ title, subtitle, ...rest }) => {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Header.defaultProps = {
   subtitle: '',
+  children: null,
 };
 
 export default Header;
