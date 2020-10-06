@@ -1,6 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { Dialog } from '../../Utils';
+import { shallow } from 'enzyme';
 import { renderSearchResult } from './SearchOverlay';
 import SearchOverlay from '.';
 
@@ -21,25 +20,43 @@ describe('SearchOverlay', () => {
 
   describe('"onSubmit"', () => {
     const searchRequest = (d) => () =>
-      new Promise((resolve) => resolve(d)).then((x) => x);
+      new Promise((resolve) => resolve(d))
+        .then((x) => x)
+        .catch((e) => {
+          return e;
+        });
+
+    const getProps = (search, callback) =>
+      shallow(
+        <SearchOverlay
+          searchRequest={search}
+          onSubmitCallback={callback}
+        />,
+      )
+        .dive()
+        .find('form')
+        .props();
 
     it('should throw an error for unexpected data shape', () => {
-      const wrapper = shallow(
-        <SearchOverlay
-          searchRequest={searchRequest({ docs: [] })}
-        />,
+      const { onSubmit } = getProps(
+        searchRequest({ data: {} }),
       );
 
-      const { onSubmit } = wrapper
-        .find(Dialog)
-        .props()
-        .children().props.children[0].props;
-
-      expect(() => {
-        onSubmit();
-      }).toThrow('Expected an objects of arrays');
+      return expect(onSubmit()).resolves.toBeDefined();
     });
 
-    it.todo('should call onSubmitCallback when provided');
+    it('should call onSubmitCallback when provided', async () => {
+      const onSubmitCallback = jest.fn();
+      const { onSubmit } = getProps(
+        searchRequest({ docs: ['here'] }),
+        onSubmitCallback,
+      );
+
+      await onSubmit();
+
+      expect(onSubmitCallback).toHaveBeenCalledWith({
+        docs: ['here'],
+      });
+    });
   });
 });

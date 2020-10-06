@@ -70,7 +70,8 @@ const SearchOverlay = ({
     if (e) e.preventDefault();
     if (error != null) return;
 
-    searchRequest(value)
+    // eslint-disable-next-line consistent-return
+    return searchRequest(value)
       .then((d) => {
         if (
           d == null ||
@@ -85,9 +86,9 @@ const SearchOverlay = ({
       .catch((err) => {
         setData({
           ...data,
-          error: 'something went wrong...',
+          error: err.message,
         });
-        throw err;
+        return err;
       });
   };
 
