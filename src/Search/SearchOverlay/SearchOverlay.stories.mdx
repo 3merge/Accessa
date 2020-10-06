@@ -1,0 +1,66 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { navigate } from '@reach/router';
+import SearchOverlay from './SearchOverlay';
+
+export const searchRequest = (input) =>
+  new Promise((resolve, reject) =>
+    resolve({
+      People: [
+        {
+          listItemText: 'Jon Doe',
+          onClick: () => navigate('/peope/jondoe'),
+        },
+      ],
+      Docs: [
+        {
+          listItemText: 'apply',
+          onClick: () => navigate('/docs/apply'),
+        },
+        {
+          listItemText: 'map',
+          onClick: () => navigate('/docs/map'),
+        },
+        {
+          listItemText: 'call',
+          onClick: () => navigate('/docs/map'),
+        },
+        {
+          listItemText: 'reduce',
+          onClick: () => navigate('/docs/apply'),
+        },
+      ],
+      Articles: [
+        {
+          listItemText: 'OOP',
+          onClick: () => navigate('/articles/oop'),
+        },
+      ],
+    }),
+  )
+    .then((d) => d)
+    .catch((e) => {
+      console.log('here');
+      return null;
+    });
+
+<Meta
+  title="Search/SearchOverlay"
+  component={SearchOverlay}
+/>
+
+# SearchOverlay
+
+<Preview>
+  <Story name="SearchOverlay">
+    <SearchOverlay searchRequest={searchRequest} />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={SearchOverlay} />

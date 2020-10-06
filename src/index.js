@@ -9,4 +9,5 @@ export * as Layouts from './Layouts';
 export * as Lists from './Lists';
 export * as Navigation from './Navigation';
 export * as Partials from './Partials';
+export * as Search from './Search';
 export * as Sections from './Sections';
