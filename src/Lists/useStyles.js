@@ -1,27 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(({ palette }) => ({
-  root: ({ darkMode }) => ({
-    backgroundColor: darkMode
-      ? palette.primary.dark
-      : palette.common.white,
-    color: darkMode
-      ? palette.primary.contrastText
-      : palette.text.primary,
-  }),
-  list: ({ darkMode, underline }) => {
+  list: ({ underline }) => {
+    const p = underline ? undefined : 0;
+
     return {
-      color: darkMode
-        ? palette.common.white
-        : palette.common.black,
+      color: palette.text.primary,
+      paddingBottom: p,
+      paddingTop: p,
 
       '&:not(:last-of-type)': {
-        // eslint-disable-next-line no-nested-ternary
-        borderBottom: underline
-          ? darkMode
-            ? `1px solid ${palette.common.white}`
-            : `1px solid ${palette.common.black}`
-          : '1px solid transparent',
+        borderBottom: `1px solid ${
+          underline ? palette.text.primary : 'transparent'
+        }`,
       },
     };
   },
