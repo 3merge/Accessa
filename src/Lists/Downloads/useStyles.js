@@ -1,8 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(({ palette, shadows }) => ({
   wrapper: {
     background: palette.background.paper,
+    boxShadow: shadows[2],
     width: '100%',
     padding: '1rem',
   },

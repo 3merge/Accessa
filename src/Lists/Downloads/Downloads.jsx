@@ -5,12 +5,19 @@ import { GetApp } from '@material-ui/icons';
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Downloads = ({ lists, gridItem }) => {
+export const Downloads = ({ lists, gridItem }) => {
   const { wrapper, title, size, icon } = useStyles();
+
   return (
     <Grid container component="ul" spacing={4}>
       {lists.map((list) => (
-        <Grid container item component="li" {...gridItem}>
+        <Grid
+          key={list.path}
+          container
+          item
+          component="li"
+          {...gridItem}
+        >
           <Grid
             container
             item
@@ -21,15 +28,18 @@ const Downloads = ({ lists, gridItem }) => {
             className={wrapper}
           >
             <Grid item>
-              <span className={[title]}>{list.title}</span>
+              <span className={title}>{list.title}</span>
               <span className={size}>{list.size}</span>
             </Grid>
             <Grid item>
-              <a href={list.path} download={list.file}>
-                <IconButton aria-label="download">
-                  <GetApp className={icon} />
-                </IconButton>
-              </a>
+              <IconButton
+                aria-label="Download file"
+                component="a"
+                download
+                href={list.path}
+              >
+                <GetApp className={icon} />
+              </IconButton>
             </Grid>
           </Grid>
         </Grid>
@@ -43,6 +53,9 @@ Downloads.defaultProps = {
 };
 
 Downloads.propTypes = {
+  /**
+   * The list attribute is type-checked via `renderListSafely` HOC.
+   */
   lists: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -51,6 +64,10 @@ Downloads.propTypes = {
       path: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+
+  /**
+   * Used to customize the width of each download. This matches MUI's underlying grid item props.
+   */
   gridItem: PropTypes.shape({
     xs: PropTypes.number,
     sm: PropTypes.number,
