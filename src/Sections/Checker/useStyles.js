@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
     alignContent: 'center',
     rowGap: '1.2rem',
     textAlign: 'center',
+    height: '100%',
 
     '*': {
       color: 'inherit',
@@ -16,6 +17,7 @@ const useStyles = makeStyles(() => ({
   }),
   background: ({ color }) => ({
     backgroundColor: color,
+    filter: 'brightness(.5)',
     opacity: 0.25,
     position: 'absolute',
     top: 0,
@@ -23,9 +25,6 @@ const useStyles = makeStyles(() => ({
     right: 0,
     left: 0,
   }),
-  title: {
-    fontWeight: 'bold',
-  },
   main: {
     fontWeight: 'bold',
     fontSize: '1.5rem',

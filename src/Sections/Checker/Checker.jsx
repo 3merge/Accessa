@@ -12,17 +12,14 @@ const Checker = ({ title, main, children, color }) => {
     <Box className={classes.root} p={4} position="relative">
       <Box className={classes.background} />
       <Box position="relative">
-        <Typography
-          className={classes.title}
-          variant="subtitle1"
-          color="inherit"
-        >
+        <Typography color="inherit" variant="overline">
           {title}
         </Typography>
         <Typography
           className={classes.main}
-          variant="h4"
           color="inherit"
+          component="p"
+          variant="h4"
         >
           {main}
         </Typography>
