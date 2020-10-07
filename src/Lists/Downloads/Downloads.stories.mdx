@@ -1,0 +1,61 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import Box from '@material-ui/core/Box';
+import DownloadsWrapper, { Downloads } from './Downloads';
+import {
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
+import downloadList from '../../../cypress/fixtures/fileDownloads.json';
+
+export const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
+<Meta title="Lists/Downloads" component={Downloads} />
+
+# Downloads
+
+A simple list component for providing users with banks of
+downloadable files. Each component renders file size, type
+and name by default. As shown in the stories below, this
+also supports DarkMode.
+
+## Stacked
+
+Unless specified, each downloadable occupies the full width
+of its container.
+
+<Preview>
+  <Story name="Stacked">
+    <Box px={2} my={4} bgcolor="grey.900">
+      <DownloadsWrapper lists={downloadList} />
+    </Box>
+  </Story>
+</Preview>
+
+## Customized
+
+Providing dimensions via `gridItem` will allow developers to
+make the list items gridded instead.
+
+<Preview>
+  <Story name="Customized">
+    <ThemeProvider theme={darkTheme}>
+      <DownloadsWrapper
+        lists={downloadList}
+        gridItem={{ xs: 12, sm: 6 }}
+      />
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Downloads} />

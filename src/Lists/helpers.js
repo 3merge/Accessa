@@ -1,5 +1,4 @@
 export const addLeadingZero = (i) => {
-  const leading = i + 1;
-  const str = String(leading);
+  const str = String(i + 1);
   return str.length === 1 ? `0${str}` : str;
 };

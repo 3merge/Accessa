@@ -1,4 +1,5 @@
 export { default as Archer } from './Archer';
+export { default as Downloads } from './Downloads';
 export { default as Elements } from './Elements';
 export { default as ListWithNestedLists } from './ListWithNestedLists';
 export { default as ListItem } from './ListItem';
