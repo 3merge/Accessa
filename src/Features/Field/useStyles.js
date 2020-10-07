@@ -11,7 +11,8 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   title: {
-    fontSize: '1.8rem',
+    fontSize: '1.6rem',
+    margin: 0,
     marginBottom: '2rem',
   },
   subtitle: {

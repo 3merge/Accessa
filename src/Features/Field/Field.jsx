@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import {
+  Box,
   Card,
   CardContent,
   Typography,
@@ -10,7 +11,12 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({ lists, title }) => {
+const Field = ({
+  component: Wrapper,
+  lists,
+  title,
+  description,
+}) => {
   const {
     card,
     cardTitle,
@@ -21,11 +27,18 @@ const Field = ({ lists, title }) => {
   } = useStyles();
 
   return (
-    <div>
+    <Wrapper>
       {title && (
         <Typography variant="h3" className={pageTitle}>
           {title}
         </Typography>
+      )}
+      {description && (
+        <Box mt={-2} mb={2}>
+          <Typography component="p" variant="subtitle1">
+            {description}
+          </Typography>
+        </Box>
       )}
       <Grid
         container
@@ -42,6 +55,10 @@ const Field = ({ lists, title }) => {
             sm={6}
             md={4}
             lg={3}
+            style={{
+              flexGrow: 1,
+              maxWidth: '100%',
+            }}
           >
             <Card
               onClick={img.onClick}
@@ -76,7 +93,7 @@ const Field = ({ lists, title }) => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Wrapper>
   );
 };
 
@@ -89,11 +106,15 @@ Field.propTypes = {
       onClick: PropTypes.func,
     }),
   ).isRequired,
-  title: '',
+  title: PropTypes.string,
+  description: PropTypes.string,
+  component: PropTypes.func,
 };
 
 Field.defaultProps = {
-  title: PropTypes.string,
+  component: (props) => React.createElement('div', props),
+  title: '',
+  description: '',
 };
 
 export default renderListSafely(Field);
