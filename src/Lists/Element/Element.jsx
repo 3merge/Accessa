@@ -26,12 +26,12 @@ const Element = ({
         isFirst ? classes.first : '',
       ]}
     >
-      {alt && src ? (
+      {alt && src && isFirst ? (
         <ListItemAvatar>
           <Avatar
             className={classes.avatarImg}
-            alt="place holder"
-            src="https://source.unsplash.com/random"
+            alt={alt}
+            src={src}
           />
         </ListItemAvatar>
       ) : null}
