@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import {
   Card,
-  CardActionArea,
   CardContent,
   Typography,
   Grid,
@@ -13,6 +12,7 @@ import useStyles from './useStyles';
 
 const Field = ({ lists, title }) => {
   const {
+    card,
     cardTitle,
     subtitle,
     title: pageTitle,
@@ -22,7 +22,11 @@ const Field = ({ lists, title }) => {
 
   return (
     <div>
-      {title && <p className={pageTitle}>{title}</p>}
+      {title && (
+        <Typography variant="h3" className={pageTitle}>
+          {title}
+        </Typography>
+      )}
       <Grid
         container
         spacing={6}
@@ -39,36 +43,35 @@ const Field = ({ lists, title }) => {
             md={4}
             lg={3}
           >
-            <Card style={{ height: '100%' }}>
-              <CardActionArea
-                onClick={img.onClick}
-                onKeyPress={img.onClick}
-                style={{ height: '100%' }}
-              >
-                <Image
-                  fluid={img.fluid}
-                  style={{ width: '100%', height: '180px' }}
-                />
-                <CardContent>
-                  {img.subtitle ? (
-                    <span className={subtitle}>
-                      {img.subtitle}
-                    </span>
-                  ) : null}
-                  <Typography
-                    variant="h4"
-                    className={cardTitle}
-                  >
-                    {img.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    className={body1}
-                  >
-                    {img.description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
+            <Card
+              onClick={img.onClick}
+              onKeyPress={img.onClick}
+              className={card}
+              tabIndex={0}
+            >
+              <Image
+                fluid={img.fluid}
+                style={{ width: '100%', height: '200px' }}
+              />
+              <CardContent>
+                {img.subtitle ? (
+                  <span className={subtitle}>
+                    {img.subtitle}
+                  </span>
+                ) : null}
+                <Typography
+                  variant="h4"
+                  className={cardTitle}
+                >
+                  {img.title}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  className={body1}
+                >
+                  {img.description}
+                </Typography>
+              </CardContent>
             </Card>
           </Grid>
         ))}
@@ -86,11 +89,11 @@ Field.propTypes = {
       onClick: PropTypes.func,
     }),
   ).isRequired,
-  title: PropTypes.string,
+  title: '',
 };
 
 Field.defaultProps = {
-  title: '',
+  title: PropTypes.string,
 };
 
 export default renderListSafely(Field);
