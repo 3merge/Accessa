@@ -6,16 +6,14 @@ import useStyles from './useStyles';
 const Menu = ({ setMenu, reset, currentMenu, index }) => {
   const { ul } = useStyles();
 
-  const handleKeyDown = (e) =>
-    e.key.toLowerCase() === 'enter' ? setMenu() : null;
-
   return (
     <Grid item component="li">
       <Grid
         container
         onMouseOver={setMenu}
         onMouseLeave={reset}
-        onKeyDown={handleKeyDown}
+        onFocus={setMenu}
+        onBlur={reset}
       >
         <Grid item xs={12} tabIndex={0}>
           Top Menu
