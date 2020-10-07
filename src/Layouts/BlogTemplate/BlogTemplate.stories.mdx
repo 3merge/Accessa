@@ -1,0 +1,50 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import BlogTemplate from './BlogTemplate';
+import blogList from '../../../cypress/fixtures/blogList.js';
+
+export const Children = () => (
+  <div>
+    <h2>This is my first blog</h2>
+    <p>
+      Lorem ipsum is placeholder text commonly used in the
+      graphic, print, and publishing industries for
+      previewing layouts and visual mockups.
+    </p>
+  </div>
+);
+
+export const mast = {
+  title: 'Blog Template',
+};
+
+<Meta
+  title="Layouts/BlogTemplate"
+  component={BlogTemplate}
+/>
+
+# BlogTemplate
+
+**Renders blog templete.**
+
+<Preview>
+  <Story name="BlogTemplate">
+    <BlogTemplate
+      HeaderProps={mast}
+      FeatureProps={{
+        lists: blogList,
+        title: 'Related articles',
+      }}
+    >
+      <Children />
+    </BlogTemplate>
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={BlogTemplate} />
