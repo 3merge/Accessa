@@ -5,6 +5,7 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import BlogTemplate from './BlogTemplate';
+import blogList from '../../../cypress/fixtures/blogList.js';
 
 export const Children = () => (
   <div>
@@ -32,7 +33,10 @@ export const mast = {
 
 <Preview>
   <Story name="BlogTemplate">
-    <BlogTemplate mast={mast}>
+    <BlogTemplate
+      mast={mast}
+      field={{ lists: blogList, title: 'Related articles' }}
+    >
       <Children />
     </BlogTemplate>
   </Story>
