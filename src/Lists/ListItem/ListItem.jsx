@@ -20,8 +20,7 @@ const List = ({
     <ListItem
       onClick={onClick}
       component="li"
-      className={[classes.list, classes.listButton]}
-      button
+      className={`${classes.list} ${classes.listButton}`}
     >
       <ChevronRight />
       <ListItemText primary={listItemText} />
