@@ -6,14 +6,8 @@ import ListItemWrapper from '../ListItemWrapper';
 import useStyles from '../useStyles';
 import { renderListSafely } from '../../Hocs';
 
-export const Archer = ({
-  subheader,
-  darkMode,
-  underline,
-  lists,
-}) => {
+export const Archer = ({ subheader, underline, lists }) => {
   const classes = useStyles({
-    darkMode,
     underline,
   });
 
@@ -32,7 +26,6 @@ export const Archer = ({
     >
       <ListItemWrapper
         lists={lists}
-        darkMode={darkMode}
         underline={underline}
       />
     </List>
@@ -41,13 +34,11 @@ export const Archer = ({
 
 Archer.defaultProps = {
   underline: false,
-  darkMode: false,
   subheader: '',
   lists: [],
 };
 
 Archer.propTypes = {
-  darkMode: PropTypes.bool,
   underline: PropTypes.bool,
   subheader: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
