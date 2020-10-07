@@ -47,7 +47,7 @@ const Field = ({ lists, title }) => {
               >
                 <Image
                   fluid={img.fluid}
-                  style={{ width: '100%', height: '200px' }}
+                  style={{ width: '100%', height: '180px' }}
                 />
                 <CardContent>
                   {img.subtitle ? (
@@ -86,11 +86,11 @@ Field.propTypes = {
       onClick: PropTypes.func,
     }),
   ).isRequired,
-  title: '',
+  title: PropTypes.string,
 };
 
 Field.defaultProps = {
-  title: PropTypes.string,
+  title: '',
 };
 
 export default renderListSafely(Field);
