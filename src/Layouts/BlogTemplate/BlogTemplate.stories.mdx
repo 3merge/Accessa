@@ -34,8 +34,11 @@ export const mast = {
 <Preview>
   <Story name="BlogTemplate">
     <BlogTemplate
-      mast={mast}
-      field={{ lists: blogList, title: 'Related articles' }}
+      HeaderProps={mast}
+      FeatureProps={{
+        lists: blogList,
+        title: 'Related articles',
+      }}
     >
       <Children />
     </BlogTemplate>
