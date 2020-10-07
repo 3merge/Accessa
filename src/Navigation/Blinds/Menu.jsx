@@ -3,25 +3,21 @@ import { Grid, Collapse } from '@material-ui/core';
 import { Link } from '@reach/router';
 import useStyles from './useStyles';
 
-const Menu = ({
-  setMenu,
-  resetMenu,
-  currentMenu,
-  index,
-}) => {
-  // const [hidden, setHidden] = React.useState(true);
+const Menu = ({ setMenu, reset, currentMenu, index }) => {
   const { ul } = useStyles();
+
+  const handleKeyDown = (e) =>
+    e.key.toLowerCase() === 'enter' ? setMenu() : null;
 
   return (
     <Grid item component="li">
       <Grid
         container
         onMouseOver={setMenu}
-        resetMenu={resetMenu}
-        onKeyDown={setMenu}
-        tabIndex={0}
+        onMouseLeave={reset}
+        onKeyDown={handleKeyDown}
       >
-        <Grid item xs={12}>
+        <Grid item xs={12} tabIndex={0}>
           Top Menu
         </Grid>
         <Collapse in={currentMenu === index}>
@@ -29,7 +25,12 @@ const Menu = ({
             <Grid item xs={12} component="li">
               <Link to="/">item 1</Link>
             </Grid>
-            <Grid item xs={12} component="li">
+            <Grid
+              item
+              xs={12}
+              component="li"
+              onBlur={reset}
+            >
               <Link to="/">item 2</Link>
             </Grid>
           </ul>

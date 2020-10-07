@@ -9,12 +9,7 @@ const Blinds = () => {
 
   const setMenu = (index) => () => setCurrentMenu(index);
 
-  const resetMenu = () => setCurrentMenu(-1);
-
-  const escape = (e) => {
-    console.log('hit');
-    e.key === 'escape' ? resetMenu() : null;
-  };
+  const reset = () => setCurrentMenu(-1);
 
   return (
     <div style={{ backgroundColor: 'tomato' }}>
@@ -25,9 +20,8 @@ const Blinds = () => {
               key={i}
               setMenu={setMenu(i)}
               index={i}
-              resetMenu={resetMenu}
+              reset={reset}
               currentMenu={currentMenu}
-              onKeyDown={escape}
             />
           ))}
         </Grid>
