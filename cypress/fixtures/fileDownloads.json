@@ -1,0 +1,14 @@
+[
+  {
+    "title": "My file",
+    "size": "PDF 1,333KB",
+    "path": "./../../../cypress/fixtures/videos.json",
+    "file": "NewFile.json"
+  },
+  {
+    "title": "Secret file",
+    "size": "PDF 2KB",
+    "path": "./../../../cypress/fixtures/videos.json",
+    "file": "secret.json"
+  }
+]
