@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Collapse } from '@material-ui/core';
+import { Box, Grid, Collapse } from '@material-ui/core';
 import { Link } from '@reach/router';
 import useStyles from './useStyles';
 
@@ -14,16 +14,16 @@ const Dropdown = ({ item }) => {
     ref?.current?.getBoundingClientRect() || {};
 
   return (
-    <Grid
+    <Box
       container
       onMouseOver={activate}
       onMouseLeave={deactivate}
       onFocus={activate}
       onBlur={deactivate}
     >
-      <Grid item xs={12} tabIndex={0} ref={ref}>
+      <Box tabIndex={0} ref={ref}>
         {item.main}
-      </Grid>
+      </Box>
       <Collapse
         in={active}
         style={{
@@ -55,7 +55,7 @@ const Dropdown = ({ item }) => {
           ))}
         </ul>
       </Collapse>
-    </Grid>
+    </Box>
   );
 };
 
