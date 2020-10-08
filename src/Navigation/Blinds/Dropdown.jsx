@@ -15,13 +15,19 @@ const Dropdown = ({ item }) => {
 
   return (
     <Box
-      container
       onMouseOver={activate}
       onMouseLeave={deactivate}
       onFocus={activate}
       onBlur={deactivate}
     >
-      <Box tabIndex={0} ref={ref}>
+      <Box
+        aria-haspopup="true"
+        aria-expanded={active}
+        component="span"
+        ref={ref}
+        role="button"
+        tabIndex={0}
+      >
         {item.main}
       </Box>
       <Collapse
