@@ -18,20 +18,18 @@ const Element = ({
   isFirst,
 }) => {
   const classes = useStyles();
+  const classNames = isFirst
+    ? `${classes.listWrapper} ${classes.first}`
+    : classes.listWrapper;
 
   return (
-    <ListItem
-      className={[
-        classes.listWrapper,
-        isFirst ? classes.first : '',
-      ]}
-    >
-      {alt && src ? (
+    <ListItem className={classNames}>
+      {alt && src && isFirst ? (
         <ListItemAvatar>
           <Avatar
             className={classes.avatarImg}
-            alt="place holder"
-            src="https://source.unsplash.com/random"
+            alt={alt}
+            src={src}
           />
         </ListItemAvatar>
       ) : null}

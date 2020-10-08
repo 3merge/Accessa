@@ -6,6 +6,17 @@ import {
 } from '@storybook/addon-docs/blocks';
 import { Archer } from './Archer';
 import { lists } from '../../../cypress/fixtures/lists';
+import {
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+
+export const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 # Archer
 
@@ -32,7 +43,11 @@ nested items
 
 <Preview>
   <Story name="DarkMode">
-    <Archer lists={lists} darkMode />
+    <ThemeProvider theme={darkTheme}>
+      <Paper>
+        <Archer lists={lists} darkMode />
+      </Paper>
+    </ThemeProvider>
   </Story>
 </Preview>
 

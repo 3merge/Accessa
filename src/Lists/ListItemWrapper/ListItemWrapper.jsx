@@ -3,22 +3,15 @@ import PropTypes from 'prop-types';
 import ListItem from '../ListItem';
 import ListWithNestedLists from '../ListWithNestedLists';
 
-const ListWrapper = ({ lists, underline, darkMode }) => {
+const ListWrapper = ({ lists, underline }) => {
   return lists.map((list) =>
-    list.nestedItems ? (
-      <ListWithNestedLists
-        key={list.listItemText}
-        {...list}
-        underline={underline}
-        darkMode={darkMode}
-      />
-    ) : (
-      <ListItem
-        key={list.listItemText}
-        {...list}
-        underline={underline}
-        darkMode={darkMode}
-      />
+    React.createElement(
+      list.nestedItems ? ListWithNestedLists : ListItem,
+      {
+        key: list.listItemText,
+        underline,
+        ...list,
+      },
     ),
   );
 };
@@ -31,7 +24,6 @@ ListWrapper.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   lists: PropTypes.array.isRequired,
   underline: PropTypes.bool,
-  darkMode: PropTypes.bool,
 };
 
 export default ListWrapper;
