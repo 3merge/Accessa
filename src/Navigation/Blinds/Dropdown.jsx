@@ -43,11 +43,6 @@ const Dropdown = ({ item }) => {
               item
               xs={12}
               component="li"
-              onBlur={
-                i === item.subitems.length - 1
-                  ? deactivate
-                  : null
-              }
               key={sub.sub.concat(i)}
             >
               <Link to={sub.path}>{sub.sub}</Link>
