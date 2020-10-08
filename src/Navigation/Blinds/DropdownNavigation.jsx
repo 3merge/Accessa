@@ -11,11 +11,7 @@ const DropdownNavigation = ({ item }) => {
   return (
     <Grid item component="li">
       {!shouldRenderDropdown ? (
-        <Grid item xs={12}>
-          <Link tabIndex={0} to={item.path}>
-            {item.main}
-          </Link>
-        </Grid>
+        <Link to={item.path}>{item.main}</Link>
       ) : (
         <Dropdown item={item} />
       )}

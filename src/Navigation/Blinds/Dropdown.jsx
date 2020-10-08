@@ -27,7 +27,7 @@ const Dropdown = ({ item }) => {
       <Collapse
         in={active}
         style={{
-          position: 'fixed',
+          position: 'absolute',
           top: top + height,
           left: left * -1,
           backgroundColor: 'tomato',
