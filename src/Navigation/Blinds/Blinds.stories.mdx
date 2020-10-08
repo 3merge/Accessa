@@ -4,41 +4,39 @@ import {
   Preview,
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
+import {
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import Blinds from '.';
+import items from '../../../cypress/fixtures/blinds.json';
 
-export const items = [
-  {
-    main: 'Blog',
-    subitems: [
-      { sub: 'Blog1alsfkjlasfjlaskjflkasjf', path: '/' },
-      { sub: 'Blog2', path: '/' },
-    ],
+export const dark = createMuiTheme({
+  palette: {
+    secondary: {
+      main: '#ffffff',
+      light: '#ffffff',
+      dark: '#000000',
+      contrastText: '#ffffff',
+    },
   },
-  {
-    main: 'About',
-    path: '/',
-  },
-  {
-    main: 'Links',
-    subitems: [
-      {
-        sub: 'Blog1',
-        path: '/',
-      },
-      { sub: 'Blog2', path: '/' },
-    ],
-  },
-];
+});
 
 <Meta title="Navigation/Blinds" component={Blinds} />
 
 # Blinds
 
-**Renders full widtj dropdown navigation**
+**Renders full width dropdown navigation**
+
+Renders dowpdown when item has submenus.
 
 <Preview>
   <Story name="Blinds">
-    <Blinds items={items} />
+    <ThemeProvider theme={dark}>
+      <div style={{ background: '#000' }}>
+        <Blinds items={items} />
+      </div>
+    </ThemeProvider>
   </Story>
 </Preview>
 
