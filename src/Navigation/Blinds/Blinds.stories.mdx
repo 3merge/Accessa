@@ -6,6 +6,23 @@ import {
 } from '@storybook/addon-docs/blocks';
 import Blinds from '.';
 
+export const items = [
+  {
+    main: 'Blog',
+    subitems: [
+      { sub: 'Blog1', path: '/' },
+      { sub: 'Blog2', path: '/' },
+    ],
+  },
+  {
+    main: 'Links',
+    subitems: [
+      { sub: 'Blog1', path: '/' },
+      { sub: 'Blog2', path: '/' },
+    ],
+  },
+];
+
 <Meta title="Navigation/Blinds" component={Blinds} />
 
 # Blinds
@@ -14,7 +31,7 @@ import Blinds from '.';
 
 <Preview>
   <Story name="Blinds">
-    <Blinds />
+    <Blinds items={items} />
   </Story>
 </Preview>
 

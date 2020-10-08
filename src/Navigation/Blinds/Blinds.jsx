@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import Menu from './Menu';
+import Dropdown from './Dropdown';
 import useStyles from './useStyles';
 
-const Blinds = () => {
+const Blinds = ({ items }) => {
   const { ul } = useStyles();
   const [currentMenu, setCurrentMenu] = React.useState(-1);
 
@@ -15,9 +15,10 @@ const Blinds = () => {
     <div style={{ backgroundColor: 'tomato' }}>
       <nav>
         <Grid container component="ul" className={ul}>
-          {[1, 2].map((x, i) => (
-            <Menu
+          {items.map((x, i) => (
+            <Dropdown
               key={i}
+              item={x}
               setMenu={setMenu(i)}
               index={i}
               reset={reset}
