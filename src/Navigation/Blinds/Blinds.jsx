@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import Dropdown from './Dropdown';
 import useStyles from './useStyles';
+import DropdownNavigation from './DropdownNavigation';
 
 const Blinds = ({ items }) => {
   const { ul } = useStyles();
@@ -16,7 +16,7 @@ const Blinds = ({ items }) => {
           spacing={5}
         >
           {items.map((x) => (
-            <Dropdown key={x.main} item={x} />
+            <DropdownNavigation key={x.main} item={x} />
           ))}
         </Grid>
       </nav>

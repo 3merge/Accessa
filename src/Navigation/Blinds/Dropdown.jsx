@@ -1,10 +1,12 @@
 import React from 'react';
 import { Grid, Collapse } from '@material-ui/core';
 import { Link } from '@reach/router';
-import renderDropdown from './renderDropdown';
 import useStyles from './useStyles';
 
-const Dropdown = ({ item, active, deactivate }) => {
+const Dropdown = ({ item }) => {
+  const [active, setActive] = React.useState(false);
+  const activate = () => setActive(true);
+  const deactivate = () => setActive(false);
   const ref = React.useRef(null);
   const { ul } = useStyles();
 
@@ -12,7 +14,13 @@ const Dropdown = ({ item, active, deactivate }) => {
     ref?.current?.getBoundingClientRect() || {};
 
   return (
-    <>
+    <Grid
+      container
+      onMouseOver={activate}
+      onMouseLeave={deactivate}
+      onFocus={activate}
+      onBlur={deactivate}
+    >
       <Grid item xs={12} tabIndex={0} ref={ref}>
         {item.main}
       </Grid>
@@ -47,9 +55,8 @@ const Dropdown = ({ item, active, deactivate }) => {
           ))}
         </ul>
       </Collapse>
-    </>
+    </Grid>
   );
 };
 
-export default renderDropdown(Dropdown);
-// export default Dropdown;
+export default Dropdown;
