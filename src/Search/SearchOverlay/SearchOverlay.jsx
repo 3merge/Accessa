@@ -50,8 +50,9 @@ export const renderSearchResult = (obj) => {
 
 const SearchIcon = ({ handleOpen }) => (
   <IconButton
+    aria-label="Open search dialog"
     onClick={handleOpen}
-    aria-label="open search dialog"
+    color="inherit"
   >
     <Search />
   </IconButton>

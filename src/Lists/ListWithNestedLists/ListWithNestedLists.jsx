@@ -18,19 +18,21 @@ Arrows.propTypes = {
 
 const ListWithNestedLists = ({
   underline,
-  darkMode,
   listItemText,
   nestedItems,
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const classes = useStyles({
-    darkMode,
     underline,
   });
 
   return (
-    <Box component="li" className={classes.list}>
-      <ListItem button onClick={() => setIsOpen(!isOpen)}>
+    <Box component="li">
+      <ListItem
+        button
+        className={classes.list}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <Arrows isOpen={isOpen} />
         <ListItemText primary={listItemText} />
       </ListItem>
@@ -41,6 +43,7 @@ const ListWithNestedLists = ({
               <ListItem
                 key={text}
                 onClick={onClick}
+                className={classes.list}
                 tabIndex={0}
               >
                 <ListItemText
@@ -58,13 +61,11 @@ const ListWithNestedLists = ({
 
 ListWithNestedLists.defaultProps = {
   underline: false,
-  darkMode: false,
   nestedItems: [],
 };
 
 ListWithNestedLists.propTypes = {
   underline: PropTypes.bool,
-  darkMode: PropTypes.bool,
   listItemText: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   nestedItems: PropTypes.array,

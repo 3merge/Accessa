@@ -5,26 +5,22 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import useStyles from '../useStyles';
 
-const List = ({
-  darkMode,
-  underline,
-  listItemText,
-  onClick,
-}) => {
+const List = ({ underline, listItemText, onClick }) => {
   const classes = useStyles({
-    darkMode,
     underline,
   });
 
   return onClick ? (
-    <ListItem
-      onClick={onClick}
-      component="li"
-      className={`${classes.list} ${classes.listButton}`}
-    >
-      <ChevronRight />
-      <ListItemText primary={listItemText} />
-    </ListItem>
+    <li className={classes.list}>
+      <ListItem
+        onClick={onClick}
+        button
+        className={classes.listButton}
+      >
+        <ChevronRight />
+        <ListItemText primary={listItemText} />
+      </ListItem>
+    </li>
   ) : (
     <ListItem component="li" className={classes.list}>
       <ChevronRight />
@@ -34,13 +30,11 @@ const List = ({
 };
 
 List.defaultProps = {
-  darkMode: false,
   underline: false,
   onClick: undefined,
 };
 
 List.propTypes = {
-  darkMode: PropTypes.bool,
   underline: PropTypes.bool,
   listItemText: PropTypes.string.isRequired,
   onClick: PropTypes.func,
