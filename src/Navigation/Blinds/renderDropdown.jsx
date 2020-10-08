@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import { Grid } from '@material-ui/core';
 
 const renderDropdown = (Dropdown) => {
+  console.log('here');
   return ({ item }) => {
     const [active, setActive] = React.useState(false);
     const activate = () => setActive(true);
