@@ -1,0 +1,35 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import Authorities from '.';
+import logo1 from '../../../cypress/fixtures/logo-12.svg';
+import logo2 from '../../../cypress/fixtures/logo-16.svg';
+import logos from '../../../cypress/fixtures/logos.json';
+
+export const data = logos.map((x, i) => ({
+  ...x,
+  fluid: { src: i % 2 === 0 ? logo1 : logo2 },
+}));
+
+# Authorities
+
+<Meta
+  title="Galleries/Authorities"
+  component={Authorities}
+/>
+
+<Preview>
+  <Story name="Authorities">
+    <Authorities
+      title="Our Certifications, Awards & Associations"
+      logos={data}
+    />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Authorities} />
