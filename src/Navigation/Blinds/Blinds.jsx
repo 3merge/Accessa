@@ -13,7 +13,7 @@ const getTop = (el) => getFromBounding(el, 'top');
 
 const Blinds = ({ items }) => {
   const [height, setHeight] = React.useState(0);
-  const [restingHeight, setResetingHeight] = React.useState(
+  const [restingHeight, setRestingHeight] = React.useState(
     0,
   );
 
@@ -25,7 +25,7 @@ const Blinds = ({ items }) => {
   const init = React.useCallback((el) => {
     if (!el) return;
     const h = getHeight(el);
-    setResetingHeight(h);
+    setRestingHeight(h);
     setHeight(h);
   }, []);
 

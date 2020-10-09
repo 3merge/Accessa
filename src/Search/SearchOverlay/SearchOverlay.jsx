@@ -111,6 +111,8 @@ const SearchOverlay = ({
   React.useEffect(() => {
     if (value) {
       handleSubmit();
+    } else {
+      setData(initialState);
     }
   }, [value]);
 
@@ -139,7 +141,7 @@ const SearchOverlay = ({
                 fullWidth
                 required
                 inputProps={{
-                  autocomplete: 'off',
+                  autoComplete: 'off',
                 }}
                 // eslint-disable-next-line
                 InputProps={{
