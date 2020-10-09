@@ -8,17 +8,15 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
 import Blinds from '.';
 import items from '../../../cypress/fixtures/blinds.json';
+import { Mast } from '../../Headers/Headers.stories.jsx';
 
-export const dark = createMuiTheme({
+export const darkTheme = createMuiTheme({
   palette: {
-    secondary: {
-      main: '#ffffff',
-      light: '#ffffff',
-      dark: '#000000',
-      contrastText: '#ffffff',
-    },
+    type: 'dark',
   },
 });
 
@@ -31,11 +29,27 @@ export const dark = createMuiTheme({
 Renders dowpdown when item has submenus.
 
 <Preview>
-  <Story name="Blinds">
-    <ThemeProvider theme={dark}>
-      <div style={{ background: '#000' }}>
+  <Story name="Dark">
+    <ThemeProvider theme={darkTheme}>
+      <AppBar position="absolute" color="transparent">
         <Blinds items={items} />
-      </div>
+      </AppBar>
+      <Box m={-2}>
+        <Mast />
+      </Box>
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="Light">
+    <ThemeProvider>
+      <Box position="relative" zIndex="10">
+        <Blinds items={items} />
+      </Box>
+      <Box mx={-2}>
+        <Mast />
+      </Box>
     </ThemeProvider>
   </Story>
 </Preview>
