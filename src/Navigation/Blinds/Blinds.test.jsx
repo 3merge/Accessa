@@ -31,9 +31,7 @@ describe('Blinds', () => {
   });
 
   describe('"Dropdown"', () => {
-    it.todo('should render as 3 columns with 16 subitems'
-      
-    );
+    it.todo('should render as 3 columns with 16 subitems');
   });
 
   describe('"DropdownNavigation"', () => {
