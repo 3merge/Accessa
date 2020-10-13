@@ -1,15 +1,16 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { Box } from '@material-ui/core'
+import { Box } from '@material-ui/core';
 import Blinds from './Blinds';
 import { getFromBounding } from './Blinds';
-import Dropdown from './Dropdown'
+import Dropdown from './Dropdown';
 import useStyles from './useStyles';
 import items from '../../../cypress/fixtures/blinds.json';
 
-
 describe('Blinds', () => {
-  it.todo('should call useStyle as isOpen when height exceeds resting height');
+  it.todo(
+    'should call useStyle as isOpen when height exceeds resting height',
+  );
 
   it.todo(
     'should should an initial resting and overlay height on nav ref change',
