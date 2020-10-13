@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import {
-  Box,
   Card,
   CardContent,
   Typography,
@@ -11,92 +10,64 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({
-  component: Wrapper,
-  lists,
-  title,
-  description,
-  fill,
-}) => {
+const Field = ({ lists, fill }) => {
   const {
     body1,
     card,
     cardTitle,
     li,
     subtitle,
-    title: pageTitle,
     ul,
   } = useStyles({ fill });
 
   return (
-    <Wrapper>
-      {title && (
-        <Typography variant="h3" className={pageTitle}>
-          {title}
-        </Typography>
-      )}
-      {description && (
-        <Box mt={-2} mb={2}>
-          <Typography component="p" variant="subtitle1">
-            {description}
-          </Typography>
-        </Box>
-      )}
-      <Grid
-        container
-        spacing={6}
-        component="ul"
-        className={ul}
-      >
-        {lists.map((img, i) => (
-          <Grid
-            item
-            component="li"
-            key={i}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
-            className={li}
-            // style={{
-            //   flexGrow: 1,
-            //   maxWidth: '100%',
-            // }}
+    <Grid
+      container
+      spacing={6}
+      component="ul"
+      className={ul}
+    >
+      {lists.map((img, i) => (
+        <Grid
+          item
+          component="li"
+          key={i}
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          className={li}
+        >
+          <Card
+            onClick={img.onClick}
+            onKeyPress={img.onClick}
+            className={card}
+            tabIndex={0}
           >
-            <Card
-              onClick={img.onClick}
-              onKeyPress={img.onClick}
-              className={card}
-              tabIndex={0}
-            >
-              <Image
-                fluid={img.fluid}
-                style={{ width: '100%', height: '200px' }}
-              />
-              <CardContent>
-                {img.subtitle ? (
-                  <span className={subtitle}>
-                    {img.subtitle}
-                  </span>
-                ) : null}
-                <Typography
-                  variant="h4"
-                  className={cardTitle}
-                >
-                  {img.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  className={body1}
-                >
-                  {img.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Wrapper>
+            <Image
+              fluid={img.fluid}
+              style={{ width: '100%', height: '200px' }}
+            />
+            <CardContent>
+              {img.subtitle ? (
+                <span className={subtitle}>
+                  {img.subtitle}
+                </span>
+              ) : null}
+              <Typography
+                variant="h4"
+                className={cardTitle}
+              >
+                {img.title}
+              </Typography>
+              <Typography variant="body1" className={body1}>
+                {img.description}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
@@ -109,17 +80,11 @@ Field.propTypes = {
       onClick: PropTypes.func,
     }),
   ).isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  component: PropTypes.func,
   fill: PropTypes.bool,
 };
 
 Field.defaultProps = {
-  component: (props) => React.createElement('div', props),
   fill: false,
-  title: '',
-  description: '',
 };
 
 export default renderListSafely(Field);

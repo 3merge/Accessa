@@ -9,18 +9,17 @@ const DropdownNavigation = React.forwardRef(
   ({ item }, ref) => {
     const { a } = useStyles();
     const shouldRenderDropdown =
-      Array.isArray(item.subitems) &&
-      item.subitems.length > 0;
+      Array.isArray(item.items) && item.items.length > 0;
 
     return (
       <Grid item component="li">
         {!shouldRenderDropdown ? (
           <Button
             component={Link}
-            to={item.path}
+            to={item.href}
             className={a}
           >
-            {item.main}
+            {item.label}
           </Button>
         ) : (
           <Dropdown item={item} ref={ref} />

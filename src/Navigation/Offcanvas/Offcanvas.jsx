@@ -35,6 +35,7 @@ const Offcanvas = withLocation(
             aria-controls="menu"
             aria-expanded={state}
             onClick={open}
+            color="inherit"
           >
             <MenuIcon />
           </IconButton>

@@ -13,6 +13,7 @@ import Box from '@material-ui/core/Box';
 import Blinds from '.';
 import items from '../../../cypress/fixtures/blinds.json';
 import { Mast } from '../../Headers/Headers.stories.jsx';
+import { columns } from '../../../cypress/fixtures/footer';
 
 export const darkTheme = createMuiTheme({
   palette: {
@@ -32,7 +33,7 @@ Renders dowpdown when item has submenus.
   <Story name="Dark">
     <ThemeProvider theme={darkTheme}>
       <AppBar position="absolute" color="transparent">
-        <Blinds items={items} />
+        <Blinds items={columns} />
       </AppBar>
       <Box m={-2}>
         <Mast />
@@ -45,7 +46,7 @@ Renders dowpdown when item has submenus.
   <Story name="Light">
     <ThemeProvider>
       <Box position="relative" zIndex="10">
-        <Blinds items={items} />
+        <Blinds items={columns} />
       </Box>
       <Box mx={-2}>
         <Mast />
