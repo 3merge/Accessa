@@ -12,8 +12,12 @@ const Authorities = ({ title, logos }) => {
       {logos.map((logo) => (
         <a href={logo.to} className={classes.logoWrapper}>
           <Image
+            imgStyle={{
+              objectFit: 'contain',
+            }}
             className={classes.logo}
             key={logo.alt}
+            objectFit="contain"
             {...logo}
           />
         </a>

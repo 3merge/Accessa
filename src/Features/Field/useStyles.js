@@ -30,6 +30,10 @@ const useStyles = makeStyles(({ palette }) => ({
     listStyleType: 'none',
     padding: 0,
   },
+  li: ({ fill }) => ({
+    flexGrow: fill ? 1 : 0,
+    maxWidth: fill ? '100%' : 'auto',
+  }),
   body1: {
     color: palette.grey['600'],
   },
