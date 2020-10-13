@@ -55,7 +55,7 @@ const Field = ({ lists, fill }) => {
                 </span>
               ) : null}
               <Typography
-                variant="h4"
+                variant="h3"
                 className={cardTitle}
               >
                 {img.title}

@@ -20,7 +20,7 @@ const Overline = styled.span`
 `;
 
 const Body = styled.h3`
-  font-size: 1.63rem;
+  font-size: 1.33rem;
   font-weight: 400;
   margin: 0.5rem 0 1.5rem 0;
 

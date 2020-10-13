@@ -8,7 +8,7 @@ const Authorities = ({ title, logos }) => {
   const classes = useStyles();
   return (
     <Box>
-      <Typography variant="h5">{title}</Typography>
+      <Typography variant="h4">{title}</Typography>
       {logos.map((logo) => (
         <a href={logo.to} className={classes.logoWrapper}>
           <Image

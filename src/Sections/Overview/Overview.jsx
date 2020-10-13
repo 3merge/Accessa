@@ -19,7 +19,7 @@ const Overview = ({
         <Typography variant="h2">{title}</Typography>
       )}
       {description && (
-        <Box mb={2}>
+        <Box my={2}>
           <Typography component="p" variant="subtitle1">
             {description}
           </Typography>
