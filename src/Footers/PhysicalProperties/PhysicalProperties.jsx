@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'gatsby-image';
 import PropTypes from 'prop-types';
 import {
+  Divider,
   Grid,
   Typography,
   Box,
@@ -43,14 +44,15 @@ const PhysicalProperties = ({ logo, properties }) => {
   return (
     <Container>
       {logo && (
-        <Box borderBottom={1} pb={5} mb={5}>
-          <Image
-            {...logo}
-            objectFit="cover"
-            objectPosition="50% 50%"
-          />
-        </Box>
+        <Image
+          {...logo}
+          objectFit="cover"
+          objectPosition="50% 50%"
+        />
       )}
+      <Box mt={2} mb={4}>
+        <Divider />
+      </Box>
       <Grid container spacing={7}>
         {properties.map((prop) => (
           <Grid item key={prop.subtitle}>

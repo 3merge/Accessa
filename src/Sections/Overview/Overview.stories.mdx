@@ -1,0 +1,26 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import Overview from './Overview';
+
+<Meta title="Sections/Overview" component={Overview} />
+
+# Overview
+
+<Preview>
+  <Story name="Overview">
+    <Overview
+      title="Related articles"
+      description="More info"
+      align="center"
+      maxWidth="md"
+    />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Overview} />

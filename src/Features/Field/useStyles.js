@@ -11,7 +11,7 @@ const useStyles = makeStyles(({ palette }) => ({
     },
   },
   title: {
-    fontSize: '1.6rem',
+    fontSize: '2.13rem',
     margin: 0,
     marginBottom: '2rem',
   },
