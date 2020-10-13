@@ -69,12 +69,12 @@ const Blinds = ({ items }) => {
 Blinds.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      main: PropTypes.string.isRequired,
-      path: PropTypes.string,
-      subitems: PropTypes.arrayOf(
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string,
+      items: PropTypes.arrayOf(
         PropTypes.shape({
-          sub: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
+          label: PropTypes.string.isRequired,
+          href: PropTypes.string.isRequired,
         }),
       ),
     }),

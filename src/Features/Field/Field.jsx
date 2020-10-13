@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import {
-  Box,
-  Container,
   Card,
   CardContent,
   Typography,
@@ -12,11 +10,7 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({
-  lists,
-
-  fill,
-}) => {
+const Field = ({ lists, fill }) => {
   const {
     body1,
     card,

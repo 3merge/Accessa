@@ -17,8 +17,8 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
 
   const { dropdownList, li } = useStyles({
     columnCount:
-      item.subitems.length > 5
-        ? Math.round(item.subitems.length / 5)
+      item.items.length > 5
+        ? Math.round(item.items.length / 5)
         : 1,
   });
 
@@ -35,8 +35,14 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
           aria-haspopup="true"
           aria-expanded={active}
           color={active ? 'primary' : 'inherit'}
+          {...(item.href
+            ? {
+                component: Link,
+                to: item.href,
+              }
+            : {})}
         >
-          {item.main}
+          {item.label}
         </Button>
         <Collapse
           mountOnEnter
@@ -52,15 +58,15 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
             pt={2}
             ref={ref}
           >
-            {item.subitems.map((sub, i) => (
-              <li key={sub.sub.concat(i)} className={li}>
+            {item.items.map((sub, i) => (
+              <li key={sub.label.concat(i)} className={li}>
                 <Fade in timeout={1250 + i * 1.35}>
                   <Button
                     color="inherit"
                     component={Link}
-                    to={sub.path}
+                    to={sub.href}
                   >
-                    {sub.sub}
+                    {sub.label}
                   </Button>
                 </Fade>
               </li>

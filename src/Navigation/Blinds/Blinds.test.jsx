@@ -96,9 +96,7 @@ describe('Blinds', () => {
 
   describe('"Dropdown"', () => {
     it('should render as 3 columns with 16 subitems', () => {
-      shallow(
-        <Dropdown item={{ subitems: new Array(16) }} />,
-      );
+      shallow(<Dropdown item={{ items: new Array(16) }} />);
 
       expect(useStyles).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -113,7 +111,7 @@ describe('Blinds', () => {
       expect(
         shallow(
           <DropdownNavigation
-            item={{ subitems: new Array(2) }}
+            item={{ items: new Array(2) }}
           />,
         )
           .find(Dropdown)
