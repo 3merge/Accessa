@@ -18,7 +18,7 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
   const { dropdownList, li } = useStyles({
     columnCount:
       item.subitems.length > 5
-        ? Math.ceil(item.subitems.length / 5)
+        ? Math.round(item.subitems.length / 5)
         : 1,
   });
 

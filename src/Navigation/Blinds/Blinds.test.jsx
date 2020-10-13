@@ -1,24 +1,87 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { Box } from '@material-ui/core';
+import { shallow } from 'enzyme';
+import DropdownNavigation from './DropdownNavigation';
 import Blinds from './Blinds';
 import { getFromBounding } from './Blinds';
 import Dropdown from './Dropdown';
 import useStyles from './useStyles';
-import items from '../../../cypress/fixtures/blinds.json';
+
+let useCallback;
+let useState;
+
+const runBoundClientMock = (
+  at,
+  boundClientReturnValue,
+  expectedStateResult,
+) => {
+  const callback = jest.fn();
+  useState.mockReturnValue([0, callback]);
+  shallow(<Blinds items={[]} />);
+
+  const [fn] = useCallback.mock.calls[at];
+
+  fn({
+    getBoundingClientRect: jest
+      .fn()
+      .mockReturnValue(boundClientReturnValue),
+  });
+
+  expect(callback).toHaveBeenCalledWith(
+    expectedStateResult,
+  );
+};
+
+jest.mock('./useStyles', () =>
+  jest.fn(() => ({
+    ul: '',
+  })),
+);
+
+beforeAll(() => {
+  useCallback = jest.spyOn(React, 'useCallback');
+  useState = jest.spyOn(React, 'useState');
+});
+
+beforeEach(() => {
+  [useStyles, useCallback, useState].forEach((item) => {
+    item.mockClear();
+  });
+});
 
 describe('Blinds', () => {
-  it.todo(
-    'should call useStyle as isOpen when height exceeds resting height',
-  );
+  it('should call useStyle as isOpen when height exceeds resting height', () => {
+    // height
+    useState.mockReturnValueOnce([25]);
 
-  it.todo(
-    'should should an initial resting and overlay height on nav ref change',
-  );
+    // resting height
+    useState.mockReturnValueOnce([10]);
 
-  it.todo(
-    'should change the overlay height on dropdown ref change',
-  );
+    shallow(<Blinds items={[]} />);
+    expect(useStyles).toHaveBeenCalledWith(
+      expect.objectContaining({
+        isOpen: true,
+      }),
+    );
+  });
+
+  it('should set an initial resting and overlay height on nav ref change', () =>
+    runBoundClientMock(
+      0,
+      {
+        height: 100,
+      },
+      100,
+    ));
+
+  it('should change the overlay height on dropdown ref change', () =>
+    runBoundClientMock(
+      1,
+      {
+        height: 100,
+        top: 10,
+      },
+      110,
+    ));
 
   describe('"getFromBounding"', () => {
     it('should return a property of getBoundingClientRect', () => {
@@ -32,10 +95,30 @@ describe('Blinds', () => {
   });
 
   describe('"Dropdown"', () => {
-    it.todo('should render as 3 columns with 16 subitems');
+    it('should render as 3 columns with 16 subitems', () => {
+      shallow(
+        <Dropdown item={{ subitems: new Array(16) }} />,
+      );
+
+      expect(useStyles).toHaveBeenCalledWith(
+        expect.objectContaining({
+          columnCount: 3,
+        }),
+      );
+    });
   });
 
   describe('"DropdownNavigation"', () => {
-    it('should render dropdown when subitems present', () => {});
+    it('should render dropdown when subitems present', () => {
+      expect(
+        shallow(
+          <DropdownNavigation
+            item={{ subitems: new Array(2) }}
+          />,
+        )
+          .find(Dropdown)
+          .exists(),
+      ).toBeTruthy();
+    });
   });
 });
