@@ -7,8 +7,16 @@ import header from '../cypress/fixtures/header.json';
 import * as Accessa from '../src';
 import { EstateFooter } from '../src/Footers/Footers.stories.jsx';
 import { ElementList } from '../src/Lists/Elements/Elements.stories.jsx';
-import { AuthorityLogos } from '../src/Galleries/galleries.stories.jsx';
 import partial from '../cypress/fixtures/partial';
+import Authorities from '../src/Galleries/Authorities'
+import logo1 from '../cypress/fixtures/logo-12.svg';
+import logo2 from '../cypress/fixtures/logo-16.svg';
+import logos from '../cypress/fixtures/logos.json';
+
+const data = logos.map((x, i) => ({
+  ...x,
+  fluid: { src: i % 2 === 0 ? logo1 : logo2 },
+}));
 
 export default {
   title: 'Accessa/Information pages',
@@ -24,7 +32,10 @@ export const ExampleOne = () => (
       <ElementList />
     </Accessa.Sections.Block>
     <Box my={4} textAlign="center">
-      <AuthorityLogos />
+      <Authorities
+        title="Our Certifications, Awards & Associations"
+        logos={data}
+      />
     </Box>
     <Accessa.CallToActions.Leader {...partial} />
     <EstateFooter />

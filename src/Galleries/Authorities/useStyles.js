@@ -14,7 +14,6 @@ const useStyles = makeStyles(() => ({
   logo: {
     filter: 'grayscale(100%)',
     height: '70px',
-    objectFit: 'contain',
     width: 'auto',
     minWidth: '100px',
     cursor: 'pointer',

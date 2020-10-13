@@ -16,15 +16,17 @@ const Field = ({
   lists,
   title,
   description,
+  fill,
 }) => {
   const {
+    body1,
     card,
     cardTitle,
+    li,
     subtitle,
     title: pageTitle,
-    body1,
     ul,
-  } = useStyles();
+  } = useStyles({ fill });
 
   return (
     <Wrapper>
@@ -55,10 +57,11 @@ const Field = ({
             sm={6}
             md={4}
             lg={3}
-            style={{
-              flexGrow: 1,
-              maxWidth: '100%',
-            }}
+            className={li}
+            // style={{
+            //   flexGrow: 1,
+            //   maxWidth: '100%',
+            // }}
           >
             <Card
               onClick={img.onClick}
@@ -109,10 +112,12 @@ Field.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   component: PropTypes.func,
+  fill: PropTypes.bool,
 };
 
 Field.defaultProps = {
   component: (props) => React.createElement('div', props),
+  fill: false,
   title: '',
   description: '',
 };

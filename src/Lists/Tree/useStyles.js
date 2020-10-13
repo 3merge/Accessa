@@ -12,7 +12,6 @@ const useStyles = makeStyles(({ typography, palette }) => ({
     fontWeight: typography.fontWeightBold,
     color: palette.text.secondary,
     fontSize: '14px',
-    marginBottom: '10px',
   }),
   wrapper: {
     display: 'grid',
