@@ -10,7 +10,21 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from '@material-ui/core/styles';
-import downloadList from '../../../cypress/fixtures/fileDownloads.json';
+import img from '../../../cypress/fixtures/download.jpg';
+
+export const lists = [
+  {
+    title: 'My file',
+    contentType: 'image/jpg',
+    size: '1,333KB',
+    path: img,
+  },
+  {
+    title: 'Secret file',
+    contentType: 'image/png',
+    path: img,
+  },
+];
 
 export const darkTheme = createMuiTheme({
   palette: {
@@ -35,7 +49,7 @@ of its container.
 <Preview>
   <Story name="Stacked">
     <Box px={2} my={4} bgcolor="grey.900">
-      <DownloadsWrapper lists={downloadList} />
+      <DownloadsWrapper lists={lists} />
     </Box>
   </Story>
 </Preview>
