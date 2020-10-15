@@ -10,9 +10,9 @@ export const Downloads = ({ lists, gridItem }) => {
 
   return (
     <Grid container component="ul" spacing={4}>
-      {lists.map((list) => (
+      {lists.map((list, i) => (
         <Grid
-          key={list.path}
+          key={list.path.concat(i)}
           container
           item
           component="li"
@@ -29,7 +29,11 @@ export const Downloads = ({ lists, gridItem }) => {
           >
             <Grid item>
               <span className={title}>{list.title}</span>
-              <span className={size}>{list.size}</span>
+              <span className={size}>
+                {list.size
+                  ? list.contentType.concat(' ', list.size)
+                  : list.contentType}
+              </span>
             </Grid>
             <Grid item>
               <IconButton
@@ -60,7 +64,7 @@ Downloads.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       size: PropTypes.string,
-      file: PropTypes.string.isRequired,
+      contentType: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
