@@ -13,16 +13,18 @@ const BlogTemplate = ({
   <>
     <Mast {...HeaderProps} />
     <Box py={4}>
-      <Container maxWidth="md">{children}</Container>
+      <Container maxWidth="md">
+        <Box mb={5}>{children}</Box>
+        <Field
+          {...FeatureProps}
+          component={({ children: nestedChildren }) => (
+            <Box bgcolor="grey.200" py={4}>
+              <Container>{nestedChildren}</Container>
+            </Box>
+          )}
+        />
+      </Container>
     </Box>
-    <Field
-      {...FeatureProps}
-      component={({ children: nestedChildren }) => (
-        <Box bgcolor="grey.200" py={4}>
-          <Container>{nestedChildren}</Container>
-        </Box>
-      )}
-    />
   </>
 );
 
