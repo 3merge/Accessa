@@ -1,0 +1,30 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import { Button } from '@material-ui/core';
+import Simple from './Simple';
+import header from '../../../cypress/fixtures/header';
+
+<Meta title="Headers/Simple" component={Simple} />
+
+# Simple
+
+A text-only header variant of Mast.
+
+## Single dialog
+
+<Preview>
+  <Story name="Default">
+    <Simple
+      title={header.title}
+      subtitle={header.subtitle}
+    />
+  </Story>
+</Preview>
+
+## API
+
+<ArgsTable of={Simple} />
