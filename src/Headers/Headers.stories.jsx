@@ -13,6 +13,13 @@ export default {
   decorators: [withA11y, withKnobs],
 };
 
+export const Billboard = () => (
+  <Headers.Billboard
+    title={text('Title', header.title)}
+    subtitle={text('Subtitle', header.subtitle)}
+  />
+);
+
 export const Mast = () => (
   <Headers.Mast
     title={text('Title', header.title)}

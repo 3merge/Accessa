@@ -16,7 +16,7 @@ const HeaderBase = styled.header`
   color: #fff;
   display: block;
   height: 100%;
-  padding: 15vh;
+  padding: 15vh 0;
   position: relative;
   width: 100%;
 `;
@@ -52,7 +52,11 @@ const Header = ({ children, title, subtitle, ...rest }) => {
           display: 'flex',
         }}
       >
-        <Box position="relative" textAlign="center">
+        <Box
+          position="relative"
+          textAlign="center"
+          maxWidth="100%"
+        >
           <Headline>{title}</Headline>
           <Tagline>{subtitle}</Tagline>
           {children}
