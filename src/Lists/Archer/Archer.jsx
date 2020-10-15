@@ -15,13 +15,15 @@ export const Archer = ({ subheader, underline, lists }) => {
     <List
       className={classes.root}
       subheader={
-        <ListSubheader
-          color="inherit"
-          className={classes.root}
-          component="li"
-        >
-          {subheader}
-        </ListSubheader>
+        subheader ? (
+          <ListSubheader
+            color="inherit"
+            className={classes.root}
+            component="li"
+          >
+            {subheader}
+          </ListSubheader>
+        ) : null
       }
     >
       <ListItemWrapper
