@@ -46,6 +46,9 @@ const Field = ({ lists, fill }) => {
           >
             <Image
               fluid={img.fluid}
+              imgStyle={{
+                objectFit: 'cover',
+              }}
               style={{ width: '100%', height: '200px' }}
             />
             <CardContent>
