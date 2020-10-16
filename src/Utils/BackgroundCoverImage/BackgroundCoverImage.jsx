@@ -23,7 +23,7 @@ const Container = styled.div`
 const Dimmer = styled.div`
   bottom: 0;
   left: 0;
-  opacity: 0.72;
+  opacity: 0.82;
   position: absolute;
   right: 0;
   transition: background-color 500ms ease-in;

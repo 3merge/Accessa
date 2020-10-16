@@ -10,7 +10,7 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({ lists, fill }) => {
+const Field = ({ lists, fill, lg }) => {
   const {
     body1,
     card,
@@ -35,7 +35,7 @@ const Field = ({ lists, fill }) => {
           xs={12}
           sm={6}
           md={4}
-          lg={3}
+          lg={lg}
           className={li}
         >
           <Card
@@ -84,10 +84,12 @@ Field.propTypes = {
     }),
   ).isRequired,
   fill: PropTypes.bool,
+  lg: PropTypes.number,
 };
 
 Field.defaultProps = {
   fill: false,
+  lg: 4,
 };
 
 export default renderListSafely(Field);
