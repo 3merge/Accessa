@@ -16,6 +16,7 @@ const Property = ({ subtitle, body1, body2 }) => {
   return (
     <>
       <Typography
+        component="h4"
         className={classes.subtitle1}
         variant="subtitle1"
         gutterBottom
