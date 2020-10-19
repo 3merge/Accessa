@@ -39,11 +39,11 @@ Estate.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   logo: PropTypes.object,
   properties: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.string),
+    PropTypes.objectOf(PropTypes.node),
   ).isRequired,
   socials: PropTypes.arrayOf(PropTypes.string),
   company: PropTypes.string.isRequired,
-  text: PropTypes.string,
+  text: PropTypes.node,
   path: PropTypes.string,
 };
 
