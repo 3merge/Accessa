@@ -8,6 +8,7 @@ import { Field } from '../../Features';
 const BlogTemplate = ({
   HeaderProps,
   FeatureProps,
+  FeatureWrapper,
   children,
 }) => (
   <>
@@ -15,14 +16,9 @@ const BlogTemplate = ({
     <Box py={4}>
       <Container maxWidth="md">
         <Box mb={5}>{children}</Box>
-        <Field
-          {...FeatureProps}
-          component={({ children: nestedChildren }) => (
-            <Box bgcolor="grey.200" py={4}>
-              <Container>{nestedChildren}</Container>
-            </Box>
-          )}
-        />
+        <FeatureWrapper>
+          <Field {...FeatureProps} />
+        </FeatureWrapper>
       </Container>
     </Box>
   </>
@@ -30,6 +26,8 @@ const BlogTemplate = ({
 
 BlogTemplate.defaultProps = {
   FeatureProps: {},
+  FeatureWrapper: (props) =>
+    React.createElement('div', props),
 };
 
 BlogTemplate.propTypes = {
@@ -47,6 +45,7 @@ BlogTemplate.propTypes = {
       }),
     ).isRequired,
   }),
+  FeatureWrapper: PropTypes.func,
 };
 
 export default BlogTemplate;
