@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ palette }) => ({
+const useStyles = makeStyles(() => ({
   card: {
     height: '100%',
     cursor: 'pointer',
@@ -9,6 +9,8 @@ const useStyles = makeStyles(({ palette }) => ({
       boxShadow:
         '0px 5px 5px -3px rgba(0,0,0,0.2), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
     },
+    borderRadius: 0,
+    boxShadow: 'none',
   },
   title: {
     fontSize: '2.13rem',
@@ -17,7 +19,7 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   subtitle: {
     fontSize: '.8rem',
-    color: palette.grey['600'],
+
     marginBottom: '.5rem',
     display: 'block',
   },
@@ -34,9 +36,7 @@ const useStyles = makeStyles(({ palette }) => ({
     flexGrow: fill ? 1 : 0,
     maxWidth: fill ? '100%' : 'auto',
   }),
-  body1: {
-    color: palette.grey['600'],
-  },
+  body1: {},
 }));
 
 export default useStyles;
