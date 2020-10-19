@@ -27,6 +27,9 @@ const useStyles = makeStyles(({ palette }) => ({
     transition: 'all 1250ms',
     opacity: isOpen ? 0.95 : 0,
   }),
+  li: {
+    width: 'max-content',
+  },
 }));
 
 export default useStyles;

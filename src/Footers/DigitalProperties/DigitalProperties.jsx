@@ -60,7 +60,7 @@ DigitalProperties.propTypes = {
   company: PropTypes.string.isRequired,
   socials: PropTypes.arrayOf(PropTypes.string).isRequired,
   path: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.node,
 };
 
 export default DigitalProperties;
