@@ -32,7 +32,7 @@ const Focal = ({ children, focalBackground }) => {
   const cls = useStyle();
   return (
     <Box
-      component="aside"
+      component="div"
       className={cls.root}
       style={focalBackground}
     >

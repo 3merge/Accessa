@@ -6,16 +6,10 @@ import {
   Typography,
   Container,
 } from '@material-ui/core';
-import { Link } from '@reach/router';
 import useStyles from './useStyles';
 import SocialIcons from '../SocialIcons';
 
-const DigitalProperties = ({
-  company,
-  socials,
-  path,
-  text,
-}) => {
+const DigitalProperties = ({ company, socials, text }) => {
   const classes = useStyles();
 
   return (
@@ -35,9 +29,7 @@ const DigitalProperties = ({
             <Grid item>
               {text ? (
                 <Typography variant="body1" color="inherit">
-                  <Link className={classes.link} to={path}>
-                    {text}
-                  </Link>
+                  {text}
                 </Typography>
               ) : null}
             </Grid>
@@ -52,15 +44,13 @@ const DigitalProperties = ({
 };
 
 DigitalProperties.defaultProps = {
-  path: '',
   text: '',
 };
 
 DigitalProperties.propTypes = {
   company: PropTypes.string.isRequired,
   socials: PropTypes.arrayOf(PropTypes.string).isRequired,
-  path: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.node,
 };
 
 export default DigitalProperties;

@@ -37,8 +37,8 @@ Property.defaultProps = {
 
 Property.propTypes = {
   subtitle: PropTypes.string.isRequired,
-  body1: PropTypes.string.isRequired,
-  body2: PropTypes.string,
+  body1: PropTypes.node.isRequired,
+  body2: PropTypes.node,
 };
 
 const PhysicalProperties = ({ logo, properties }) => {
@@ -73,7 +73,7 @@ PhysicalProperties.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   logo: PropTypes.object,
   properties: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.string),
+    PropTypes.objectOf(PropTypes.node),
   ).isRequired,
 };
 
