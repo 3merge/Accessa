@@ -68,7 +68,7 @@ Downloads.propTypes = {
   lists: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      size: PropTypes.string,
+      size: PropTypes.number,
       contentType: PropTypes.string.isRequired,
       path: PropTypes.string.isRequired,
     }).isRequired,

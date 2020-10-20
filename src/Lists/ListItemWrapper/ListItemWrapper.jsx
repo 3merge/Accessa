@@ -4,11 +4,11 @@ import ListItem from '../ListItem';
 import ListWithNestedLists from '../ListWithNestedLists';
 
 const ListWrapper = ({ lists, underline }) => {
-  return lists.map((list) =>
+  return lists.map((list, i) =>
     React.createElement(
       list.nestedItems ? ListWithNestedLists : ListItem,
       {
-        key: list.listItemText,
+        key: list.listItemText + i,
         underline,
         ...list,
       },
