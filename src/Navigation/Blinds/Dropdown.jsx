@@ -6,8 +6,8 @@ import {
   Collapse,
   Fade,
 } from '@material-ui/core';
-import { Link } from '@reach/router';
 import useStyles from './useStyles';
+import { getButtonProps } from './helpers';
 
 const Dropdown = React.forwardRef(({ item }, ref) => {
   const [active, setActive] = React.useState(false);
@@ -32,15 +32,10 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
         position="relative"
       >
         <Button
+          {...getButtonProps(item)}
           aria-haspopup="true"
           aria-expanded={active}
           color={active ? 'primary' : 'inherit'}
-          {...(item.href
-            ? {
-                component: Link,
-                to: item.href,
-              }
-            : {})}
         >
           {item.label}
         </Button>
@@ -63,9 +58,8 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
               <li key={sub.label.concat(i)} className={li}>
                 <Fade in timeout={1250 + i * 1.35}>
                   <Button
+                    {...getButtonProps(sub)}
                     color="inherit"
-                    component={Link}
-                    to={sub.href}
                   >
                     {sub.label}
                   </Button>

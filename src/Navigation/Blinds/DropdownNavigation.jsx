@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from '@reach/router';
 import { Button, Grid } from '@material-ui/core';
 import Dropdown from './Dropdown';
 import useStyles from './useStyles';
+import { getButtonProps } from './helpers';
 
 const DropdownNavigation = React.forwardRef(
   ({ item }, ref) => {
@@ -14,11 +14,7 @@ const DropdownNavigation = React.forwardRef(
     return (
       <Grid item component="li">
         {!shouldRenderDropdown ? (
-          <Button
-            component={Link}
-            to={item.href}
-            className={a}
-          >
+          <Button {...getButtonProps(item)} className={a}>
             {item.label}
           </Button>
         ) : (

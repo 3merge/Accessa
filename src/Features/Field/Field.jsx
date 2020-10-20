@@ -10,7 +10,7 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
-const Field = ({ lists, fill, lg }) => {
+const Field = ({ lists, fill, spacing, ...rest }) => {
   const {
     body1,
     card,
@@ -23,7 +23,7 @@ const Field = ({ lists, fill, lg }) => {
   return (
     <Grid
       container
-      spacing={6}
+      spacing={spacing}
       component="ul"
       className={ul}
     >
@@ -32,11 +32,8 @@ const Field = ({ lists, fill, lg }) => {
           item
           component="li"
           key={i}
-          xs={12}
-          sm={6}
-          md={4}
-          lg={lg}
           className={li}
+          {...rest}
         >
           <Card
             onClick={img.onClick}
@@ -85,11 +82,19 @@ Field.propTypes = {
   ).isRequired,
   fill: PropTypes.bool,
   lg: PropTypes.number,
+  xs: PropTypes.number,
+  sm: PropTypes.number,
+  md: PropTypes.number,
+  spacing: PropTypes.number,
 };
 
 Field.defaultProps = {
   fill: false,
   lg: 4,
+  xs: 12,
+  sm: 6,
+  md: 4,
+  spacing: 6,
 };
 
 export default renderListSafely(Field);
