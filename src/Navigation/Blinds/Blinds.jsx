@@ -54,9 +54,13 @@ const Blinds = ({ items }) => {
         className={ul}
         spacing={5}
       >
-        {items.map((x) => (
+        {items.map((x, i) => (
           <DropdownNavigation
-            key={x.main}
+            key={
+              typeof x.main === 'string'
+                ? x.main.concat(i)
+                : `dropdownNav${i}`
+            }
             ref={onRefChange}
             item={x}
           />

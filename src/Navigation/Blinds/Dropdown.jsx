@@ -15,7 +15,7 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
   const activate = () => setActive(true);
   const deactivate = () => setActive(false);
 
-  const { dropdownList, li } = useStyles({
+  const { dropdownList, ul, li } = useStyles({
     columnCount:
       item.items.length > 5
         ? Math.round(item.items.length / 5)
@@ -47,7 +47,8 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
           in={active}
         >
           <Box
-            className={dropdownList}
+            className={[dropdownList, ul].join(' ')}
+            component="ul"
             position="absolute"
             pb={4}
             pt={2}
