@@ -16,7 +16,9 @@ const Authorities = ({ title, logos }) => {
               objectFit: 'contain',
             }}
             className={classes.logo}
-            key={logo.alt.concat(i)}
+            key={
+              logo.alt ? logo.alt.concat(i) : `imgKey${i}`
+            }
             objectFit="contain"
             {...logo}
           />
