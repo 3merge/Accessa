@@ -46,7 +46,11 @@ Renders dowpdown when item has submenus.
   <Story name="Light">
     <ThemeProvider>
       <Box position="relative" zIndex="10">
-        <Blinds items={columns} />
+        <Blinds
+          items={columns.concat({
+            label: 'No link',
+          })}
+        />
       </Box>
       <Box mx={-2}>
         <Mast />
