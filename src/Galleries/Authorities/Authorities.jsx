@@ -10,15 +10,16 @@ const Authorities = ({ title, logos }) => {
     <Box>
       <Typography variant="h4">{title}</Typography>
       {logos.map((logo, i) => (
-        <a href={logo.to} className={classes.logoWrapper}>
+        <a
+          href={logo.to}
+          className={classes.logoWrapper}
+          key={logo.alt ? logo.alt.concat(i) : `imgKey${i}`}
+        >
           <Image
             imgStyle={{
               objectFit: 'contain',
             }}
             className={classes.logo}
-            key={
-              logo.alt ? logo.alt.concat(i) : `imgKey${i}`
-            }
             objectFit="contain"
             {...logo}
           />

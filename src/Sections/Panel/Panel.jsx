@@ -21,7 +21,9 @@ const Panel = ({ swap, title, body, image, children }) => {
         item
         xs={12}
         sm={6}
-        className={[classes.textWrapper, classes.swap]}
+        className={[classes.textWrapper, classes.swap].join(
+          ' ',
+        )}
       >
         <Box p={5}>
           <Typography variant="h4" component="h3">
