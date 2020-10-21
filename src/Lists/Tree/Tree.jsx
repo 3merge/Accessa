@@ -16,7 +16,7 @@ export const Tree = ({ lists }) => {
   return (
     <List>
       {lists.map((list, i) => (
-        <ListItem key={i} className={wrapper}>
+        <ListItem key={list.title + i} className={wrapper}>
           <div>
             <ListItemText
               disableTypography
