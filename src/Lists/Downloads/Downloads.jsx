@@ -13,7 +13,7 @@ export const Downloads = ({ lists, gridItem }) => {
       container
       component="ul"
       spacing={4}
-      style={{ margin: 0, padding: 0 }}
+      style={{ padding: 0 }}
     >
       {lists
         .filter((item) => item.path && item.contentType)
