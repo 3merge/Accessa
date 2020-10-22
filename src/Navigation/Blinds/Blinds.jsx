@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Grid } from '@material-ui/core';
-import { debounce, get } from 'lodash';
+import debounce from 'lodash.debounce';
+import get from 'lodash.get';
 import useStyles from './useStyles';
 import DropdownNavigation from './DropdownNavigation';
 
