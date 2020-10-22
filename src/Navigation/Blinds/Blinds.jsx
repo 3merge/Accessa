@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Grid } from '@material-ui/core';
+import debounce from 'lodash.debounce';
 import get from 'lodash.get';
 import useStyles from './useStyles';
 import DropdownNavigation from './DropdownNavigation';
@@ -39,6 +40,18 @@ const Blinds = ({ items }) => {
     },
     [height],
   );
+
+  const resetDropdown = debounce(() => {
+    setHeight(0);
+  }, 100);
+
+  React.useLayoutEffect(() => {
+    window.addEventListener('scroll', resetDropdown);
+
+    return () => {
+      window.removeEventListener('scroll', resetDropdown);
+    };
+  }, []);
 
   return (
     <nav ref={init} className={nav}>
