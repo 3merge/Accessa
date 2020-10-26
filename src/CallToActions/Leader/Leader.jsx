@@ -16,7 +16,6 @@ const Overline = styled.span`
   line-height: 1;
   letter-spacing: 0.2px;
   margin: 0;
-  text-transform: uppercase;
 `;
 
 const Body = styled.h3`
