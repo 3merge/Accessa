@@ -1,8 +1,9 @@
 import React from 'react';
 import { CarouselContext } from 'pure-react-carousel';
-import Box from '@material-ui/core/Box';
-import MobileStepper from '@material-ui/core/MobileStepper';
 import get from 'lodash.get';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
 
 const SlideshowStepper = () => {
   const carouselContext = React.useContext(CarouselContext);
@@ -38,16 +39,46 @@ const SlideshowStepper = () => {
 
   return (
     <Box
+      component="ol"
       display="flex"
       justifyContent="center"
       textAlign="center"
+      m={0}
+      p={0}
+      style={{
+        listStyle: 'none',
+      }}
     >
-      <MobileStepper
-        activeStep={activeStep}
-        steps={steps}
-        position="static"
-        variant="dots"
-      />
+      {Array.from({ length: steps }).map((_, index) => (
+        <Box
+          color={
+            index === activeStep
+              ? 'primary.main'
+              : undefined
+          }
+          component="li"
+          key={index}
+        >
+          <IconButton
+            color="inherit"
+            aria-label={`Jump to slide ${index}`}
+            tabIndex={0}
+            onClick={() =>
+              carouselContext.setStoreState({
+                currentSlide: index,
+              })
+            }
+            size="small"
+          >
+            <FiberManualRecordIcon
+              style={{
+                height: 14,
+                width: 14,
+              }}
+            />
+          </IconButton>
+        </Box>
+      ))}
     </Box>
   );
 };
