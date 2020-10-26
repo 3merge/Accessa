@@ -5,7 +5,10 @@ import {
   ArgsTable,
 } from '@storybook/addon-docs/blocks';
 import Field from './Field';
-import blogList from '../../../cypress/fixtures/blogList';
+import {
+  blogList,
+  nonCTABlogList,
+} from '../../../cypress/fixtures/blogList';
 
 <Meta title="Features/Field" component={Field} />
 
@@ -30,6 +33,17 @@ is not an array or has no length**
       title="Related articles"
       description="More info"
       lists={blogList}
+      fill
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="FieldWithoutClickHandler">
+    <Field
+      title="Related articles"
+      description="More info"
+      lists={nonCTABlogList}
       fill
     />
   </Story>

@@ -16,6 +16,7 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
     card,
     cardTitle,
     li,
+    noCta,
     subtitle,
     ul,
   } = useStyles({ fill });
@@ -38,7 +39,9 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
           <Card
             onClick={img.onClick}
             onKeyPress={img.onClick}
-            className={card}
+            className={
+              img.onClick ? card : [card, noCta].join(' ')
+            }
             tabIndex={0}
           >
             <Image
