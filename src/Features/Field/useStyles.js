@@ -12,6 +12,13 @@ const useStyles = makeStyles(() => ({
     borderRadius: 0,
     boxShadow: 'none',
   },
+  noCta: {
+    cursor: 'default',
+
+    '&:hover, &:focus': {
+      boxShadow: 'none',
+    },
+  },
   title: {
     fontSize: '2.13rem',
     margin: 0,
@@ -36,7 +43,6 @@ const useStyles = makeStyles(() => ({
     flexGrow: fill ? 1 : 0,
     maxWidth: fill ? '100%' : 'auto',
   }),
-  body1: {},
 }));
 
 export default useStyles;
