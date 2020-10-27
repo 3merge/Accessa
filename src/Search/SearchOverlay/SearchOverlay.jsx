@@ -24,13 +24,8 @@ export const renderSearchResult = (obj) => {
     return <Box mt={5}>No match</Box>;
 
   return (
-    <Box
-      mt={5}
-      role="region"
-      id="search-results"
-      aria-live="polite"
-    >
-      <Grid container>
+    <Box mt={5} id="search-results" role="region">
+      <Grid container aria-live="polite">
         {filtered.map((x) => (
           <Grid
             item
