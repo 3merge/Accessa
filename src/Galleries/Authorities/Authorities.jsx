@@ -22,6 +22,8 @@ const Authorities = ({ title, logos }) => {
             className={classes.logo}
             objectFit="contain"
             {...logo}
+            target="_blank"
+            rel="noreferrer"
           />
         </a>
       ))}

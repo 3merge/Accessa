@@ -15,8 +15,14 @@ const Legend = ({ lists }) => {
   return (
     <List className={cls.root}>
       {lists.map((text, i) => (
-        <ListItem key={i} className={cls.item}>
-          <ListItemAvatar className={cls.avatarContainer}>
+        <ListItem
+          key={`legendList${i}`}
+          className={cls.item}
+        >
+          <ListItemAvatar
+            className={cls.avatarContainer}
+            aria-hidden
+          >
             <Avatar className={cls.avatar}>
               {addLeadingZero(i)}
             </Avatar>
