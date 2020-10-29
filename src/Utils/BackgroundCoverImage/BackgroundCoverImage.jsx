@@ -52,7 +52,7 @@ const BackgroundCoverImage = (props) => {
   });
 
   return (
-    <Container>
+    <Container aria-hidden>
       <Image
         {...props}
         style={{

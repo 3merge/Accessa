@@ -52,7 +52,7 @@ const PhysicalProperties = ({ logo, properties }) => {
         />
       )}
       <Box mt={2} mb={4}>
-        <Divider />
+        <Divider aria-hidden />
       </Box>
       <Grid container spacing={7}>
         {properties.map((prop) => (
