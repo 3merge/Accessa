@@ -6,10 +6,18 @@ import ListItemWrapper from '../ListItemWrapper';
 import useStyles from '../useStyles';
 import { renderListSafely } from '../../Hocs';
 
-export const Archer = ({ subheader, underline, lists }) => {
+export const Archer = ({
+  subheader,
+  subheaderComponent,
+  underline,
+  lists,
+}) => {
   const classes = useStyles({
     underline,
   });
+
+  const HeadingLevel = (props) =>
+    React.createElement(subheaderComponent, props);
 
   return (
     <List
@@ -20,8 +28,11 @@ export const Archer = ({ subheader, underline, lists }) => {
             color="inherit"
             className={classes.root}
             component="li"
+            disableSticky
           >
-            {subheader}
+            <HeadingLevel className={classes.heading}>
+              {subheader}
+            </HeadingLevel>
           </ListSubheader>
         ) : null
       }
@@ -38,6 +49,7 @@ Archer.defaultProps = {
   underline: false,
   subheader: '',
   lists: [],
+  subheaderComponent: 'h3',
 };
 
 Archer.propTypes = {
@@ -45,6 +57,7 @@ Archer.propTypes = {
   subheader: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
   lists: PropTypes.array,
+  subheaderComponent: PropTypes.string,
 };
 
 export default renderListSafely(Archer);
