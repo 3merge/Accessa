@@ -43,9 +43,10 @@ export const renderSearchResult = (obj) => {
   );
 };
 
-const SearchIcon = ({ handleOpen }) => (
+const SearchIcon = ({ handleOpen, ...props }) => (
   <IconButton
-    aria-label="Open search dialog"
+    {...props}
+    aria-label="search dialog"
     onClick={handleOpen}
     color="inherit"
   >
@@ -128,10 +129,13 @@ const SearchOverlay = ({
                 onChange={onChange}
                 id="search"
                 aria-controls="search-results"
-                aria-label="Enter a search term"
+                aria-label="search"
                 variant="outlined"
                 color="primary"
                 helperText={error || ''}
+                FormHelperTextProps={{
+                  role: 'alert',
+                }}
                 error={Boolean(error)}
                 fullWidth
                 required

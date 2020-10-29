@@ -24,6 +24,7 @@ const Dialog = ({
   return (
     <>
       <ButtonComponent
+        aria-expanded={open}
         setOpen={setOpen}
         handleOpen={handleOpen}
         handleClose={handleClose}
