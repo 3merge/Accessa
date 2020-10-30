@@ -9,11 +9,22 @@ export const blogList = [
     fluid: {
       src: 'https://source.unsplash.com/random',
     },
+    alt: 'first',
   },
   {
     title:
       'Rubber Deflector Strips and Cutting Edges for Snow Plows',
     onClick: () => {},
+    description:
+      'Since our inception, municipalities and contractors alike have relied on CRG for rubber deflector strips and cutting edges for their snow plow fleets...',
+    fluid: {
+      src: 'https://source.unsplash.com/random',
+    },
+    alt: 'second',
+  },
+  {
+    title:
+      'Rubber Deflector Strips and Cutting Edges for Snow Plows',
     description:
       'Since our inception, municipalities and contractors alike have relied on CRG for rubber deflector strips and cutting edges for their snow plow fleets...',
     fluid: {

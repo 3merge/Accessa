@@ -60,7 +60,9 @@ const Offcanvas = withLocation(
             <Box p={1}>
               <Toolbar
                 disableGutters
-                style={{ justifyContent: 'space-between' }}
+                style={{
+                  justifyContent: 'space-between',
+                }}
               >
                 {logo}
                 <IconButton

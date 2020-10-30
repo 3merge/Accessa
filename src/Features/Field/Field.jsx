@@ -59,6 +59,8 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
                   objectFit: 'cover',
                 }}
                 style={{ width: '100%', height: '200px' }}
+                alt={img.alt || ''}
+                aria-hidden={!img.alt}
               />
               <CardContent>
                 {img.subtitle ? (

@@ -30,6 +30,9 @@ const useStyles = makeStyles(({ palette }) => ({
   li: {
     width: 'max-content',
   },
+  activeMenu: {
+    borderBottom: `1px solid ${palette.primary.main}`,
+  },
 }));
 
 export default useStyles;
