@@ -35,6 +35,7 @@ const Element = ({
       ) : null}
       <Box>
         <Typography
+          aria-hidden
           variant="subtitle1"
           className={classes.subtitle1}
           component="span"

@@ -23,6 +23,11 @@ const useStyles = makeStyles(({ palette }) => ({
     paddingLeft: '.5rem',
     cursor: 'pointer',
   },
+  heading: {
+    fontSize: '1rem',
+    margin: 0,
+    lineHeight: 3,
+  },
 }));
 
 export default useStyles;
