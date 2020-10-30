@@ -18,7 +18,7 @@ const sharedButtonStyles = css`
   &:hover,
   &:focus,
   &[aria-expanded='true'] {
-    background-color: whitesmoke;
+    background-color: #e3e0e0;
   }
 `;
 
@@ -63,7 +63,7 @@ const TreeList = styled.ul`
 `;
 
 const TreeListItem = styled.li`
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid #e3e0e0;
   display: block;
   width: 100%;
 `;
