@@ -15,7 +15,7 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
   const activate = () => setActive(true);
   const deactivate = () => setActive(false);
 
-  const { activeMenu, dropdownList, ul, li } = useStyles({
+  const { dropdownList, ul, li } = useStyles({
     columnCount:
       item.items.length > 5
         ? Math.round(item.items.length / 5)
@@ -36,7 +36,6 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
           aria-haspopup="true"
           aria-expanded={active}
           color={active ? 'primary' : 'inherit'}
-          className={active ? activeMenu : ''}
         >
           {item.label}
         </Button>
@@ -55,18 +54,23 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
             pt={2}
             ref={ref}
           >
-            {item.items.map((sub, i) => (
-              <li key={sub.label.concat(i)} className={li}>
-                <Fade in timeout={1250 + i * 1.35}>
-                  <Button
-                    {...getButtonProps(sub)}
-                    color="inherit"
-                  >
-                    {sub.label}
-                  </Button>
-                </Fade>
-              </li>
-            ))}
+            {item.items.map((sub, i) => {
+              return (
+                <li
+                  key={sub.label.concat(i)}
+                  className={li}
+                >
+                  <Fade in timeout={1250 + i * 1.35}>
+                    <Button
+                      {...getButtonProps(sub)}
+                      color="inherit"
+                    >
+                      {sub.label}
+                    </Button>
+                  </Fade>
+                </li>
+              );
+            })}
           </Box>
         </Collapse>
       </Box>

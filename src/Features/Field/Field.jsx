@@ -10,6 +10,9 @@ import {
 import { renderListSafely } from '../../Hocs';
 import useStyles from './useStyles';
 
+export const isAltAvailable = (alt) =>
+  typeof alt === 'string' && alt.length > 0;
+
 const Field = ({ lists, fill, spacing, ...rest }) => {
   const {
     body1,
@@ -53,15 +56,16 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
               onKeyPress={img.onClick}
               {...getCardProps()}
             >
-              <Image
-                fluid={img.fluid}
-                imgStyle={{
-                  objectFit: 'cover',
-                }}
-                style={{ width: '100%', height: '200px' }}
-                alt={img.alt || ''}
-                aria-hidden={!img.alt}
-              />
+              <div aria-hidden={!isAltAvailable(img.alt)}>
+                <Image
+                  fluid={img.fluid}
+                  imgStyle={{
+                    objectFit: 'cover',
+                  }}
+                  style={{ width: '100%', height: '200px' }}
+                  alt={img.alt || ''}
+                />
+              </div>
               <CardContent>
                 {img.subtitle ? (
                   <span className={subtitle}>

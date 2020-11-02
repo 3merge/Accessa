@@ -2,14 +2,15 @@
   "columns": [
     {
       "label": "Company",
+      "href": "/company",
       "items": [
         {
           "label": "About us",
-          "href": "/about"
+          "href": "/company/about"
         },
         {
           "label": "Contact",
-          "href": "/contact"
+          "href": "/company/contact"
         },
         {
           "label": "Careers",

@@ -4,17 +4,10 @@ export const getProps = ({
   isCurrent,
   isPartiallyCurrent,
 }) => {
-  if (isCurrent)
+  if (isCurrent || isPartiallyCurrent)
     return {
       style: {
         textDecoration: 'underline',
-      },
-    };
-
-  if (isPartiallyCurrent)
-    return {
-      style: {
-        fontWeight: 'bold',
       },
     };
 
