@@ -64,7 +64,6 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
                   }}
                   style={{ width: '100%', height: '200px' }}
                   alt={img.alt || ''}
-                  // aria-hidden={!img.alt}
                 />
               </div>
               <CardContent>
