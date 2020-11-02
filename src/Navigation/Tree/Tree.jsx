@@ -103,7 +103,14 @@ const ParentLink = ({
           </span>
         </Button>
       ) : (
-        <TreeListItemLink to={href}>
+        <TreeListItemLink
+          to={href}
+          getProps={({ isCurrent }) =>
+            isCurrent
+              ? { style: { backgroundColor: '#e3e0e0' } }
+              : {}
+          }
+        >
           {icon}
           {label}
         </TreeListItemLink>
