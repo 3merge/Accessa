@@ -11,13 +11,6 @@ export const getProps = ({
       },
     };
 
-  // if (isPartiallyCurrent)
-  //   return {
-  //     style: {
-  //       fontWeight: 'bold',
-  //     },
-  //   };
-
   return {};
 };
 

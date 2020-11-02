@@ -15,7 +15,7 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
   const activate = () => setActive(true);
   const deactivate = () => setActive(false);
 
-  const { activeMenu, dropdownList, ul, li } = useStyles({
+  const { dropdownList, ul, li } = useStyles({
     columnCount:
       item.items.length > 5
         ? Math.round(item.items.length / 5)
@@ -36,7 +36,6 @@ const Dropdown = React.forwardRef(({ item }, ref) => {
           aria-haspopup="true"
           aria-expanded={active}
           color={active ? 'primary' : 'inherit'}
-          // className={active ? activeMenu : ''}
         >
           {item.label}
         </Button>
