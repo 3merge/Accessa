@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
+  gatsbyImage: {
+    width: '100%',
+    height: '200px',
+  },
   card: {
     height: '100%',
     cursor: 'pointer',
