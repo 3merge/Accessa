@@ -13,7 +13,13 @@ import useStyles from './useStyles';
 export const isAltAvailable = (alt) =>
   typeof alt === 'string' && alt.length > 0;
 
-const Field = ({ lists, fill, spacing, ...rest }) => {
+const Field = ({
+  lists,
+  fill,
+  spacing,
+  gatsbyImageClass,
+  ...rest
+}) => {
   const {
     body1,
     card,
@@ -22,6 +28,7 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
     noCta,
     subtitle,
     ul,
+    gatsbyImage,
   } = useStyles({ fill });
 
   return (
@@ -62,7 +69,9 @@ const Field = ({ lists, fill, spacing, ...rest }) => {
                   imgStyle={{
                     objectFit: 'cover',
                   }}
-                  style={{ width: '100%', height: '200px' }}
+                  className={
+                    gatsbyImageClass || gatsbyImage
+                  }
                   alt={img.alt || ''}
                 />
               </div>
@@ -108,6 +117,8 @@ Field.propTypes = {
   sm: PropTypes.number,
   md: PropTypes.number,
   spacing: PropTypes.number,
+  // eslint-disable-next-line react/forbid-prop-types
+  gatsbyImageClass: PropTypes.string,
 };
 
 Field.defaultProps = {
@@ -117,6 +128,7 @@ Field.defaultProps = {
   sm: 6,
   md: 4,
   spacing: 6,
+  gatsbyImageClass: '',
 };
 
 export default renderListSafely(Field);
