@@ -47,10 +47,10 @@ const Neapolitan = ({
         <Grid item xs>
           {navComponent}
           <Grid container>
-            <Grid item lg xs={12}>
+            <Grid item sm={12} xs={12}>
               <Box p={1}>{children}</Box>
             </Grid>
-            <Grid item lg="auto" sm={12}>
+            <Grid item lg="auto" sm={12} xs={12}>
               <Box p={{ xs: 0, lg: 3 }}>
                 <Ladder data={carousel} />
               </Box>

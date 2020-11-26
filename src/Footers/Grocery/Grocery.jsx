@@ -64,7 +64,7 @@ const Grid = styled.div`
   justify-content: space-around;
 
   ${media.lessThan('small')`
-    justify-content: flex-start;
+    justify-content: center;
   `}
 `;
 
