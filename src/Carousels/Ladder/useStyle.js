@@ -51,6 +51,10 @@ export default makeStyles((theme) => ({
         transform: 'none',
       },
     },
+    '& svg': {
+      width: '2rem',
+      height: '2rem',
+    },
   },
   next: {
     '& button': {
@@ -58,6 +62,10 @@ export default makeStyles((theme) => ({
       [theme.breakpoints.down('md')]: {
         transform: 'none',
       },
+    },
+    '& svg': {
+      width: '2rem',
+      height: '2rem',
     },
   },
 }));
