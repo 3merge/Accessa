@@ -27,7 +27,8 @@ export default makeStyles((theme) => ({
     top: '100%',
     left: 0,
     display: 'none',
-    minWidth: '300px',
+    minWidth: '200px',
+    zIndex: 1000,
   },
   root: {
     display: 'flex',

@@ -8,8 +8,12 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 import MenuListComposition from '.';
 import { columns } from '../../../cypress/fixtures/footer';
+import { Mast } from '../../Headers/Headers.stories.jsx';
 
 export const darkTheme = createMuiTheme({
   palette: {
@@ -25,7 +29,12 @@ export const darkTheme = createMuiTheme({
 <Preview>
   <Story name="Dark">
     <ThemeProvider theme={darkTheme}>
-      <MenuListComposition items={columns} />
+      <Paper>
+        <MenuListComposition items={columns} />
+        <Box>
+          <Mast />
+        </Box>
+      </Paper>
     </ThemeProvider>
   </Story>
 </Preview>
