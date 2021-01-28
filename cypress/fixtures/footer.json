@@ -1,5 +1,6 @@
 {
   "columns": [
+    {"label": "Home", "href": "/"},
     {
       "label": "Company",
       "href": "/company",
@@ -17,7 +18,7 @@
           "href": "https://google.ca"
         },
         {
-          "label": "Investors",
+          "label": "Investors and other",
           "href": "//google.ca"
         }
       ]

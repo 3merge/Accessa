@@ -1,0 +1,33 @@
+import {
+  Meta,
+  Story,
+  Preview,
+  ArgsTable,
+} from '@storybook/addon-docs/blocks';
+import {
+  createMuiTheme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
+import MenuListComposition from '.';
+import { columns } from '../../../cypress/fixtures/footer';
+
+export const darkTheme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
+
+<Meta
+  title="Navigation/MenuListComposition"
+  component={MenuListComposition}
+/>
+
+<Preview>
+  <Story name="Dark">
+    <ThemeProvider theme={darkTheme}>
+      <MenuListComposition items={columns} />
+    </ThemeProvider>
+  </Story>
+</Preview>
+
+# MenuListComposition
