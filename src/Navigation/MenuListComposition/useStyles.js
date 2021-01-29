@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-export default makeStyles((theme) => ({
+export default makeStyles(({ palette }) => ({
   wrapper: {
     position: 'relative',
     '&:hover': {
@@ -27,11 +27,11 @@ export default makeStyles((theme) => ({
     top: '100%',
     left: 0,
     display: 'none',
-    minWidth: '200px',
+    minWidth: '250px',
+    backgroundColor: palette.background.paper,
     zIndex: 1000,
   },
   root: {
     display: 'flex',
-    justifyContent: 'space-between',
   },
 }));

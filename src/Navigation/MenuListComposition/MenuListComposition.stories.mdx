@@ -29,12 +29,20 @@ export const darkTheme = createMuiTheme({
 <Preview>
   <Story name="Dark">
     <ThemeProvider theme={darkTheme}>
-      <Paper>
-        <MenuListComposition items={columns} />
-        <Box>
-          <Mast />
-        </Box>
-      </Paper>
+      <AppBar
+        position="absolute"
+        color="transparent"
+        style={{ boxShadow: 'none' }}
+      >
+        <MenuListComposition
+          items={columns.concat({
+            label: 'No link',
+          })}
+        />
+      </AppBar>
+      <Box m={-2}>
+        <Mast />
+      </Box>
     </ThemeProvider>
   </Story>
 </Preview>

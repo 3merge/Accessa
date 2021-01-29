@@ -4,7 +4,6 @@ import {
   Button,
   List,
   ListItem,
-  Paper,
 } from '@material-ui/core';
 import useStyles from './useStyles';
 import { getButtonProps } from '../Blinds/helpers';
@@ -20,9 +19,9 @@ const Dropdown = (item) => {
       >
         {item.label}
       </Button>
-      <List className={cls.nested} component={Paper}>
+      <List className={cls.nested}>
         {item.items.map((x) => (
-          <ListItem>
+          <ListItem key={x.label}>
             <Button
               {...getButtonProps(x)}
               className={cls.link}
