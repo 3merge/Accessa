@@ -27,6 +27,7 @@ const MenuListComposition = ({ items }) => {
               <Button
                 {...getButtonProps(x)}
                 className={cls.link}
+                fullWidth
               >
                 {x.label}
               </Button>
