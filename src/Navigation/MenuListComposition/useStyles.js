@@ -1,0 +1,58 @@
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+export default makeStyles(({ palette, spacing }) => ({
+  wrapper: {
+    position: 'relative',
+    '&:hover, &:focus-within': {
+      '& $nested': {
+        visibility: 'visible',
+        opacity: 1,
+        transform: 'none',
+      },
+    },
+  },
+  link: {
+    textDecoration: 'none',
+
+    '&:focus': {
+      '& + $nested': {
+        visibility: 'visible',
+        opacity: 1,
+        transform: 'none',
+      },
+    },
+  },
+  nested: {
+    position: 'absolute',
+    top: '96%',
+    left: 0,
+
+    minWidth: 175,
+    maxWidth: 255,
+    visibility: 'hidden',
+    opacity: 0,
+    width: 'auto',
+    padding: spacing(1),
+    backgroundColor: palette.background.paper,
+    transform: 'translateY(15px)',
+    transitionProperty: 'opacity,transform',
+    transitionDuration: 250,
+    transitionDelay: 75,
+    zIndex: 1000,
+
+    '&::before': {
+      width: 0,
+      height: 0,
+      borderLeft: '7px solid transparent',
+      borderRight: '7px solid transparent',
+      borderBottom: `7px solid ${palette.background.paper}`,
+      position: 'absolute',
+      bottom: '100%',
+      left: '1.5rem',
+      content: '""',
+    },
+  },
+  root: {
+    display: 'flex',
+  },
+}));
