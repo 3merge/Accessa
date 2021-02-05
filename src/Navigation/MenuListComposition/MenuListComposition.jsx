@@ -48,7 +48,8 @@ const MenuListComposition = ({
 };
 
 MenuListComposition.defaultProps = {
-  maxDepth: null,
+  maxDepth: 3,
+  maxColumns: 3,
 };
 
 MenuListComposition.propTypes = {
@@ -66,6 +67,7 @@ MenuListComposition.propTypes = {
   ).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   maxDepth: PropTypes.any,
+  maxColumns: PropTypes.number,
 };
 
 export default MenuListComposition;

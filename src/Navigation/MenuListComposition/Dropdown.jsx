@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Box,
   Button,
@@ -11,18 +12,20 @@ import { getButtonProps } from '../Blinds/helpers';
 
 const Dropdown = ({ item, maxDepth, maxColumns }) => {
   const theme = useTheme();
-  const isMultiColumns = item.items.length - maxDepth > 0;
-  const implicit =
-    item.items.length - maxDepth * maxColumns;
+  const nestedItemLength = item.items.length;
+  const isMultiColumns = nestedItemLength - maxDepth > 0;
+  const implicit = nestedItemLength - maxDepth * maxColumns;
 
-  const columns = maxColumns;
   const rows =
     implicit === 0
       ? maxDepth
       : maxDepth + Math.ceil(implicit / maxColumns);
 
-  console.log('column: ', columns, 'rows: ', rows);
-  const cls = useStyles({ isMultiColumns, columns, rows });
+  const cls = useStyles({
+    isMultiColumns,
+    columns: maxColumns,
+    rows,
+  });
 
   return (
     <Box className={cls.wrapper}>
@@ -56,6 +59,26 @@ const Dropdown = ({ item, maxDepth, maxColumns }) => {
       </List>
     </Box>
   );
+};
+
+Dropdown.defaultProps = {
+  maxDepth: 3,
+  maxColumns: 3,
+};
+
+Dropdown.propTypes = {
+  maxDepth: PropTypes.number,
+  maxColumns: PropTypes.number,
+  item: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
 };
 
 export default Dropdown;
