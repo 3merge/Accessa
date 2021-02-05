@@ -11,7 +11,7 @@ export default makeStyles(({ palette, spacing }) => ({
       },
     },
   },
-  link: {
+  link: ({ isMultiColumns, columns }) => ({
     textDecoration: 'none',
 
     '&:focus': {
@@ -21,14 +21,25 @@ export default makeStyles(({ palette, spacing }) => ({
         transform: 'none',
       },
     },
-  },
-  nested: {
+    '& span.MuiButton-label': {
+      justifyContent:
+        isMultiColumns && columns > 1
+          ? 'flex-start'
+          : 'center',
+    },
+  }),
+  nested: ({ isMultiColumns, rows, columns }) => ({
+    display: isMultiColumns ? 'grid' : 'block',
+    gridAutoFlow: 'column',
+    gridTemplateColumns: `repeat(${columns}, max-content)`,
+    gridTemplateRows: `repeat(${rows}, 1fr)`,
+    gap: '10px 10px',
     position: 'absolute',
     top: '96%',
     left: 0,
 
     minWidth: 175,
-    maxWidth: 255,
+    // maxWidth: 255,
     visibility: 'hidden',
     opacity: 0,
     width: 'auto',
@@ -51,7 +62,7 @@ export default makeStyles(({ palette, spacing }) => ({
       left: '1.5rem',
       content: '""',
     },
-  },
+  }),
   root: {
     display: 'flex',
   },

@@ -13,7 +13,11 @@ import { getButtonProps } from '../Blinds/helpers';
 export const hasNestItem = (x) =>
   Array.isArray(x.items) && x.items.length > 0;
 
-const MenuListComposition = ({ items }) => {
+const MenuListComposition = ({
+  items,
+  maxDepth,
+  maxColumns,
+}) => {
   const cls = useStyles();
 
   return (
@@ -22,7 +26,11 @@ const MenuListComposition = ({ items }) => {
         {items.map((x) => (
           <ListItem key={x.label} style={{ width: 'auto' }}>
             {hasNestItem(x) ? (
-              <Dropdown {...x} />
+              <Dropdown
+                item={x}
+                maxDepth={maxDepth}
+                maxColumns={maxColumns}
+              />
             ) : (
               <Button
                 {...getButtonProps(x)}
@@ -39,6 +47,10 @@ const MenuListComposition = ({ items }) => {
   );
 };
 
+MenuListComposition.defaultProps = {
+  maxDepth: null,
+};
+
 MenuListComposition.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
@@ -52,6 +64,8 @@ MenuListComposition.propTypes = {
       ),
     }),
   ).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  maxDepth: PropTypes.any,
 };
 
 export default MenuListComposition;

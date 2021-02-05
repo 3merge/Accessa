@@ -10,12 +10,32 @@
           "href": "/company/about"
         },
         {
+          "label": "Careers",
+          "href": "https://google.ca"
+        },
+        {
           "label": "Contact",
           "href": "/company/contact"
         },
         {
+          "label": "Investors and other",
+          "href": "//google.ca"
+        },
+        {
+          "label": "About us",
+          "href": "/company/about"
+        },
+        {
           "label": "Careers",
           "href": "https://google.ca"
+        },
+        {
+          "label": "Contact",
+          "href": "/company/contact"
+        },
+        {
+          "label": "Investors and other",
+          "href": "//google.ca"
         },
         {
           "label": "Investors and other",
