@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Box,
   Button,
@@ -9,9 +10,22 @@ import { useTheme } from '@material-ui/core/styles';
 import useStyles from './useStyles';
 import { getButtonProps } from '../Blinds/helpers';
 
-const Dropdown = (item) => {
-  const cls = useStyles();
+const Dropdown = ({ item, maxDepth, maxColumns }) => {
   const theme = useTheme();
+  const nestedItemLength = item.items.length;
+  const isMultiColumns = nestedItemLength - maxDepth > 0;
+  const implicit = nestedItemLength - maxDepth * maxColumns;
+
+  const rows =
+    implicit === 0
+      ? maxDepth
+      : maxDepth + Math.ceil(implicit / maxColumns);
+
+  const cls = useStyles({
+    isMultiColumns,
+    columns: maxColumns,
+    rows,
+  });
 
   return (
     <Box className={cls.wrapper}>
@@ -45,6 +59,26 @@ const Dropdown = (item) => {
       </List>
     </Box>
   );
+};
+
+Dropdown.defaultProps = {
+  maxDepth: 3,
+  maxColumns: 3,
+};
+
+Dropdown.propTypes = {
+  maxDepth: PropTypes.number,
+  maxColumns: PropTypes.number,
+  item: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    href: PropTypes.string,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        href: PropTypes.string.isRequired,
+      }),
+    ),
+  }).isRequired,
 };
 
 export default Dropdown;
