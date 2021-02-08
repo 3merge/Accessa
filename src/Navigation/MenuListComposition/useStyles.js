@@ -21,7 +21,7 @@ export default makeStyles(({ palette, spacing }) => ({
         transform: 'none',
       },
     },
-    '& span.MuiButton-label': {
+    '& span': {
       justifyContent:
         isMultiColumns && columns > 1
           ? 'flex-start'
